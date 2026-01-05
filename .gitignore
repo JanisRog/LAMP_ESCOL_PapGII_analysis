@@ -1,0 +1,17 @@
+# --- Jupyter / notebooks ---
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+.pytest_cache/
+
+# --- OS clutter ---
+.DS_Store
+Thumbs.db
