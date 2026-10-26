@@ -10,6 +10,7 @@ papGII directly from urine (Rogenmoser et al.). Raw sequencing reads: ENA projec
 | `all_measurements_uida.csv`, `all_measurements_papg.csv` | Clinical fluorescent LAMP: raw fluorescence per cycle (1 cycle = 1 min, 40 min) for 191 urines (columns = sample number) and the water negative control (`NTC`) |
 | `culture_results.csv`, `papg_results.csv` | Reference results per sample: E. coli by culture + MALDI-TOF, papGII by WGS (1 = positive) |
 | `sample_metadata.csv` | Supplementary Table 1: semi-quantitative culture load (CFU/ml), culture result (MALDI-TOF; comma = mixed culture), papGII by WGS, LAMP result |
+| `upec_phylogroups.tsv` | Clermont phylogroups of the 738 UPEC genomes (EzClermont 1.0.0; `scripts/phylogroups.sbatch`) |
 | `papG_reference_alleles.fasta` | PapG-I, PapG-II and PapG-III reference alleles used for papG typing and papGII primer design |
 | `uida_lod_*.csv`, `papg_lod_*.csv` | Limit of detection: fluorescence over 60 min for the dilution series (10⁶–10² CFU/ml, NTC), three replicates |
 
@@ -23,8 +24,8 @@ papGII directly from urine (Rogenmoser et al.). Raw sequencing reads: ENA projec
 | `scripts/primer_screen.py` (+ `primer_screen.sbatch`) | `results/primer_screen/` | In silico screen of both primer sets against 738 UPEC genomes and the 38 clinical isolates, with papG allele typing |
 | `scripts/gene_scan.py` (+ `gene_scan.sbatch`) | `results/gene_scan/` | Per-position variability of uidA (738 genomes) and papGII (140 papGII genomes); amplicon and binding sites in gene coordinates |
 | `scripts/uidA_candidate_sets.py` | `results/uidA_candidate_sets/` | Comparison of the five uidA primer sets proposed by the NEB LAMP Primer Design Tool |
-| `scripts/fig_primer_map.py` | `results/figures/` | Figure 2A: primer binding sites on both amplicons; mismatches of the papGII sites to PapG-III and PapG-I |
-| `scripts/fig_s_primer_conservation.py` | `results/figures/` | Supplementary figure and tables: per-site mismatches to the primers in 738 UPEC genomes (descriptive) and presence of the papGII binding sites per papG allele group |
+| `scripts/fig_primer_map.py` | `results/figures/` | Figure 2A: primer binding sites on both amplicons; median mismatches of the uidA sites per phylogroup; mismatches of the papGII sites to PapG-III and PapG-I |
+| `scripts/tables_s_primer_conservation.py` | `results/figures/` | Supplementary tables: per-site mismatches to the primers in 738 UPEC genomes (descriptive) and presence of the papGII binding sites per papG allele group |
 
 Shared settings (fluorescence threshold ≥ 3-fold of cycle 1; time thresholds uidA 30 min, papGII 23 min) are in
 `scripts/lamp_common.py`. Each results folder contains a README describing its files and columns.
@@ -38,7 +39,7 @@ python diagnostic_metrics_ci.py
 python cfu_time_to_threshold.py
 python uidA_candidate_sets.py
 python fig_primer_map.py
-python fig_s_primer_conservation.py
+python tables_s_primer_conservation.py
 ```
 
 The primer screen and gene scan need BLAST+ (`blastn`) and the genome assemblies; both were run on the UZH ScienceCluster via

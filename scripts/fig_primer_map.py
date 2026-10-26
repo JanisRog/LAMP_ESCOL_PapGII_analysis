@@ -1,5 +1,8 @@
-"""Figure 2A: LAMP primer binding sites on the uidA and papGII amplicons, and the specificity rationale of the
-papGII primers (mismatches of each binding site to the PapG-III and PapG-I reference alleles).
+"""Figure 2A: LAMP primer binding sites on the uidA and papGII amplicons.
+uidA: median number of mismatches to the primer per binding site within each Clermont phylogroup (EzClermont,
+data/upec_phylogroups.tsv; Clermont phylogroups with >= MIN_GROUP genomes in which the amplicon region is present; unassigned 'U'/cryptic
+not shown).
+papGII: mismatches of each binding site to the PapG-III and PapG-I reference alleles (specificity rationale).
 
 Amplicons and binding-site coordinates come from the reference genes of the design strain 700223-20
 (results/gene_scan/*/reference_gene.fasta) with the FIP/BIP split lengths of the design (primer_screen.SPLIT).
@@ -14,6 +17,7 @@ from matplotlib.patches import FancyArrow, Patch, Rectangle
 
 from lamp_common import DATA, RESULTS
 from primer_screen import ROLE, binding_sites, rc, read_fasta, reference_amplicon
+from tables_s_primer_conservation import load as load_site_mismatches
 
 OUT = RESULTS / "figures"
 ROLE_COLOR = {"outer": "#2a78d6", "inner": "#eb6834", "loop": "#1baf7a"}   # categorical slots 1-3
@@ -24,6 +28,7 @@ MM_STEPS = [(0.0, "#f0efec", "#0b0b0b"), (0.10, "#c3c2b7", "#0b0b0b"), (0.30, "#
             (1.01, "#52514e", "#ffffff")]
 INK, INK2 = "#0b0b0b", "#52514e"
 XPAD = 4
+MIN_GROUP = 10
 
 mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
                      "font.size": 8, "pdf.fonttype": 42, "svg.fonttype": "none"})
@@ -59,20 +64,39 @@ def draw_map(ax, st, xmax):
     ax.text(st.end.max() + 2, 0, "3′", ha="left", va="center", fontsize=7, color=INK2)
 
 
-def draw_mismatch_rows(ax, st, alleles, xmax):
-    """One row per allele; a cell under each binding site with its mismatch count (shaded by share of site length)."""
-    for row, name in enumerate(alleles):
-        y = len(alleles) - row - 1
-        ax.text(-XPAD - 2, y + 0.5, name, ha="right", va="center", fontsize=7, color=INK2)
+def fmt(v):
+    return str(int(v)) if float(v).is_integer() else f"{v:.1f}"
+
+
+def draw_mismatch_rows(ax, st, rows, xmax, caption):
+    """One row per (label, {site: mismatches}); a cell under each binding site, shaded by mismatches / site length."""
+    for row, (label, values) in enumerate(rows):
+        y = len(rows) - row - 1
+        ax.text(-XPAD - 2, y + 0.5, label, ha="right", va="center", fontsize=7, color=INK2)
         for _, r in st.iterrows():
-            mm = r[f"mm_{name}"]
+            mm = values[r.site]
             frac = mm / r.length
             fill, ink = next((f, k) for lim, f, k in MM_STEPS if frac < lim) if mm else MM_STEPS[0][1:]
             ax.add_patch(Rectangle((r.start - 1 + 1.2, y + 0.08), r.end - r.start + 1 - 2.4, 0.84, color=fill, lw=0))
-            ax.text((r.start - 1 + r.end) / 2, y + 0.5, str(mm), ha="center", va="center", fontsize=7, color=ink)
-    ax.set_xlim(-XPAD, xmax); ax.set_ylim(0, len(alleles)); ax.axis("off")
-    ax.text(1.0, -0.15, "Mismatches of each papGII binding site to the PapG-III and PapG-I reference alleles",
-            transform=ax.transAxes, ha="right", va="top", fontsize=6.5, color=INK2)
+            ax.text((r.start - 1 + r.end) / 2, y + 0.5, fmt(mm), ha="center", va="center", fontsize=7, color=ink)
+    ax.set_xlim(-XPAD, xmax); ax.set_ylim(0, len(rows)); ax.axis("off")
+    ax.text(1.0, -0.06 * 6 / max(len(rows), 1), caption, transform=ax.transAxes, ha="right", va="top", fontsize=6.5,
+            color=INK2)
+
+
+def phylogroup_rows():
+    """Median mismatches to the uidA primers per binding site within each phylogroup (>= MIN_GROUP genomes)."""
+    mm = load_site_mismatches("uidA")["per_genome"]
+    pg = pd.read_csv(DATA / "upec_phylogroups.tsv", sep="\t")
+    mm = mm.merge(pg, on="genome")
+    n = mm.groupby("phylogroup").genome.nunique().sort_values(ascending=False)
+    named = [g for g in n.index if g in {"A", "B1", "B2", "C", "D", "E", "F", "G"}]  # Clermont phylogroups only
+    keep = [g for g in named if n[g] >= MIN_GROUP]
+    med = mm[mm.phylogroup.isin(keep)].groupby(["phylogroup", "site"]).mismatches.median().unstack()
+    rows = [(f"{g} (n={n[g]})", med.loc[g].to_dict()) for g in keep]
+    excluded = int(n.drop(keep).sum())
+    table = med.loc[keep].assign(genomes=n[keep])
+    return rows, excluded, table, n
 
 
 def main():
@@ -83,13 +107,18 @@ def main():
     for name in ("PapG-III", "PapG-I", "PapG-II"):
         p[f"mm_{name}"] = [best_mismatches(s, alleles[name]) for s in p.sequence]
     xmax = max(u.end.max(), p.end.max()) + 8
+    prows, excluded, ptable, pn = phylogroup_rows()
 
-    fig = plt.figure(figsize=(180 / 25.4, 88 / 25.4))
-    gs = fig.add_gridspec(4, 1, height_ratios=[1.0, 0.12, 1.0, 0.55], hspace=0.15)
-    ax_u, ax_p, ax_t = fig.add_subplot(gs[0]), fig.add_subplot(gs[2]), fig.add_subplot(gs[3])
+    fig = plt.figure(figsize=(180 / 25.4, 125 / 25.4))
+    gs = fig.add_gridspec(5, 1, height_ratios=[1.0, 1.35, 0.32, 1.0, 0.5], hspace=0.12)
+    ax_u, ax_ut, ax_p, ax_t = fig.add_subplot(gs[0]), fig.add_subplot(gs[1]), fig.add_subplot(gs[3]), fig.add_subplot(gs[4])
     draw_map(ax_u, u, xmax)
+    draw_mismatch_rows(ax_ut, u, prows, xmax,
+                       f"Median mismatches to the primer per Clermont phylogroup ({excluded} genomes in smaller "
+                       f"or unassigned groups not shown)")
     draw_map(ax_p, p, xmax)
-    draw_mismatch_rows(ax_t, p, ["PapG-III", "PapG-I"], xmax)
+    draw_mismatch_rows(ax_t, p, [(a, dict(zip(p.site, p[f"mm_{a}"]))) for a in ("PapG-III", "PapG-I")], xmax,
+                       "Mismatches of each papGII binding site to the PapG-III and PapG-I reference alleles")
     for ax, name, (lo, hi), L, st in ((ax_u, "uidA", u_pos, u_len, u), (ax_p, "papGII", p_pos, p_len, p)):
         ax.text(-XPAD, 1.45, name, ha="left", va="bottom", fontsize=9, fontstyle="italic", color=INK)
         ax.text(xmax, 1.45, f"{st.end.max()}-bp amplicon · nt {lo}–{hi} of {L}-bp gene", ha="right", va="bottom",
@@ -101,6 +130,8 @@ def main():
         fig.savefig(OUT / f"fig2a_primer_map.{ext}", dpi=600 if ext == "png" else None, bbox_inches="tight")
     tab = pd.concat([u, p])
     tab.to_csv(OUT / "fig2a_binding_sites.tsv", sep="\t", index=False)
+    ptable.to_csv(OUT / "fig2a_uidA_phylogroup_median_mismatches.tsv", sep="\t")
+    print(ptable.to_string()); print("excluded genomes:", excluded)
     print(tab.drop(columns="sequence").to_string(index=False))
 
 
