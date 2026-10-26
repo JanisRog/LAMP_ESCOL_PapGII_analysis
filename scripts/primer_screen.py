@@ -34,6 +34,9 @@ PRIMERS = {  # Table 1 of the manuscript
         "LF": "TCTGCACAGTCTCTGGAAATAAAGC", "LB": "ATTGTATGGGATTTTAAAACGGGCC",
     },
 }
+# Length of the 5' part of FIP (F1c) and BIP (B1c). uidA: NEB LAMP Primer Design Tool output (the junction
+# base fits both halves, so it cannot be inferred); papGII: the only split matching the PapG-II reference.
+SPLIT = {"uidA": {"FIP": 22, "BIP": 21}, "papGII": {"FIP": 22, "BIP": 25}}
 THREE_PRIME_SITES = {"F3", "F2", "LF", "LB", "B2", "B3"}  # sites carrying a primer's free 3' end
 ROLE = {"F3": "outer", "B3": "outer", "LF": "loop", "LB": "loop",
         "F2": "inner", "F1c": "inner", "B1c": "inner", "B2": "inner"}
@@ -114,7 +117,8 @@ def binding_sites(target, amp):
         sites[name] = (p[name],) + loc
     for comp, (five, three) in (("FIP", ("F1c", "F2")), ("BIP", ("B1c", "B2"))):
         seq, best = p[comp], None
-        for k in range(15, len(seq) - 14):
+        splits = [SPLIT[target][comp]] if comp in SPLIT.get(target, {}) else range(15, len(seq) - 14)
+        for k in splits:
             a, b = locate(seq[:k], amp), locate(seq[k:], amp)
             if a and b and (best is None or a[3] + b[3] < best[0]):
                 best = (a[3] + b[3], k, a, b)

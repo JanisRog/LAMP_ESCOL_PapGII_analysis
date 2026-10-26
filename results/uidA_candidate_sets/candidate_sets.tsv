@@ -1,0 +1,6 @@
+set_id	selected	dimer_dG	region	genomes	intact	minor	critical	incomplete	absent	no_critical_pct	intact_pct	critical_pct	genomes_mm_F3	genomes_mm_F2	genomes_mm_F1c	genomes_mm_B1c	genomes_mm_B2	genomes_mm_B3
+11	1	-1.63	843-1066	738	393	317	20	4	4	96.2	53.3	2.7	241	104	47	4	38	268
+20	0	-2.05	939-1144	738	312	294	124	4	4	82.1	42.3	16.8	418	31	19	268	97	4
+17	0	-2.12	929-1144	738	312	302	116	4	4	83.2	42.3	15.7	137	418	19	268	97	4
+37	0	-2.34	1159-1364	738	356	322	53	3	4	91.9	48.2	7.2	0	3	4	373	247	4
+51	0	-2.4	1407-1616	738	384	289	58	3	4	91.2	52.0	7.9	104	10	4	286	63	4
