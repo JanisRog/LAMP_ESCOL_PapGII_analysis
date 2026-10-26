@@ -23,7 +23,7 @@ papGII directly from urine (Rogenmoser et al.). Raw sequencing reads: ENA projec
 | `scripts/primer_screen.py` (+ `primer_screen.sbatch`) | `results/primer_screen/` | In silico screen of both primer sets against 738 UPEC genomes and the 38 clinical isolates, with papG allele typing |
 | `scripts/gene_scan.py` (+ `gene_scan.sbatch`) | `results/gene_scan/` | Per-position variability of uidA (738 genomes) and papGII (140 papGII genomes); amplicon and binding sites in gene coordinates |
 | `scripts/uidA_candidate_sets.py` | `results/uidA_candidate_sets/` | Comparison of the five uidA primer sets proposed by the NEB LAMP Primer Design Tool |
-| `scripts/fig_primer_map.py` | `results/figures/` | Figure 2A: primer binding sites and per-site in silico conservation |
+| `scripts/fig_primer_map.py` | `results/figures/` | Figure 2A: primer binding sites on both amplicons; mismatches of the papGII sites to PapG-III and PapG-I |
 
 Shared settings (fluorescence threshold ≥ 3-fold of cycle 1; time thresholds uidA 30 min, papGII 23 min) are in
 `scripts/lamp_common.py`. Each results folder contains a README describing its files and columns.
