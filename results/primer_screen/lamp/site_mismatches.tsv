@@ -1,0 +1,929 @@
+genome	target	site	role	covered	mismatches	mismatches_3prime
+LAMP004	uidA	F3	outer	1	0	0
+LAMP004	uidA	F2	inner	1	0	0
+LAMP004	uidA	LF	loop	1	0	0
+LAMP004	uidA	F1c	inner	1	0	0
+LAMP004	uidA	B1c	inner	1	0	0
+LAMP004	uidA	LB	loop	1	0	0
+LAMP004	uidA	B2	inner	1	0	0
+LAMP004	uidA	B3	outer	1	0	0
+LAMP004	papGII	F3	outer	0		
+LAMP004	papGII	F2	inner	0		
+LAMP004	papGII	LF	loop	0		
+LAMP004	papGII	F1c	inner	0		
+LAMP004	papGII	B1c	inner	0		
+LAMP004	papGII	LB	loop	0		
+LAMP004	papGII	B2	inner	0		
+LAMP004	papGII	B3	outer	0		
+LAMP005_1	uidA	F3	outer	1	0	0
+LAMP005_1	uidA	F2	inner	1	0	0
+LAMP005_1	uidA	LF	loop	1	0	0
+LAMP005_1	uidA	F1c	inner	1	0	0
+LAMP005_1	uidA	B1c	inner	1	0	0
+LAMP005_1	uidA	LB	loop	1	0	0
+LAMP005_1	uidA	B2	inner	1	0	0
+LAMP005_1	uidA	B3	outer	1	0	0
+LAMP005_1	papGII	F3	outer	1	0	0
+LAMP005_1	papGII	F2	inner	1	1	0
+LAMP005_1	papGII	LF	loop	1	1	1
+LAMP005_1	papGII	F1c	inner	1	2	0
+LAMP005_1	papGII	B1c	inner	0		
+LAMP005_1	papGII	LB	loop	0		
+LAMP005_1	papGII	B2	inner	0		
+LAMP005_1	papGII	B3	outer	0		
+LAMP005_2	uidA	F3	outer	1	0	0
+LAMP005_2	uidA	F2	inner	1	0	0
+LAMP005_2	uidA	LF	loop	1	0	0
+LAMP005_2	uidA	F1c	inner	1	0	0
+LAMP005_2	uidA	B1c	inner	1	0	0
+LAMP005_2	uidA	LB	loop	1	0	0
+LAMP005_2	uidA	B2	inner	1	0	0
+LAMP005_2	uidA	B3	outer	1	0	0
+LAMP005_2	papGII	F3	outer	1	0	0
+LAMP005_2	papGII	F2	inner	1	1	0
+LAMP005_2	papGII	LF	loop	1	1	1
+LAMP005_2	papGII	F1c	inner	1	2	0
+LAMP005_2	papGII	B1c	inner	0		
+LAMP005_2	papGII	LB	loop	0		
+LAMP005_2	papGII	B2	inner	0		
+LAMP005_2	papGII	B3	outer	0		
+LAMP006	uidA	F3	outer	0		
+LAMP006	uidA	F2	inner	0		
+LAMP006	uidA	LF	loop	0		
+LAMP006	uidA	F1c	inner	0		
+LAMP006	uidA	B1c	inner	0		
+LAMP006	uidA	LB	loop	0		
+LAMP006	uidA	B2	inner	0		
+LAMP006	uidA	B3	outer	0		
+LAMP006	papGII	F3	outer	0		
+LAMP006	papGII	F2	inner	0		
+LAMP006	papGII	LF	loop	0		
+LAMP006	papGII	F1c	inner	0		
+LAMP006	papGII	B1c	inner	0		
+LAMP006	papGII	LB	loop	0		
+LAMP006	papGII	B2	inner	0		
+LAMP006	papGII	B3	outer	0		
+LAMP009_1	uidA	F3	outer	1	1	0
+LAMP009_1	uidA	F2	inner	1	1	0
+LAMP009_1	uidA	LF	loop	1	1	0
+LAMP009_1	uidA	F1c	inner	1	0	0
+LAMP009_1	uidA	B1c	inner	1	0	0
+LAMP009_1	uidA	LB	loop	1	0	0
+LAMP009_1	uidA	B2	inner	1	0	0
+LAMP009_1	uidA	B3	outer	1	1	0
+LAMP009_1	papGII	F3	outer	1	0	0
+LAMP009_1	papGII	F2	inner	1	0	0
+LAMP009_1	papGII	LF	loop	1	0	0
+LAMP009_1	papGII	F1c	inner	1	0	0
+LAMP009_1	papGII	B1c	inner	1	0	0
+LAMP009_1	papGII	LB	loop	1	0	0
+LAMP009_1	papGII	B2	inner	1	0	0
+LAMP009_1	papGII	B3	outer	1	0	0
+LAMP009_2	uidA	F3	outer	1	1	0
+LAMP009_2	uidA	F2	inner	1	1	0
+LAMP009_2	uidA	LF	loop	1	1	0
+LAMP009_2	uidA	F1c	inner	1	0	0
+LAMP009_2	uidA	B1c	inner	1	0	0
+LAMP009_2	uidA	LB	loop	1	0	0
+LAMP009_2	uidA	B2	inner	1	0	0
+LAMP009_2	uidA	B3	outer	1	1	0
+LAMP009_2	papGII	F3	outer	1	0	0
+LAMP009_2	papGII	F2	inner	1	0	0
+LAMP009_2	papGII	LF	loop	1	0	0
+LAMP009_2	papGII	F1c	inner	1	0	0
+LAMP009_2	papGII	B1c	inner	1	0	0
+LAMP009_2	papGII	LB	loop	1	0	0
+LAMP009_2	papGII	B2	inner	1	0	0
+LAMP009_2	papGII	B3	outer	1	0	0
+LAMP011	uidA	F3	outer	1	0	0
+LAMP011	uidA	F2	inner	1	0	0
+LAMP011	uidA	LF	loop	1	0	0
+LAMP011	uidA	F1c	inner	1	0	0
+LAMP011	uidA	B1c	inner	1	0	0
+LAMP011	uidA	LB	loop	1	0	0
+LAMP011	uidA	B2	inner	1	0	0
+LAMP011	uidA	B3	outer	1	0	0
+LAMP011	papGII	F3	outer	1	0	0
+LAMP011	papGII	F2	inner	1	1	0
+LAMP011	papGII	LF	loop	1	1	1
+LAMP011	papGII	F1c	inner	1	3	0
+LAMP011	papGII	B1c	inner	0		
+LAMP011	papGII	LB	loop	0		
+LAMP011	papGII	B2	inner	0		
+LAMP011	papGII	B3	outer	0		
+LAMP013_1	uidA	F3	outer	1	1	0
+LAMP013_1	uidA	F2	inner	1	0	0
+LAMP013_1	uidA	LF	loop	1	3	2
+LAMP013_1	uidA	F1c	inner	1	0	0
+LAMP013_1	uidA	B1c	inner	1	0	0
+LAMP013_1	uidA	LB	loop	1	0	0
+LAMP013_1	uidA	B2	inner	1	0	0
+LAMP013_1	uidA	B3	outer	1	1	0
+LAMP013_1	papGII	F3	outer	0		
+LAMP013_1	papGII	F2	inner	0		
+LAMP013_1	papGII	LF	loop	0		
+LAMP013_1	papGII	F1c	inner	0		
+LAMP013_1	papGII	B1c	inner	0		
+LAMP013_1	papGII	LB	loop	0		
+LAMP013_1	papGII	B2	inner	0		
+LAMP013_1	papGII	B3	outer	0		
+LAMP013_2	uidA	F3	outer	1	1	0
+LAMP013_2	uidA	F2	inner	1	0	0
+LAMP013_2	uidA	LF	loop	1	3	2
+LAMP013_2	uidA	F1c	inner	1	0	0
+LAMP013_2	uidA	B1c	inner	1	0	0
+LAMP013_2	uidA	LB	loop	1	0	0
+LAMP013_2	uidA	B2	inner	1	0	0
+LAMP013_2	uidA	B3	outer	1	1	0
+LAMP013_2	papGII	F3	outer	0		
+LAMP013_2	papGII	F2	inner	0		
+LAMP013_2	papGII	LF	loop	0		
+LAMP013_2	papGII	F1c	inner	0		
+LAMP013_2	papGII	B1c	inner	0		
+LAMP013_2	papGII	LB	loop	0		
+LAMP013_2	papGII	B2	inner	0		
+LAMP013_2	papGII	B3	outer	0		
+LAMP015	uidA	F3	outer	1	1	0
+LAMP015	uidA	F2	inner	1	1	0
+LAMP015	uidA	LF	loop	1	1	0
+LAMP015	uidA	F1c	inner	1	0	0
+LAMP015	uidA	B1c	inner	1	0	0
+LAMP015	uidA	LB	loop	1	0	0
+LAMP015	uidA	B2	inner	1	0	0
+LAMP015	uidA	B3	outer	1	1	0
+LAMP015	papGII	F3	outer	0		
+LAMP015	papGII	F2	inner	0		
+LAMP015	papGII	LF	loop	0		
+LAMP015	papGII	F1c	inner	0		
+LAMP015	papGII	B1c	inner	0		
+LAMP015	papGII	LB	loop	0		
+LAMP015	papGII	B2	inner	0		
+LAMP015	papGII	B3	outer	0		
+LAMP017_1	uidA	F3	outer	1	1	0
+LAMP017_1	uidA	F2	inner	1	1	0
+LAMP017_1	uidA	LF	loop	1	1	0
+LAMP017_1	uidA	F1c	inner	1	0	0
+LAMP017_1	uidA	B1c	inner	1	0	0
+LAMP017_1	uidA	LB	loop	1	0	0
+LAMP017_1	uidA	B2	inner	1	0	0
+LAMP017_1	uidA	B3	outer	1	1	0
+LAMP017_1	papGII	F3	outer	1	0	0
+LAMP017_1	papGII	F2	inner	1	0	0
+LAMP017_1	papGII	LF	loop	1	0	0
+LAMP017_1	papGII	F1c	inner	1	0	0
+LAMP017_1	papGII	B1c	inner	1	1	0
+LAMP017_1	papGII	LB	loop	1	0	0
+LAMP017_1	papGII	B2	inner	1	0	0
+LAMP017_1	papGII	B3	outer	1	1	0
+LAMP017_2	uidA	F3	outer	1	1	0
+LAMP017_2	uidA	F2	inner	1	1	0
+LAMP017_2	uidA	LF	loop	1	1	0
+LAMP017_2	uidA	F1c	inner	1	0	0
+LAMP017_2	uidA	B1c	inner	1	0	0
+LAMP017_2	uidA	LB	loop	1	0	0
+LAMP017_2	uidA	B2	inner	1	0	0
+LAMP017_2	uidA	B3	outer	1	1	0
+LAMP017_2	papGII	F3	outer	1	0	0
+LAMP017_2	papGII	F2	inner	1	0	0
+LAMP017_2	papGII	LF	loop	1	0	0
+LAMP017_2	papGII	F1c	inner	1	0	0
+LAMP017_2	papGII	B1c	inner	1	1	0
+LAMP017_2	papGII	LB	loop	1	0	0
+LAMP017_2	papGII	B2	inner	1	0	0
+LAMP017_2	papGII	B3	outer	1	1	0
+LAMP018_1	uidA	F3	outer	1	1	0
+LAMP018_1	uidA	F2	inner	1	1	0
+LAMP018_1	uidA	LF	loop	1	1	0
+LAMP018_1	uidA	F1c	inner	1	0	0
+LAMP018_1	uidA	B1c	inner	1	0	0
+LAMP018_1	uidA	LB	loop	1	0	0
+LAMP018_1	uidA	B2	inner	1	0	0
+LAMP018_1	uidA	B3	outer	1	1	0
+LAMP018_1	papGII	F3	outer	1	0	0
+LAMP018_1	papGII	F2	inner	1	0	0
+LAMP018_1	papGII	LF	loop	1	0	0
+LAMP018_1	papGII	F1c	inner	1	0	0
+LAMP018_1	papGII	B1c	inner	1	1	0
+LAMP018_1	papGII	LB	loop	1	0	0
+LAMP018_1	papGII	B2	inner	1	0	0
+LAMP018_1	papGII	B3	outer	1	1	0
+LAMP018_2	uidA	F3	outer	1	1	0
+LAMP018_2	uidA	F2	inner	1	1	0
+LAMP018_2	uidA	LF	loop	1	1	0
+LAMP018_2	uidA	F1c	inner	1	0	0
+LAMP018_2	uidA	B1c	inner	1	0	0
+LAMP018_2	uidA	LB	loop	1	0	0
+LAMP018_2	uidA	B2	inner	1	0	0
+LAMP018_2	uidA	B3	outer	1	1	0
+LAMP018_2	papGII	F3	outer	0		
+LAMP018_2	papGII	F2	inner	0		
+LAMP018_2	papGII	LF	loop	0		
+LAMP018_2	papGII	F1c	inner	0		
+LAMP018_2	papGII	B1c	inner	0		
+LAMP018_2	papGII	LB	loop	0		
+LAMP018_2	papGII	B2	inner	0		
+LAMP018_2	papGII	B3	outer	0		
+LAMP019	uidA	F3	outer	1	1	0
+LAMP019	uidA	F2	inner	1	1	0
+LAMP019	uidA	LF	loop	1	1	0
+LAMP019	uidA	F1c	inner	1	0	0
+LAMP019	uidA	B1c	inner	1	0	0
+LAMP019	uidA	LB	loop	1	0	0
+LAMP019	uidA	B2	inner	1	0	0
+LAMP019	uidA	B3	outer	1	1	0
+LAMP019	papGII	F3	outer	0		
+LAMP019	papGII	F2	inner	0		
+LAMP019	papGII	LF	loop	0		
+LAMP019	papGII	F1c	inner	0		
+LAMP019	papGII	B1c	inner	0		
+LAMP019	papGII	LB	loop	0		
+LAMP019	papGII	B2	inner	0		
+LAMP019	papGII	B3	outer	0		
+LAMP021	uidA	F3	outer	0		
+LAMP021	uidA	F2	inner	0		
+LAMP021	uidA	LF	loop	0		
+LAMP021	uidA	F1c	inner	0		
+LAMP021	uidA	B1c	inner	0		
+LAMP021	uidA	LB	loop	0		
+LAMP021	uidA	B2	inner	0		
+LAMP021	uidA	B3	outer	0		
+LAMP021	papGII	F3	outer	0		
+LAMP021	papGII	F2	inner	0		
+LAMP021	papGII	LF	loop	0		
+LAMP021	papGII	F1c	inner	0		
+LAMP021	papGII	B1c	inner	0		
+LAMP021	papGII	LB	loop	0		
+LAMP021	papGII	B2	inner	0		
+LAMP021	papGII	B3	outer	0		
+LAMP024	uidA	F3	outer	1	1	0
+LAMP024	uidA	F2	inner	1	1	0
+LAMP024	uidA	LF	loop	1	1	0
+LAMP024	uidA	F1c	inner	1	0	0
+LAMP024	uidA	B1c	inner	1	0	0
+LAMP024	uidA	LB	loop	1	0	0
+LAMP024	uidA	B2	inner	1	0	0
+LAMP024	uidA	B3	outer	1	1	0
+LAMP024	papGII	F3	outer	0		
+LAMP024	papGII	F2	inner	0		
+LAMP024	papGII	LF	loop	0		
+LAMP024	papGII	F1c	inner	0		
+LAMP024	papGII	B1c	inner	0		
+LAMP024	papGII	LB	loop	0		
+LAMP024	papGII	B2	inner	0		
+LAMP024	papGII	B3	outer	0		
+LAMP026	uidA	F3	outer	1	0	0
+LAMP026	uidA	F2	inner	1	0	0
+LAMP026	uidA	LF	loop	1	0	0
+LAMP026	uidA	F1c	inner	1	0	0
+LAMP026	uidA	B1c	inner	1	0	0
+LAMP026	uidA	LB	loop	1	0	0
+LAMP026	uidA	B2	inner	1	0	0
+LAMP026	uidA	B3	outer	1	0	0
+LAMP026	papGII	F3	outer	0		
+LAMP026	papGII	F2	inner	0		
+LAMP026	papGII	LF	loop	0		
+LAMP026	papGII	F1c	inner	0		
+LAMP026	papGII	B1c	inner	0		
+LAMP026	papGII	LB	loop	0		
+LAMP026	papGII	B2	inner	0		
+LAMP026	papGII	B3	outer	0		
+LAMP031	uidA	F3	outer	1	1	0
+LAMP031	uidA	F2	inner	1	0	0
+LAMP031	uidA	LF	loop	1	0	0
+LAMP031	uidA	F1c	inner	1	0	0
+LAMP031	uidA	B1c	inner	1	0	0
+LAMP031	uidA	LB	loop	1	0	0
+LAMP031	uidA	B2	inner	1	0	0
+LAMP031	uidA	B3	outer	1	1	0
+LAMP031	papGII	F3	outer	0		
+LAMP031	papGII	F2	inner	0		
+LAMP031	papGII	LF	loop	0		
+LAMP031	papGII	F1c	inner	0		
+LAMP031	papGII	B1c	inner	0		
+LAMP031	papGII	LB	loop	0		
+LAMP031	papGII	B2	inner	0		
+LAMP031	papGII	B3	outer	0		
+LAMP035	uidA	F3	outer	1	1	0
+LAMP035	uidA	F2	inner	1	0	0
+LAMP035	uidA	LF	loop	1	0	0
+LAMP035	uidA	F1c	inner	1	0	0
+LAMP035	uidA	B1c	inner	1	0	0
+LAMP035	uidA	LB	loop	1	0	0
+LAMP035	uidA	B2	inner	1	0	0
+LAMP035	uidA	B3	outer	1	0	0
+LAMP035	papGII	F3	outer	0		
+LAMP035	papGII	F2	inner	0		
+LAMP035	papGII	LF	loop	0		
+LAMP035	papGII	F1c	inner	0		
+LAMP035	papGII	B1c	inner	0		
+LAMP035	papGII	LB	loop	0		
+LAMP035	papGII	B2	inner	0		
+LAMP035	papGII	B3	outer	0		
+LAMP042	uidA	F3	outer	1	1	0
+LAMP042	uidA	F2	inner	1	0	0
+LAMP042	uidA	LF	loop	1	2	1
+LAMP042	uidA	F1c	inner	1	0	0
+LAMP042	uidA	B1c	inner	1	0	0
+LAMP042	uidA	LB	loop	1	0	0
+LAMP042	uidA	B2	inner	1	0	0
+LAMP042	uidA	B3	outer	1	1	0
+LAMP042	papGII	F3	outer	0		
+LAMP042	papGII	F2	inner	0		
+LAMP042	papGII	LF	loop	0		
+LAMP042	papGII	F1c	inner	0		
+LAMP042	papGII	B1c	inner	0		
+LAMP042	papGII	LB	loop	0		
+LAMP042	papGII	B2	inner	0		
+LAMP042	papGII	B3	outer	0		
+LAMP047	uidA	F3	outer	1	0	0
+LAMP047	uidA	F2	inner	1	0	0
+LAMP047	uidA	LF	loop	1	0	0
+LAMP047	uidA	F1c	inner	1	1	0
+LAMP047	uidA	B1c	inner	1	0	0
+LAMP047	uidA	LB	loop	1	0	0
+LAMP047	uidA	B2	inner	1	0	0
+LAMP047	uidA	B3	outer	1	1	0
+LAMP047	papGII	F3	outer	0		
+LAMP047	papGII	F2	inner	0		
+LAMP047	papGII	LF	loop	0		
+LAMP047	papGII	F1c	inner	0		
+LAMP047	papGII	B1c	inner	0		
+LAMP047	papGII	LB	loop	0		
+LAMP047	papGII	B2	inner	0		
+LAMP047	papGII	B3	outer	0		
+LAMP062	uidA	F3	outer	1	0	0
+LAMP062	uidA	F2	inner	1	0	0
+LAMP062	uidA	LF	loop	1	0	0
+LAMP062	uidA	F1c	inner	1	0	0
+LAMP062	uidA	B1c	inner	1	0	0
+LAMP062	uidA	LB	loop	1	0	0
+LAMP062	uidA	B2	inner	1	0	0
+LAMP062	uidA	B3	outer	1	0	0
+LAMP062	papGII	F3	outer	1	0	0
+LAMP062	papGII	F2	inner	1	1	0
+LAMP062	papGII	LF	loop	1	1	1
+LAMP062	papGII	F1c	inner	1	2	0
+LAMP062	papGII	B1c	inner	0		
+LAMP062	papGII	LB	loop	0		
+LAMP062	papGII	B2	inner	0		
+LAMP062	papGII	B3	outer	0		
+LAMP063	uidA	F3	outer	1	0	0
+LAMP063	uidA	F2	inner	1	0	0
+LAMP063	uidA	LF	loop	1	0	0
+LAMP063	uidA	F1c	inner	1	0	0
+LAMP063	uidA	B1c	inner	1	0	0
+LAMP063	uidA	LB	loop	1	0	0
+LAMP063	uidA	B2	inner	1	0	0
+LAMP063	uidA	B3	outer	1	0	0
+LAMP063	papGII	F3	outer	0		
+LAMP063	papGII	F2	inner	0		
+LAMP063	papGII	LF	loop	0		
+LAMP063	papGII	F1c	inner	0		
+LAMP063	papGII	B1c	inner	0		
+LAMP063	papGII	LB	loop	0		
+LAMP063	papGII	B2	inner	0		
+LAMP063	papGII	B3	outer	0		
+LAMP065_1	uidA	F3	outer	1	0	0
+LAMP065_1	uidA	F2	inner	1	0	0
+LAMP065_1	uidA	LF	loop	1	0	0
+LAMP065_1	uidA	F1c	inner	1	0	0
+LAMP065_1	uidA	B1c	inner	1	0	0
+LAMP065_1	uidA	LB	loop	1	0	0
+LAMP065_1	uidA	B2	inner	1	0	0
+LAMP065_1	uidA	B3	outer	1	0	0
+LAMP065_1	papGII	F3	outer	1	0	0
+LAMP065_1	papGII	F2	inner	1	1	0
+LAMP065_1	papGII	LF	loop	1	1	1
+LAMP065_1	papGII	F1c	inner	1	3	0
+LAMP065_1	papGII	B1c	inner	0		
+LAMP065_1	papGII	LB	loop	0		
+LAMP065_1	papGII	B2	inner	0		
+LAMP065_1	papGII	B3	outer	0		
+LAMP065_2	uidA	F3	outer	1	0	0
+LAMP065_2	uidA	F2	inner	1	0	0
+LAMP065_2	uidA	LF	loop	1	0	0
+LAMP065_2	uidA	F1c	inner	1	0	0
+LAMP065_2	uidA	B1c	inner	1	0	0
+LAMP065_2	uidA	LB	loop	1	0	0
+LAMP065_2	uidA	B2	inner	1	0	0
+LAMP065_2	uidA	B3	outer	1	0	0
+LAMP065_2	papGII	F3	outer	1	0	0
+LAMP065_2	papGII	F2	inner	1	1	0
+LAMP065_2	papGII	LF	loop	1	1	1
+LAMP065_2	papGII	F1c	inner	1	3	0
+LAMP065_2	papGII	B1c	inner	0		
+LAMP065_2	papGII	LB	loop	0		
+LAMP065_2	papGII	B2	inner	0		
+LAMP065_2	papGII	B3	outer	0		
+LAMP072_1	uidA	F3	outer	1	1	0
+LAMP072_1	uidA	F2	inner	1	0	0
+LAMP072_1	uidA	LF	loop	1	2	1
+LAMP072_1	uidA	F1c	inner	1	0	0
+LAMP072_1	uidA	B1c	inner	1	0	0
+LAMP072_1	uidA	LB	loop	1	0	0
+LAMP072_1	uidA	B2	inner	1	0	0
+LAMP072_1	uidA	B3	outer	1	1	0
+LAMP072_1	papGII	F3	outer	0		
+LAMP072_1	papGII	F2	inner	0		
+LAMP072_1	papGII	LF	loop	0		
+LAMP072_1	papGII	F1c	inner	0		
+LAMP072_1	papGII	B1c	inner	0		
+LAMP072_1	papGII	LB	loop	0		
+LAMP072_1	papGII	B2	inner	0		
+LAMP072_1	papGII	B3	outer	0		
+LAMP072_2	uidA	F3	outer	1	1	0
+LAMP072_2	uidA	F2	inner	1	0	0
+LAMP072_2	uidA	LF	loop	1	2	1
+LAMP072_2	uidA	F1c	inner	1	0	0
+LAMP072_2	uidA	B1c	inner	1	0	0
+LAMP072_2	uidA	LB	loop	1	0	0
+LAMP072_2	uidA	B2	inner	1	0	0
+LAMP072_2	uidA	B3	outer	1	1	0
+LAMP072_2	papGII	F3	outer	0		
+LAMP072_2	papGII	F2	inner	0		
+LAMP072_2	papGII	LF	loop	0		
+LAMP072_2	papGII	F1c	inner	0		
+LAMP072_2	papGII	B1c	inner	0		
+LAMP072_2	papGII	LB	loop	0		
+LAMP072_2	papGII	B2	inner	0		
+LAMP072_2	papGII	B3	outer	0		
+LAMP074	uidA	F3	outer	1	0	0
+LAMP074	uidA	F2	inner	1	0	0
+LAMP074	uidA	LF	loop	1	0	0
+LAMP074	uidA	F1c	inner	1	0	0
+LAMP074	uidA	B1c	inner	1	0	0
+LAMP074	uidA	LB	loop	1	0	0
+LAMP074	uidA	B2	inner	1	0	0
+LAMP074	uidA	B3	outer	1	0	0
+LAMP074	papGII	F3	outer	1	0	0
+LAMP074	papGII	F2	inner	1	1	0
+LAMP074	papGII	LF	loop	1	1	1
+LAMP074	papGII	F1c	inner	1	2	0
+LAMP074	papGII	B1c	inner	0		
+LAMP074	papGII	LB	loop	0		
+LAMP074	papGII	B2	inner	0		
+LAMP074	papGII	B3	outer	0		
+LAMP079_1	uidA	F3	outer	1	1	0
+LAMP079_1	uidA	F2	inner	1	0	0
+LAMP079_1	uidA	LF	loop	1	2	1
+LAMP079_1	uidA	F1c	inner	1	0	0
+LAMP079_1	uidA	B1c	inner	1	0	0
+LAMP079_1	uidA	LB	loop	1	0	0
+LAMP079_1	uidA	B2	inner	1	0	0
+LAMP079_1	uidA	B3	outer	1	1	0
+LAMP079_1	papGII	F3	outer	0		
+LAMP079_1	papGII	F2	inner	0		
+LAMP079_1	papGII	LF	loop	0		
+LAMP079_1	papGII	F1c	inner	0		
+LAMP079_1	papGII	B1c	inner	0		
+LAMP079_1	papGII	LB	loop	0		
+LAMP079_1	papGII	B2	inner	0		
+LAMP079_1	papGII	B3	outer	0		
+LAMP079_2	uidA	F3	outer	1	1	0
+LAMP079_2	uidA	F2	inner	1	0	0
+LAMP079_2	uidA	LF	loop	1	2	1
+LAMP079_2	uidA	F1c	inner	1	0	0
+LAMP079_2	uidA	B1c	inner	1	0	0
+LAMP079_2	uidA	LB	loop	1	0	0
+LAMP079_2	uidA	B2	inner	1	0	0
+LAMP079_2	uidA	B3	outer	1	1	0
+LAMP079_2	papGII	F3	outer	0		
+LAMP079_2	papGII	F2	inner	0		
+LAMP079_2	papGII	LF	loop	0		
+LAMP079_2	papGII	F1c	inner	0		
+LAMP079_2	papGII	B1c	inner	0		
+LAMP079_2	papGII	LB	loop	0		
+LAMP079_2	papGII	B2	inner	0		
+LAMP079_2	papGII	B3	outer	0		
+LAMP080	uidA	F3	outer	0		
+LAMP080	uidA	F2	inner	0		
+LAMP080	uidA	LF	loop	0		
+LAMP080	uidA	F1c	inner	0		
+LAMP080	uidA	B1c	inner	0		
+LAMP080	uidA	LB	loop	0		
+LAMP080	uidA	B2	inner	0		
+LAMP080	uidA	B3	outer	0		
+LAMP080	papGII	F3	outer	0		
+LAMP080	papGII	F2	inner	0		
+LAMP080	papGII	LF	loop	0		
+LAMP080	papGII	F1c	inner	0		
+LAMP080	papGII	B1c	inner	0		
+LAMP080	papGII	LB	loop	0		
+LAMP080	papGII	B2	inner	0		
+LAMP080	papGII	B3	outer	0		
+LAMP086	uidA	F3	outer	1	0	0
+LAMP086	uidA	F2	inner	1	0	0
+LAMP086	uidA	LF	loop	1	0	0
+LAMP086	uidA	F1c	inner	1	0	0
+LAMP086	uidA	B1c	inner	1	0	0
+LAMP086	uidA	LB	loop	1	0	0
+LAMP086	uidA	B2	inner	1	0	0
+LAMP086	uidA	B3	outer	1	0	0
+LAMP086	papGII	F3	outer	0		
+LAMP086	papGII	F2	inner	0		
+LAMP086	papGII	LF	loop	0		
+LAMP086	papGII	F1c	inner	0		
+LAMP086	papGII	B1c	inner	0		
+LAMP086	papGII	LB	loop	0		
+LAMP086	papGII	B2	inner	0		
+LAMP086	papGII	B3	outer	0		
+LAMP093_1	uidA	F3	outer	1	1	0
+LAMP093_1	uidA	F2	inner	1	0	0
+LAMP093_1	uidA	LF	loop	1	3	2
+LAMP093_1	uidA	F1c	inner	1	0	0
+LAMP093_1	uidA	B1c	inner	1	0	0
+LAMP093_1	uidA	LB	loop	1	0	0
+LAMP093_1	uidA	B2	inner	1	0	0
+LAMP093_1	uidA	B3	outer	1	1	0
+LAMP093_1	papGII	F3	outer	0		
+LAMP093_1	papGII	F2	inner	0		
+LAMP093_1	papGII	LF	loop	0		
+LAMP093_1	papGII	F1c	inner	0		
+LAMP093_1	papGII	B1c	inner	0		
+LAMP093_1	papGII	LB	loop	0		
+LAMP093_1	papGII	B2	inner	0		
+LAMP093_1	papGII	B3	outer	0		
+LAMP093_2	uidA	F3	outer	1	1	0
+LAMP093_2	uidA	F2	inner	1	0	0
+LAMP093_2	uidA	LF	loop	1	3	2
+LAMP093_2	uidA	F1c	inner	1	0	0
+LAMP093_2	uidA	B1c	inner	1	0	0
+LAMP093_2	uidA	LB	loop	1	0	0
+LAMP093_2	uidA	B2	inner	1	0	0
+LAMP093_2	uidA	B3	outer	1	1	0
+LAMP093_2	papGII	F3	outer	0		
+LAMP093_2	papGII	F2	inner	0		
+LAMP093_2	papGII	LF	loop	0		
+LAMP093_2	papGII	F1c	inner	0		
+LAMP093_2	papGII	B1c	inner	0		
+LAMP093_2	papGII	LB	loop	0		
+LAMP093_2	papGII	B2	inner	0		
+LAMP093_2	papGII	B3	outer	0		
+LAMP098	uidA	F3	outer	1	0	0
+LAMP098	uidA	F2	inner	1	0	0
+LAMP098	uidA	LF	loop	1	0	0
+LAMP098	uidA	F1c	inner	1	0	0
+LAMP098	uidA	B1c	inner	1	0	0
+LAMP098	uidA	LB	loop	1	0	0
+LAMP098	uidA	B2	inner	1	0	0
+LAMP098	uidA	B3	outer	1	0	0
+LAMP098	papGII	F3	outer	1	0	0
+LAMP098	papGII	F2	inner	1	1	0
+LAMP098	papGII	LF	loop	1	1	1
+LAMP098	papGII	F1c	inner	1	3	0
+LAMP098	papGII	B1c	inner	0		
+LAMP098	papGII	LB	loop	0		
+LAMP098	papGII	B2	inner	0		
+LAMP098	papGII	B3	outer	0		
+LAMP103	uidA	F3	outer	0		
+LAMP103	uidA	F2	inner	0		
+LAMP103	uidA	LF	loop	0		
+LAMP103	uidA	F1c	inner	0		
+LAMP103	uidA	B1c	inner	0		
+LAMP103	uidA	LB	loop	0		
+LAMP103	uidA	B2	inner	0		
+LAMP103	uidA	B3	outer	0		
+LAMP103	papGII	F3	outer	0		
+LAMP103	papGII	F2	inner	0		
+LAMP103	papGII	LF	loop	0		
+LAMP103	papGII	F1c	inner	0		
+LAMP103	papGII	B1c	inner	0		
+LAMP103	papGII	LB	loop	0		
+LAMP103	papGII	B2	inner	0		
+LAMP103	papGII	B3	outer	0		
+LAMP104	uidA	F3	outer	0		
+LAMP104	uidA	F2	inner	0		
+LAMP104	uidA	LF	loop	0		
+LAMP104	uidA	F1c	inner	0		
+LAMP104	uidA	B1c	inner	0		
+LAMP104	uidA	LB	loop	0		
+LAMP104	uidA	B2	inner	0		
+LAMP104	uidA	B3	outer	0		
+LAMP104	papGII	F3	outer	0		
+LAMP104	papGII	F2	inner	0		
+LAMP104	papGII	LF	loop	0		
+LAMP104	papGII	F1c	inner	0		
+LAMP104	papGII	B1c	inner	0		
+LAMP104	papGII	LB	loop	0		
+LAMP104	papGII	B2	inner	0		
+LAMP104	papGII	B3	outer	0		
+LAMP107	uidA	F3	outer	0		
+LAMP107	uidA	F2	inner	0		
+LAMP107	uidA	LF	loop	0		
+LAMP107	uidA	F1c	inner	0		
+LAMP107	uidA	B1c	inner	0		
+LAMP107	uidA	LB	loop	0		
+LAMP107	uidA	B2	inner	0		
+LAMP107	uidA	B3	outer	0		
+LAMP107	papGII	F3	outer	0		
+LAMP107	papGII	F2	inner	0		
+LAMP107	papGII	LF	loop	0		
+LAMP107	papGII	F1c	inner	0		
+LAMP107	papGII	B1c	inner	0		
+LAMP107	papGII	LB	loop	0		
+LAMP107	papGII	B2	inner	0		
+LAMP107	papGII	B3	outer	0		
+LAMP111_1	uidA	F3	outer	1	0	0
+LAMP111_1	uidA	F2	inner	1	0	0
+LAMP111_1	uidA	LF	loop	1	0	0
+LAMP111_1	uidA	F1c	inner	1	0	0
+LAMP111_1	uidA	B1c	inner	1	0	0
+LAMP111_1	uidA	LB	loop	1	0	0
+LAMP111_1	uidA	B2	inner	1	1	0
+LAMP111_1	uidA	B3	outer	1	0	0
+LAMP111_1	papGII	F3	outer	1	0	0
+LAMP111_1	papGII	F2	inner	1	1	0
+LAMP111_1	papGII	LF	loop	1	1	1
+LAMP111_1	papGII	F1c	inner	1	3	0
+LAMP111_1	papGII	B1c	inner	0		
+LAMP111_1	papGII	LB	loop	0		
+LAMP111_1	papGII	B2	inner	0		
+LAMP111_1	papGII	B3	outer	0		
+LAMP112_1	uidA	F3	outer	1	0	0
+LAMP112_1	uidA	F2	inner	1	0	0
+LAMP112_1	uidA	LF	loop	1	0	0
+LAMP112_1	uidA	F1c	inner	1	0	0
+LAMP112_1	uidA	B1c	inner	1	0	0
+LAMP112_1	uidA	LB	loop	1	0	0
+LAMP112_1	uidA	B2	inner	1	0	0
+LAMP112_1	uidA	B3	outer	1	0	0
+LAMP112_1	papGII	F3	outer	1	0	0
+LAMP112_1	papGII	F2	inner	1	0	0
+LAMP112_1	papGII	LF	loop	1	0	0
+LAMP112_1	papGII	F1c	inner	1	0	0
+LAMP112_1	papGII	B1c	inner	1	1	0
+LAMP112_1	papGII	LB	loop	1	0	0
+LAMP112_1	papGII	B2	inner	1	0	0
+LAMP112_1	papGII	B3	outer	1	0	0
+LAMP112_2	uidA	F3	outer	1	0	0
+LAMP112_2	uidA	F2	inner	1	0	0
+LAMP112_2	uidA	LF	loop	1	0	0
+LAMP112_2	uidA	F1c	inner	1	0	0
+LAMP112_2	uidA	B1c	inner	1	0	0
+LAMP112_2	uidA	LB	loop	1	0	0
+LAMP112_2	uidA	B2	inner	1	0	0
+LAMP112_2	uidA	B3	outer	1	0	0
+LAMP112_2	papGII	F3	outer	1	0	0
+LAMP112_2	papGII	F2	inner	1	0	0
+LAMP112_2	papGII	LF	loop	1	0	0
+LAMP112_2	papGII	F1c	inner	1	0	0
+LAMP112_2	papGII	B1c	inner	1	1	0
+LAMP112_2	papGII	LB	loop	1	0	0
+LAMP112_2	papGII	B2	inner	1	0	0
+LAMP112_2	papGII	B3	outer	1	0	0
+LAMP124	uidA	F3	outer	1	0	0
+LAMP124	uidA	F2	inner	1	0	0
+LAMP124	uidA	LF	loop	1	0	0
+LAMP124	uidA	F1c	inner	1	0	0
+LAMP124	uidA	B1c	inner	1	0	0
+LAMP124	uidA	LB	loop	1	0	0
+LAMP124	uidA	B2	inner	1	0	0
+LAMP124	uidA	B3	outer	1	0	0
+LAMP124	papGII	F3	outer	1	0	0
+LAMP124	papGII	F2	inner	1	1	0
+LAMP124	papGII	LF	loop	1	1	1
+LAMP124	papGII	F1c	inner	1	3	0
+LAMP124	papGII	B1c	inner	0		
+LAMP124	papGII	LB	loop	0		
+LAMP124	papGII	B2	inner	0		
+LAMP124	papGII	B3	outer	0		
+LAMP125	uidA	F3	outer	0		
+LAMP125	uidA	F2	inner	0		
+LAMP125	uidA	LF	loop	0		
+LAMP125	uidA	F1c	inner	0		
+LAMP125	uidA	B1c	inner	0		
+LAMP125	uidA	LB	loop	0		
+LAMP125	uidA	B2	inner	0		
+LAMP125	uidA	B3	outer	0		
+LAMP125	papGII	F3	outer	0		
+LAMP125	papGII	F2	inner	0		
+LAMP125	papGII	LF	loop	0		
+LAMP125	papGII	F1c	inner	0		
+LAMP125	papGII	B1c	inner	0		
+LAMP125	papGII	LB	loop	0		
+LAMP125	papGII	B2	inner	0		
+LAMP125	papGII	B3	outer	0		
+LAMP139	uidA	F3	outer	1	1	0
+LAMP139	uidA	F2	inner	1	1	0
+LAMP139	uidA	LF	loop	1	1	0
+LAMP139	uidA	F1c	inner	1	0	0
+LAMP139	uidA	B1c	inner	1	0	0
+LAMP139	uidA	LB	loop	1	0	0
+LAMP139	uidA	B2	inner	1	0	0
+LAMP139	uidA	B3	outer	1	1	0
+LAMP139	papGII	F3	outer	0		
+LAMP139	papGII	F2	inner	0		
+LAMP139	papGII	LF	loop	0		
+LAMP139	papGII	F1c	inner	0		
+LAMP139	papGII	B1c	inner	0		
+LAMP139	papGII	LB	loop	0		
+LAMP139	papGII	B2	inner	0		
+LAMP139	papGII	B3	outer	0		
+LAMP153	uidA	F3	outer	1	1	0
+LAMP153	uidA	F2	inner	1	0	0
+LAMP153	uidA	LF	loop	1	3	2
+LAMP153	uidA	F1c	inner	1	0	0
+LAMP153	uidA	B1c	inner	1	0	0
+LAMP153	uidA	LB	loop	1	0	0
+LAMP153	uidA	B2	inner	1	0	0
+LAMP153	uidA	B3	outer	1	1	0
+LAMP153	papGII	F3	outer	0		
+LAMP153	papGII	F2	inner	0		
+LAMP153	papGII	LF	loop	0		
+LAMP153	papGII	F1c	inner	0		
+LAMP153	papGII	B1c	inner	0		
+LAMP153	papGII	LB	loop	0		
+LAMP153	papGII	B2	inner	0		
+LAMP153	papGII	B3	outer	0		
+LAMP154	uidA	F3	outer	1	0	0
+LAMP154	uidA	F2	inner	1	0	0
+LAMP154	uidA	LF	loop	1	0	0
+LAMP154	uidA	F1c	inner	1	0	0
+LAMP154	uidA	B1c	inner	1	0	0
+LAMP154	uidA	LB	loop	1	0	0
+LAMP154	uidA	B2	inner	1	0	0
+LAMP154	uidA	B3	outer	1	0	0
+LAMP154	papGII	F3	outer	0		
+LAMP154	papGII	F2	inner	0		
+LAMP154	papGII	LF	loop	0		
+LAMP154	papGII	F1c	inner	0		
+LAMP154	papGII	B1c	inner	0		
+LAMP154	papGII	LB	loop	0		
+LAMP154	papGII	B2	inner	0		
+LAMP154	papGII	B3	outer	0		
+LAMP155	uidA	F3	outer	1	1	0
+LAMP155	uidA	F2	inner	1	0	0
+LAMP155	uidA	LF	loop	1	2	1
+LAMP155	uidA	F1c	inner	1	0	0
+LAMP155	uidA	B1c	inner	1	0	0
+LAMP155	uidA	LB	loop	1	0	0
+LAMP155	uidA	B2	inner	1	0	0
+LAMP155	uidA	B3	outer	1	1	0
+LAMP155	papGII	F3	outer	0		
+LAMP155	papGII	F2	inner	0		
+LAMP155	papGII	LF	loop	0		
+LAMP155	papGII	F1c	inner	0		
+LAMP155	papGII	B1c	inner	0		
+LAMP155	papGII	LB	loop	0		
+LAMP155	papGII	B2	inner	0		
+LAMP155	papGII	B3	outer	0		
+LAMP156	uidA	F3	outer	1	1	0
+LAMP156	uidA	F2	inner	1	0	0
+LAMP156	uidA	LF	loop	1	2	1
+LAMP156	uidA	F1c	inner	1	0	0
+LAMP156	uidA	B1c	inner	1	0	0
+LAMP156	uidA	LB	loop	1	0	0
+LAMP156	uidA	B2	inner	1	0	0
+LAMP156	uidA	B3	outer	1	1	0
+LAMP156	papGII	F3	outer	0		
+LAMP156	papGII	F2	inner	0		
+LAMP156	papGII	LF	loop	0		
+LAMP156	papGII	F1c	inner	0		
+LAMP156	papGII	B1c	inner	0		
+LAMP156	papGII	LB	loop	0		
+LAMP156	papGII	B2	inner	0		
+LAMP156	papGII	B3	outer	0		
+LAMP157_1	uidA	F3	outer	1	0	0
+LAMP157_1	uidA	F2	inner	1	0	0
+LAMP157_1	uidA	LF	loop	1	0	0
+LAMP157_1	uidA	F1c	inner	1	0	0
+LAMP157_1	uidA	B1c	inner	1	0	0
+LAMP157_1	uidA	LB	loop	1	0	0
+LAMP157_1	uidA	B2	inner	1	1	0
+LAMP157_1	uidA	B3	outer	1	0	0
+LAMP157_1	papGII	F3	outer	1	0	0
+LAMP157_1	papGII	F2	inner	1	1	0
+LAMP157_1	papGII	LF	loop	1	1	1
+LAMP157_1	papGII	F1c	inner	1	3	0
+LAMP157_1	papGII	B1c	inner	0		
+LAMP157_1	papGII	LB	loop	0		
+LAMP157_1	papGII	B2	inner	0		
+LAMP157_1	papGII	B3	outer	0		
+LAMP157_2	uidA	F3	outer	1	0	0
+LAMP157_2	uidA	F2	inner	1	0	0
+LAMP157_2	uidA	LF	loop	1	0	0
+LAMP157_2	uidA	F1c	inner	1	0	0
+LAMP157_2	uidA	B1c	inner	1	0	0
+LAMP157_2	uidA	LB	loop	1	0	0
+LAMP157_2	uidA	B2	inner	1	1	0
+LAMP157_2	uidA	B3	outer	1	0	0
+LAMP157_2	papGII	F3	outer	1	0	0
+LAMP157_2	papGII	F2	inner	1	1	0
+LAMP157_2	papGII	LF	loop	1	1	1
+LAMP157_2	papGII	F1c	inner	1	3	0
+LAMP157_2	papGII	B1c	inner	0		
+LAMP157_2	papGII	LB	loop	0		
+LAMP157_2	papGII	B2	inner	0		
+LAMP157_2	papGII	B3	outer	0		
+LAMP172_1	uidA	F3	outer	1	0	0
+LAMP172_1	uidA	F2	inner	1	0	0
+LAMP172_1	uidA	LF	loop	1	0	0
+LAMP172_1	uidA	F1c	inner	1	0	0
+LAMP172_1	uidA	B1c	inner	1	0	0
+LAMP172_1	uidA	LB	loop	1	0	0
+LAMP172_1	uidA	B2	inner	1	0	0
+LAMP172_1	uidA	B3	outer	1	1	0
+LAMP172_1	papGII	F3	outer	1	0	0
+LAMP172_1	papGII	F2	inner	1	0	0
+LAMP172_1	papGII	LF	loop	1	0	0
+LAMP172_1	papGII	F1c	inner	1	0	0
+LAMP172_1	papGII	B1c	inner	1	1	0
+LAMP172_1	papGII	LB	loop	1	0	0
+LAMP172_1	papGII	B2	inner	1	0	0
+LAMP172_1	papGII	B3	outer	1	1	0
+LAMP172_2	uidA	F3	outer	1	0	0
+LAMP172_2	uidA	F2	inner	1	0	0
+LAMP172_2	uidA	LF	loop	1	0	0
+LAMP172_2	uidA	F1c	inner	1	0	0
+LAMP172_2	uidA	B1c	inner	1	0	0
+LAMP172_2	uidA	LB	loop	1	0	0
+LAMP172_2	uidA	B2	inner	1	0	0
+LAMP172_2	uidA	B3	outer	1	1	0
+LAMP172_2	papGII	F3	outer	1	0	0
+LAMP172_2	papGII	F2	inner	1	0	0
+LAMP172_2	papGII	LF	loop	1	0	0
+LAMP172_2	papGII	F1c	inner	1	0	0
+LAMP172_2	papGII	B1c	inner	1	1	0
+LAMP172_2	papGII	LB	loop	1	0	0
+LAMP172_2	papGII	B2	inner	1	0	0
+LAMP172_2	papGII	B3	outer	1	1	0
+LAMP173	uidA	F3	outer	1	0	0
+LAMP173	uidA	F2	inner	1	0	0
+LAMP173	uidA	LF	loop	1	0	0
+LAMP173	uidA	F1c	inner	1	0	0
+LAMP173	uidA	B1c	inner	1	0	0
+LAMP173	uidA	LB	loop	1	0	0
+LAMP173	uidA	B2	inner	1	0	0
+LAMP173	uidA	B3	outer	1	0	0
+LAMP173	papGII	F3	outer	0		
+LAMP173	papGII	F2	inner	0		
+LAMP173	papGII	LF	loop	0		
+LAMP173	papGII	F1c	inner	0		
+LAMP173	papGII	B1c	inner	0		
+LAMP173	papGII	LB	loop	0		
+LAMP173	papGII	B2	inner	0		
+LAMP173	papGII	B3	outer	0		
+LAMP181	uidA	F3	outer	1	1	0
+LAMP181	uidA	F2	inner	1	1	0
+LAMP181	uidA	LF	loop	1	1	0
+LAMP181	uidA	F1c	inner	1	0	0
+LAMP181	uidA	B1c	inner	1	0	0
+LAMP181	uidA	LB	loop	1	0	0
+LAMP181	uidA	B2	inner	1	0	0
+LAMP181	uidA	B3	outer	1	1	0
+LAMP181	papGII	F3	outer	0		
+LAMP181	papGII	F2	inner	0		
+LAMP181	papGII	LF	loop	0		
+LAMP181	papGII	F1c	inner	0		
+LAMP181	papGII	B1c	inner	0		
+LAMP181	papGII	LB	loop	0		
+LAMP181	papGII	B2	inner	0		
+LAMP181	papGII	B3	outer	0		
+LAMP182_1	uidA	F3	outer	1	0	0
+LAMP182_1	uidA	F2	inner	1	0	0
+LAMP182_1	uidA	LF	loop	1	0	0
+LAMP182_1	uidA	F1c	inner	1	0	0
+LAMP182_1	uidA	B1c	inner	1	0	0
+LAMP182_1	uidA	LB	loop	1	0	0
+LAMP182_1	uidA	B2	inner	1	0	0
+LAMP182_1	uidA	B3	outer	1	0	0
+LAMP182_1	papGII	F3	outer	1	0	0
+LAMP182_1	papGII	F2	inner	1	0	0
+LAMP182_1	papGII	LF	loop	1	0	0
+LAMP182_1	papGII	F1c	inner	1	0	0
+LAMP182_1	papGII	B1c	inner	1	1	0
+LAMP182_1	papGII	LB	loop	1	0	0
+LAMP182_1	papGII	B2	inner	1	0	0
+LAMP182_1	papGII	B3	outer	1	0	0
+LAMP182_2	uidA	F3	outer	1	0	0
+LAMP182_2	uidA	F2	inner	1	0	0
+LAMP182_2	uidA	LF	loop	1	0	0
+LAMP182_2	uidA	F1c	inner	1	0	0
+LAMP182_2	uidA	B1c	inner	1	0	0
+LAMP182_2	uidA	LB	loop	1	0	0
+LAMP182_2	uidA	B2	inner	1	0	0
+LAMP182_2	uidA	B3	outer	1	0	0
+LAMP182_2	papGII	F3	outer	1	0	0
+LAMP182_2	papGII	F2	inner	1	0	0
+LAMP182_2	papGII	LF	loop	1	0	0
+LAMP182_2	papGII	F1c	inner	1	0	0
+LAMP182_2	papGII	B1c	inner	1	1	0
+LAMP182_2	papGII	LB	loop	1	0	0
+LAMP182_2	papGII	B2	inner	1	0	0
+LAMP182_2	papGII	B3	outer	1	0	0
+LAMP191	uidA	F3	outer	0		
+LAMP191	uidA	F2	inner	0		
+LAMP191	uidA	LF	loop	0		
+LAMP191	uidA	F1c	inner	0		
+LAMP191	uidA	B1c	inner	0		
+LAMP191	uidA	LB	loop	0		
+LAMP191	uidA	B2	inner	0		
+LAMP191	uidA	B3	outer	0		
+LAMP191	papGII	F3	outer	0		
+LAMP191	papGII	F2	inner	0		
+LAMP191	papGII	LF	loop	0		
+LAMP191	papGII	F1c	inner	0		
+LAMP191	papGII	B1c	inner	0		
+LAMP191	papGII	LB	loop	0		
+LAMP191	papGII	B2	inner	0		
+LAMP191	papGII	B3	outer	0		

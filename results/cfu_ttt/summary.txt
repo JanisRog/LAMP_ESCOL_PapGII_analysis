@@ -1,0 +1,23 @@
+1. uidA TTT by bacterial load (E. coli culture-positive urines)
+  10^4 CFU/ml: n=4 median=28.5 IQR=25.0-29.2 range=16-30 never_crossed=0
+  >=10^5 CFU/ml: n=34 median=22.0 IQR=19.0-27.0 range=14-36 never_crossed=1
+  Mann-Whitney p = 0.377
+2. uidA TTT by papGII status
+  all loads: papGII+ n=6 median=21.0 IQR=18.8-24.8 range=18-26 never_crossed=0
+  all loads: papGII- n=32 median=24.0 IQR=19.5-28.0 range=14-36 never_crossed=1
+  all loads: Mann-Whitney p = 0.273
+  >=10^5 CFU/ml: papGII+ n=6 median=21.0 IQR=18.8-24.8 range=18-26 never_crossed=0
+  >=10^5 CFU/ml: papGII- n=28 median=22.0 IQR=19.5-27.5 range=14-36 never_crossed=1
+  >=10^5 CFU/ml: Mann-Whitney p = 0.336
+3. papGII vs uidA primer set in papGII-positive urines (paired)
+  papGII primers: n=6 median=17.0 IQR=16.0-18.0 range=13-20 never_crossed=0
+  uidA primers:   n=6 median=21.0 IQR=18.8-24.8 range=18-26 never_crossed=0
+  papGII earlier in 6/6; median difference 5.0 min; exact Wilcoxon p = 0.031
+4. uidA TTT in mixed vs single-species cultures
+  mixed: n=5 median=28.0 IQR=27.0-34.0 range=19-35 never_crossed=0
+  single: n=33 median=22.0 IQR=18.8-26.2 range=14-36 never_crossed=1
+5. TTT of reference-positive vs reference-negative samples
+  uidA positives: n=38 median=22.0 IQR=19.0-28.0 range=14-36 never_crossed=1
+  uidA negatives crossing: n=153 median=34.0 IQR=32.0-38.0 range=18-40 never_crossed=91; earliest 18 min; crossing after the 30-min threshold: 54
+  papGII positives: n=6 median=17.0 IQR=16.0-18.0 range=13-20 never_crossed=0
+  papGII negatives crossing: n=185 median=35.0 IQR=32.0-38.0 range=26-40 never_crossed=112; earliest 26 min; crossing after the 23-min threshold: 73

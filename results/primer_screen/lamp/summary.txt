@@ -1,0 +1,33 @@
+uidA (all 58 genomes)
+  intact	19	32.8%
+  minor	31	53.4%
+  critical	0	0.0%
+  incomplete	0	0.0%
+  absent	8	13.8%
+papGII (all 58 genomes)
+  intact	2	3.4%
+  minor	9	15.5%
+  critical	0	0.0%
+  incomplete	12	20.7%
+  absent	35	60.3%
+papGII primer set by papG allele group (status counts)
+  PapG-II (n=11): intact=2, minor=9
+  PapG-III (n=12): incomplete=12
+  none (n=35): absent=35
+per-site (genomes covering the site): number with 1 / 2 / >=3 mismatches, and with a 3'-end mismatch
+  uidA	F3	outer	covered=50	mm1=25	mm2=0	mm3plus=0	end3=0
+  uidA	F2	inner	covered=50	mm1=11	mm2=0	mm3plus=0	end3=0
+  uidA	LF	loop	covered=50	mm1=11	mm2=7	mm3plus=5	end3=12
+  uidA	F1c	inner	covered=50	mm1=1	mm2=0	mm3plus=0	end3=0
+  uidA	B1c	inner	covered=50	mm1=0	mm2=0	mm3plus=0	end3=0
+  uidA	LB	loop	covered=50	mm1=0	mm2=0	mm3plus=0	end3=0
+  uidA	B2	inner	covered=50	mm1=3	mm2=0	mm3plus=0	end3=0
+  uidA	B3	outer	covered=50	mm1=27	mm2=0	mm3plus=0	end3=0
+  papGII	F3	outer	covered=23	mm1=0	mm2=0	mm3plus=0	end3=0
+  papGII	F2	inner	covered=23	mm1=12	mm2=0	mm3plus=0	end3=0
+  papGII	LF	loop	covered=23	mm1=12	mm2=0	mm3plus=0	end3=12
+  papGII	F1c	inner	covered=23	mm1=0	mm2=4	mm3plus=8	end3=0
+  papGII	B1c	inner	covered=11	mm1=9	mm2=0	mm3plus=0	end3=0
+  papGII	LB	loop	covered=11	mm1=0	mm2=0	mm3plus=0	end3=0
+  papGII	B2	inner	covered=11	mm1=0	mm2=0	mm3plus=0	end3=0
+  papGII	B3	outer	covered=11	mm1=5	mm2=0	mm3plus=0	end3=0

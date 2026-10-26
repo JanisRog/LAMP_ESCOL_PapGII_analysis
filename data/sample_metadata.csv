@@ -1,0 +1,192 @@
+sample,sample_id,cfu_ml,culture_maldi,wgs_papGII,lamp_uidA,lamp_papGII
+1,LAMP001,0,none,0,0,0
+2,LAMP002,0,none,0,0,0
+3,LAMP003,0,none,0,0,0
+4,LAMP004,100000,Escherichia coli,0,1,0
+5,LAMP005,100000,"Proteus mirabilis, Escherichia coli",0,1,0
+6,LAMP006,0,none,0,0,0
+7,LAMP007,10000,Lactobacillus sp.,0,1,0
+8,LAMP008,0,none,0,0,0
+9,LAMP009,100000,Escherichia coli,1,1,1
+10,LAMP010,0,none,0,0,0
+11,LAMP011,100000,Escherichia coli,0,1,0
+12,LAMP012,0,none,0,0,0
+13,LAMP013,100000,Escherichia coli,0,0,0
+14,LAMP014,0,none,0,0,0
+15,LAMP015,100000,Escherichia coli,0,1,0
+16,LAMP016,0,none,0,0,0
+17,LAMP017,100000,Escherichia coli,1,1,1
+18,LAMP018,100000,Escherichia coli,1,1,1
+19,LAMP019,100000,Escherichia coli,0,1,0
+20,LAMP020,0,none,0,0,0
+21,LAMP021,0,none,0,1,0
+22,LAMP022,0,none,0,0,0
+23,LAMP023,0,none,0,0,0
+24,LAMP024,100000,Escherichia coli,0,1,0
+25,LAMP025,0,none,0,0,0
+26,LAMP026,100000,Escherichia coli,0,1,0
+27,LAMP027,0,none,0,0,0
+28,LAMP028,0,none,0,0,0
+29,LAMP029,10000,Candida glabrata,0,0,0
+30,LAMP030,0,none,0,0,0
+31,LAMP031,100000,Escherichia coli,0,1,0
+32,LAMP032,0,none,0,0,0
+33,LAMP033,0,none,0,0,0
+34,LAMP034,0,none,0,0,0
+35,LAMP035,100000,Escherichia coli,0,1,0
+36,LAMP036,10000,Actinomyces neuii,0,0,0
+37,LAMP037,0,none,0,0,0
+38,LAMP038,0,none,0,0,0
+39,LAMP039,0,none,0,0,0
+40,LAMP040,0,none,0,1,0
+41,LAMP041,0,none,0,0,0
+42,LAMP042,100000,Escherichia coli,0,1,0
+43,LAMP043,0,none,0,0,0
+44,LAMP044,100000,Streptococcus agalactiae,0,0,0
+45,LAMP045,100000,Lactobacillus sp.,0,0,0
+46,LAMP046,0,none,0,0,0
+47,LAMP047,100000,Escherichia coli,0,1,0
+48,LAMP048,0,none,0,0,0
+49,LAMP049,0,none,0,0,0
+50,LAMP050,0,none,0,0,0
+51,LAMP051,10000,Candida kefyr,0,1,0
+52,LAMP052,0,none,0,0,0
+53,LAMP053,0,none,0,0,0
+54,LAMP054,0,none,0,0,0
+55,LAMP055,10000,Aerococcus viridans,0,0,0
+56,LAMP056,10000,Lactobacillus sp.,0,0,0
+57,LAMP057,100000,Streptococcus spp.,0,0,0
+58,LAMP058,0,none,0,0,0
+59,LAMP059,0,none,0,0,0
+60,LAMP060,10000,Enterococcus faecium,0,0,0
+61,LAMP061,0,none,0,0,0
+62,LAMP062,10000,Escherichia coli,0,1,0
+63,LAMP063,100000,Escherichia coli,0,1,0
+64,LAMP064,100000,"Enterococcus faecalis, Morganella morganii",0,0,0
+65,LAMP065,100000,Escherichia coli,0,1,0
+66,LAMP066,0,none,0,0,0
+67,LAMP067,0,none,0,0,0
+68,LAMP068,100000,Enterococcus faecalis,0,0,0
+69,LAMP069,100000,Klebsiella oxytoca,0,0,0
+70,LAMP070,10000,Staphylococcus borealis,0,0,0
+71,LAMP071,100000,Klebsiella pneumoniae,0,0,0
+72,LAMP072,100000,"Staphylococcus xylosus, Escherichia coli, Pantoea calida",0,1,0
+73,LAMP073,100000,Klebsiella pneumoniae,0,0,0
+74,LAMP074,10000,Escherichia coli,0,1,0
+75,LAMP075,0,none,0,0,0
+76,LAMP076,0,none,0,0,0
+77,LAMP077,0,none,0,0,0
+78,LAMP078,10000,Klebsiella pneumoniae,0,0,0
+79,LAMP079,10000,"Klebsiella pneumoniae, Escherichia coli",0,1,0
+80,LAMP080,0,none,0,0,0
+81,LAMP081,0,none,0,0,0
+82,LAMP082,10000,Lactobacillus sp.,0,0,0
+83,LAMP083,0,none,0,0,0
+84,LAMP084,0,none,0,0,0
+85,LAMP085,0,none,0,0,0
+86,LAMP086,100000,Escherichia coli,0,1,0
+87,LAMP087,0,none,0,0,0
+88,LAMP088,0,none,0,0,0
+89,LAMP089,10000,Lactobacillus sp.,0,0,0
+90,LAMP090,0,none,0,0,0
+91,LAMP091,0,none,0,0,0
+92,LAMP092,0,none,0,0,0
+93,LAMP093,10000,Escherichia coli,0,1,0
+94,LAMP094,10000,Lactobacillus sp.,0,0,0
+95,LAMP095,0,none,0,0,0
+96,LAMP096,0,none,0,0,0
+97,LAMP097,0,none,0,0,0
+98,LAMP098,100000,Escherichia coli,0,1,0
+99,LAMP099,0,none,0,0,0
+100,LAMP100,0,none,0,0,0
+101,LAMP101,0,none,0,0,0
+102,LAMP102,0,none,0,0,0
+103,LAMP103,10000,Enterococcus faecalis,0,1,0
+104,LAMP104,100000,Proteus mirabilis,0,0,0
+105,LAMP105,0,none,0,0,0
+106,LAMP106,0,none,0,0,0
+107,LAMP107,100000,Escherichia coli,0,0,0
+108,LAMP108,0,none,0,0,0
+109,LAMP109,100000,Klebsiella oxytoca,0,0,0
+110,LAMP110,0,none,0,1,0
+111,LAMP111,100000,Escherichia coli,0,1,0
+112,LAMP112,100000,Escherichia coli,1,1,1
+113,LAMP113,0,none,0,0,0
+114,LAMP114,0,none,0,0,0
+115,LAMP115,0,none,0,0,0
+116,LAMP116,0,none,0,0,0
+117,LAMP117,0,none,0,0,0
+118,LAMP118,0,none,0,1,0
+119,LAMP119,0,none,0,0,0
+120,LAMP120,0,none,0,0,0
+121,LAMP121,0,none,0,0,0
+122,LAMP122,0,none,0,0,0
+123,LAMP123,100000,"Gardnerella vaginalis, Streptococcus anginosus",0,0,0
+124,LAMP124,100000,Escherichia coli,0,1,0
+125,LAMP125,100000,Klebsiella pneumoniae,0,1,0
+126,LAMP126,0,none,0,0,0
+127,LAMP127,0,none,0,0,0
+128,LAMP128,0,none,0,0,0
+129,LAMP129,0,none,0,0,0
+130,LAMP130,0,none,0,0,0
+131,LAMP131,100000,Klebsiella oxytoca,0,0,0
+132,LAMP132,0,none,0,0,0
+133,LAMP133,0,none,0,0,0
+134,LAMP134,10000,Proteus mirabilis,0,0,0
+135,LAMP135,0,none,0,0,0
+136,LAMP136,0,none,0,0,0
+137,LAMP137,0,none,0,0,0
+138,LAMP138,0,none,0,0,0
+139,LAMP139,100000,Escherichia coli,0,1,0
+140,LAMP140,0,none,0,0,0
+141,LAMP141,0,none,0,0,0
+142,LAMP142,0,none,0,0,0
+143,LAMP143,0,none,0,0,0
+144,LAMP144,0,none,0,0,0
+145,LAMP145,100000,Candida albicans,0,0,0
+146,LAMP146,0,none,0,0,0
+147,LAMP147,100000,Staphylococcus epidermidis,0,0,0
+148,LAMP148,0,none,0,0,0
+149,LAMP149,100000,Klebsiella oxytoca,0,0,0
+150,LAMP150,100000,Streptococcus spp.,0,0,0
+151,LAMP151,100000,"Klebsiella pneumoniae, Enterobacter cloacae",0,0,0
+152,LAMP152,10000,Lactobacillus sp.,0,0,0
+153,LAMP153,100000,Escherichia coli,0,1,0
+154,LAMP154,100000,Escherichia coli,0,1,0
+155,LAMP155,100000,"Escherichia coli, Aerococcus urinae",0,0,0
+156,LAMP156,100000,"Enterococcus faecalis, Escherichia coli",0,0,0
+157,LAMP157,100000,Escherichia coli,0,1,0
+158,LAMP158,0,none,0,0,0
+159,LAMP159,0,none,0,0,0
+160,LAMP160,0,none,0,0,0
+161,LAMP161,0,none,0,0,0
+162,LAMP162,0,none,0,0,0
+163,LAMP163,100000,Vergrünende Streptokokken,0,0,0
+164,LAMP164,100000,Lactobacillus gasseri,0,0,0
+165,LAMP165,0,none,0,0,0
+166,LAMP166,0,none,0,0,0
+167,LAMP167,0,none,0,0,0
+168,LAMP168,10000,Candida albicans,0,0,0
+169,LAMP169,0,none,0,0,0
+170,LAMP170,0,none,0,0,0
+171,LAMP171,0,none,0,0,0
+172,LAMP172,100000,Escherichia coli,1,1,1
+173,LAMP173,100000,Escherichia coli,0,0,0
+174,LAMP174,0,none,0,0,0
+175,LAMP175,0,none,0,0,0
+176,LAMP176,0,none,0,0,0
+177,LAMP177,0,none,0,0,0
+178,LAMP178,0,none,0,0,0
+179,LAMP179,0,none,0,0,0
+180,LAMP180,0,none,0,0,0
+181,LAMP181,100000,Escherichia coli,0,1,0
+182,LAMP182,100000,Escherichia coli,1,1,1
+183,LAMP183,100000,Staphylococcus lugdunensis,0,0,0
+184,LAMP184,0,none,0,0,0
+185,LAMP185,0,none,0,0,0
+186,LAMP186,0,none,0,0,0
+187,LAMP187,0,none,0,0,0
+188,LAMP188,0,none,0,0,0
+189,LAMP189,0,none,0,0,0
+190,LAMP190,0,none,0,0,0
+191,LAMP191,100000,Klebsiella pneumoniae,0,0,0

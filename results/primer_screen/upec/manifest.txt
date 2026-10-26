@@ -1,0 +1,12 @@
+date: 2026-10-26T14:34:58
+script: /home/jaroge/data/Aline_genomes/primer_screen.py
+genomes: /home/jaroge/data/Aline_genomes/Aline_fastas (738 files matching *.fasta)
+reference_uidA: /home/jaroge/data/Aline_genomes/prokka_output_aline/700223-20/700223-20.fna
+reference_papGII: /home/jaroge/data/Aline_genomes/prokka_output_aline/700223-20/700223-20.fna
+papG_reference: /home/jaroge/data/papG_ref_seq/papG_db.fasta
+blastn: 2.17.0+
+blast_options: -outfmt '6 qseqid sseqid pident length qlen qstart qend sstart send evalue bitscore qseq sseq' -evalue 1e-10 -dust no
+papG_call: per locus (HSPs within 200 nt merged), best allele by summed bitscore, pident >= 90, combined coverage >= 80 %
+three_prime_zone: last 5 nt of ['B2', 'B3', 'F2', 'F3', 'LB', 'LF']
+flank: 100 nt reference flank on both sides of the amplicon query
+status rules: incomplete = inner site (F2/F1c/B1c/B2) not covered; critical = 3'-end mismatch in F2/B2 or >= 2 mismatches in an inner site; minor = any other mismatch or uncovered outer/loop site

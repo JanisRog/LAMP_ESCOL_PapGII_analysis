@@ -1,0 +1,59 @@
+genome	uidA_status	uidA_sites_covered	uidA_mismatches_inner	uidA_mismatches_outer_loop	uidA_best_pident	papGII_status	papGII_sites_covered	papGII_mismatches_inner	papGII_mismatches_outer_loop	papGII_best_pident	papG_alleles
+LAMP004	intact	8	0	0	99.764	absent	0	0	0		none
+LAMP005_1	intact	8	0	0	100.0	incomplete	4	3	1	93.578	PapG-III(1)
+LAMP005_2	intact	8	0	0	100.0	incomplete	4	3	1	93.578	PapG-III(1)
+LAMP006	absent	0	0	0		absent	0	0	0		none
+LAMP009_1	minor	8	1	3	97.406	intact	8	0	0	98.845	PapG-II(1)
+LAMP009_2	minor	8	1	3	97.406	intact	8	0	0	98.845	PapG-II(1)
+LAMP011	intact	8	0	0	100.0	incomplete	4	4	1	92.661	PapG-III(1)
+LAMP013_1	minor	8	0	5	96.934	absent	0	0	0		none
+LAMP013_2	minor	8	0	5	96.934	absent	0	0	0		none
+LAMP015	minor	8	1	3	97.406	absent	0	0	0		none
+LAMP017_1	minor	8	1	3	97.406	minor	8	1	1	98.383	PapG-II(1)
+LAMP017_2	minor	8	1	3	97.406	minor	8	1	1	98.383	PapG-II(1)
+LAMP018_1	minor	8	1	3	97.642	minor	8	1	1	98.614	PapG-II(1)
+LAMP018_2	minor	8	1	3	97.642	absent	0	0	0		none
+LAMP019	minor	8	1	3	97.642	absent	0	0	0		none
+LAMP021	absent	0	0	0		absent	0	0	0		none
+LAMP024	minor	8	1	3	97.406	absent	0	0	0		none
+LAMP026	intact	8	0	0	99.057	absent	0	0	0		none
+LAMP031	minor	8	0	2	98.113	absent	0	0	0		none
+LAMP035	minor	8	0	1	99.057	absent	0	0	0		none
+LAMP042	minor	8	0	4	97.17	absent	0	0	0		none
+LAMP047	minor	8	1	1	97.406	absent	0	0	0		none
+LAMP062	intact	8	0	0	100.0	incomplete	4	3	1	93.578	PapG-III(2)
+LAMP063	intact	8	0	0	99.764	absent	0	0	0		none
+LAMP065_1	intact	8	0	0	100.0	incomplete	4	4	1	92.661	PapG-III(1)
+LAMP065_2	intact	8	0	0	100.0	incomplete	4	4	1	92.661	PapG-III(1)
+LAMP072_1	minor	8	0	4	97.17	absent	0	0	0		none
+LAMP072_2	minor	8	0	4	97.17	absent	0	0	0		none
+LAMP074	intact	8	0	0	100.0	incomplete	4	3	1	93.578	PapG-III(1)
+LAMP079_1	minor	8	0	4	97.17	absent	0	0	0		none
+LAMP079_2	minor	8	0	4	97.17	absent	0	0	0		none
+LAMP080	absent	0	0	0		absent	0	0	0		none
+LAMP086	intact	8	0	0	99.764	absent	0	0	0		none
+LAMP093_1	minor	8	0	5	97.17	absent	0	0	0		none
+LAMP093_2	minor	8	0	5	97.17	absent	0	0	0		none
+LAMP098	intact	8	0	0	100.0	incomplete	4	4	1	93.119	PapG-III(1)
+LAMP103	absent	0	0	0		absent	0	0	0		none
+LAMP104	absent	0	0	0		absent	0	0	0		none
+LAMP107	absent	0	0	0		absent	0	0	0		none
+LAMP111_1	minor	8	1	0	98.585	incomplete	4	4	1	93.119	PapG-III(1)
+LAMP112_1	intact	8	0	0	99.764	minor	8	1	0	98.845	PapG-II(1)
+LAMP112_2	intact	8	0	0	99.764	minor	8	1	0	98.845	PapG-II(1)
+LAMP124	intact	8	0	0	100.0	incomplete	4	4	1	92.661	PapG-III(1)
+LAMP125	absent	0	0	0		absent	0	0	0		none
+LAMP139	minor	8	1	3	97.406	absent	0	0	0		none
+LAMP153	minor	8	0	5	96.934	absent	0	0	0		none
+LAMP154	intact	8	0	0	100.0	absent	0	0	0		none
+LAMP155	minor	8	0	4	97.406	absent	0	0	0		none
+LAMP156	minor	8	0	4	97.17	absent	0	0	0		none
+LAMP157_1	minor	8	1	0	98.585	incomplete	4	4	1	93.119	PapG-III(3)
+LAMP157_2	minor	8	1	0	98.585	incomplete	4	4	1	93.119	PapG-III(3)
+LAMP172_1	minor	8	0	1	98.585	minor	8	1	1	98.614	PapG-II(1)
+LAMP172_2	minor	8	0	1	98.585	minor	8	1	1	98.614	PapG-II(1)
+LAMP173	intact	8	0	0	99.764	absent	0	0	0		none
+LAMP181	minor	8	1	3	97.406	absent	0	0	0		none
+LAMP182_1	intact	8	0	0	99.764	minor	8	1	0	99.307	PapG-II(1)
+LAMP182_2	intact	8	0	0	99.764	minor	8	1	0	99.307	PapG-II(1)
+LAMP191	absent	0	0	0		absent	0	0	0		none

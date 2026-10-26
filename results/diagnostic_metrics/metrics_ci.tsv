@@ -1,0 +1,9 @@
+target	metric	x	n	estimate	ci95_low	ci95_high
+uidA	sensitivity	33	38	0.868	0.719	0.956
+uidA	specificity	145	153	0.948	0.9	0.977
+uidA	PPV	33	41	0.805	0.651	0.912
+uidA	NPV	145	150	0.967	0.924	0.989
+papGII	sensitivity	6	6	1.0	0.541	1.0
+papGII	specificity	185	185	1.0	0.98	1.0
+papGII	PPV	6	6	1.0	0.541	1.0
+papGII	NPV	185	185	1.0	0.98	1.0
