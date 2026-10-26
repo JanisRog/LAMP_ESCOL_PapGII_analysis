@@ -39,6 +39,6 @@ python uidA_candidate_sets.py
 python fig_primer_map.py
 ```
 
-The primer screen and gene scan need BLAST+ (`blastn`) and the genome assemblies; it was run on the UZH ScienceCluster via
+The primer screen and gene scan need BLAST+ (`blastn`) and the genome assemblies; both were run on the UZH ScienceCluster via
 `primer_screen.sbatch` and `gene_scan.sbatch`. Inputs, versions and parameters of each run are recorded in the
 `manifest.txt` of its results folder.
