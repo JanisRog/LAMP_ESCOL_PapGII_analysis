@@ -1,7 +1,7 @@
-date: 2026-10-26T16:06:37
+date: 2026-10-26T16:09:13
 script: /home/jaroge/data/Aline_genomes/papg_site_scan.py
 genomes: /home/jaroge/data/Aline_genomes/Aline_fastas (738 files matching *.fasta)
 papG_reference: /home/jaroge/data/papG_ref_seq/papG_db.fasta
 blastn: 2.17.0+
-locus call: pident >= 90, coverage >= 80 %; region padded by 50 nt
+locus call: pident >= 70.0, coverage >= 80 %; region padded by 50 nt
 binding sites: {'F3': 'ACACAGAAAGAGTCTGAGC', 'F2': 'GCTATTAATAGACAGATCACCAT', 'LF': 'TCTGCACAGTCTCTGGAAATAAAGC', 'F1c': 'TTAAGAATATCGGCGGATGCCG', 'B1c': 'AACATTTCATTCTCTCTTGGGAGAG', 'LB': 'ATTGTATGGGATTTTAAAACGGGCC', 'B2': 'CATTTCGCGAGTTACTTGG', 'B3': 'TGTTACAATTCCATACACTTCC'}

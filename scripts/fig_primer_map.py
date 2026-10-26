@@ -3,8 +3,8 @@ uidA: median number of mismatches to the primer per binding site within each Cle
 data/upec_phylogroups.tsv; Clermont phylogroups with >= MIN_GROUP genomes in which the amplicon region is present; unassigned 'U'/cryptic
 not shown).
 papGII: median mismatches of each binding site per papG allele across the papG loci of the same genomes
-(results/papg_site_scan: best-matching locus per genome and allele); PapG-I does not occur in the collection, so
-its row shows the PapG-I reference allele (data/papG_reference_alleles.fasta).
+(results/papg_site_scan, loci called at >= 70% identity; best-matching locus per genome and allele). No classic
+papGI occurs in the collection; the PapG-I row is a divergent PapG-I-like gene (~72% identity to the reference).
 
 Amplicons and binding-site coordinates come from the reference genes of the design strain 700223-20
 (results/gene_scan/*/reference_gene.fasta) with the FIP/BIP split lengths of the design (primer_screen.SPLIT).
@@ -94,7 +94,8 @@ def papg_rows(p, alleles):
     d = d.merge(best, on=["genome", "locus", "allele"])
     med = d.groupby(["allele", "site"]).mismatches.median().unstack()
     n = d.groupby("allele").genome.nunique()
-    rows = [(f"papG{a.split('-')[1]} (n={n[a]})", med.loc[a].to_dict()) for a in ("PapG-II", "PapG-III") if a in n]
+    label = {"PapG-II": "papGII", "PapG-III": "papGIII", "PapG-I": "PapG-I-like"}
+    rows = [(f"{label[a]} (n={n[a]})", med.loc[a].to_dict()) for a in ("PapG-II", "PapG-III", "PapG-I") if a in n]
     if "PapG-I" not in n:
         rows.append(("PapG-I reference", dict(zip(p.site, [best_mismatches(s, alleles["PapG-I"]) for s in p.sequence]))))
     return rows, med.assign(genomes=n)
@@ -135,7 +136,7 @@ def main():
                        f"or unassigned groups not shown)")
     draw_map(ax_p, p, xmax)
     draw_mismatch_rows(ax_t, p, grows, xmax, "Median mismatches to the primer per papG allele in the same genomes "
-                       "(PapG-I: reference allele, absent from the collection)")
+                       "(PapG-I-like: ~72% identity to PapG-I; no classic papGI found)")
     for ax, name, (lo, hi), L, st in ((ax_u, "uidA", u_pos, u_len, u), (ax_p, "papGII", p_pos, p_len, p)):
         ax.text(-XPAD, 1.45, name, ha="left", va="bottom", fontsize=9, fontstyle="italic", color=INK)
         ax.text(xmax, 1.45, f"{st.end.max()}-bp amplicon · nt {lo}–{hi} of {L}-bp gene", ha="right", va="bottom",
