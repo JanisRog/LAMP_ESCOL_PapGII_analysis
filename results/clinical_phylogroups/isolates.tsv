@@ -1,0 +1,39 @@
+sample_id	phylogroup	cfu_ml	culture_maldi	mixed_culture	LF_mismatches	LF_mismatches_3prime	ttt_uidA	detected
+LAMP111	B2	100000	Escherichia coli	0	0.0	0.0	14.0	True
+LAMP062	B2	10000	Escherichia coli	0	0.0	0.0	16.0	True
+LAMP009	D	100000	Escherichia coli	0	1.0	0.0	18.0	True
+LAMP172	F	100000	Escherichia coli	0	0.0	0.0	18.0	True
+LAMP157	B2	100000	Escherichia coli	0	0.0	0.0	18.0	True
+LAMP065	B2	100000	Escherichia coli	0	0.0	0.0	18.0	True
+LAMP047	D	100000	Escherichia coli	0	0.0	0.0	18.0	True
+LAMP098	B2	100000	Escherichia coli	0	0.0	0.0	18.0	True
+LAMP063	B2	100000	Escherichia coli	0	0.0	0.0	19.0	True
+LAMP005	B2	100000	Proteus mirabilis, Escherichia coli	1	0.0	0.0	19.0	True
+LAMP004	B2	100000	Escherichia coli	0	0.0	0.0	20.0	True
+LAMP042	A	100000	Escherichia coli	0	2.0	1.0	20.0	True
+LAMP124	B2	100000	Escherichia coli	0	0.0	0.0	21.0	True
+LAMP019	G	100000	Escherichia coli	0	1.0	0.0	21.0	True
+LAMP017	D	100000	Escherichia coli	0	1.0	0.0	21.0	True
+LAMP112	B2	100000	Escherichia coli	0	0.0	0.0	21.0	True
+LAMP139	EC_control_fail	100000	Escherichia coli	0	1.0	0.0	22.0	True
+LAMP154	B2	100000	Escherichia coli	0	0.0	0.0	22.0	True
+LAMP024	D	100000	Escherichia coli	0	1.0	0.0	22.0	True
+LAMP086	B2	100000	Escherichia coli	0	0.0	0.0	24.0	True
+LAMP031	B2	100000	Escherichia coli	0	0.0	0.0	25.0	True
+LAMP182	B2	100000	Escherichia coli	0	0.0	0.0	26.0	True
+LAMP181	D	100000	Escherichia coli	0	1.0	0.0	26.0	True
+LAMP018	F	100000	Escherichia coli	0	1.0	0.0	26.0	True
+LAMP011	B2	100000	Escherichia coli	0	0.0	0.0	26.0	True
+LAMP072	A	100000	Staphylococcus xylosus, Escherichia coli, Pantoea calida	1	2.0	1.0	27.0	True
+LAMP035	B2	100000	Escherichia coli	0	0.0	0.0	27.0	True
+LAMP079	B1	10000	Klebsiella pneumoniae, Escherichia coli	1	2.0	1.0	28.0	True
+LAMP153	C	100000	Escherichia coli	0	3.0	2.0	28.0	True
+LAMP015	U/cryptic	100000	Escherichia coli	0	1.0	0.0	28.0	True
+LAMP074	B2	10000	Escherichia coli	0	0.0	0.0	29.0	True
+LAMP093	B1	10000	Escherichia coli	0	3.0	2.0	30.0	True
+LAMP026	B2	100000	Escherichia coli	0	0.0	0.0	30.0	True
+LAMP173	B2	100000	Escherichia coli	0	0.0	0.0	33.0	False
+LAMP156	A	100000	Enterococcus faecalis, Escherichia coli	1	2.0	1.0	34.0	False
+LAMP155	B1	100000	Escherichia coli, Aerococcus urinae	1	2.0	1.0	35.0	False
+LAMP013	C	100000	Escherichia coli	0	3.0	2.0	36.0	False
+LAMP107	F	100000	Escherichia coli	0				False

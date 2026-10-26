@@ -11,17 +11,18 @@
 set -euo pipefail
 A=${A:-/home/jaroge/data/Aline_genomes}
 GENOMES=${GENOMES:-$A/Aline_fastas}
+PATTERN=${PATTERN:-*.fasta}   # file name pattern, searched recursively under GENOMES
 OUT=${OUT:-$A/phylogroups_$(date +%Y%m%d)}
 mkdir -p "$OUT/per_genome"
 
-ls "$GENOMES"/*.fasta | xargs -P "${SLURM_CPUS_PER_TASK:-16}" -I{} sh -c \
-  'g=$(basename {} .fasta); ezclermont {} -e "$g" > "'"$OUT"'/per_genome/$g.tsv" 2> "'"$OUT"'/per_genome/$g.log" || true'
+find "$GENOMES" -name "$PATTERN" | xargs -P "${SLURM_CPUS_PER_TASK:-16}" -I{} sh -c \
+  'f={}; g=$(basename "$f"); g=${g%.*}; ezclermont "$f" -e "$g" > "'"$OUT"'/per_genome/$g.tsv" 2> "'"$OUT"'/per_genome/$g.log" || true'
 
 printf "genome\tphylogroup\n" > "$OUT/phylogroups.tsv"
 cat "$OUT"/per_genome/*.tsv | sort >> "$OUT/phylogroups.tsv"
 cat > "$OUT/manifest.txt" <<EOF
 date: $(date -Iseconds)
-genomes: $GENOMES ($(ls "$GENOMES"/*.fasta | wc -l) *.fasta)
+genomes: $GENOMES ($(find "$GENOMES" -name "$PATTERN" | wc -l) files matching $PATTERN)
 tool: $(ezclermont --version 2>&1 | head -1)
 command: ezclermont <genome.fasta> -e <genome>
 EOF
