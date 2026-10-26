@@ -1,0 +1,17 @@
+target	site	role	start	end	genomes	mm0	mm1	mm2	mm3plus	end3
+uidA	F3	outer	1	20	730	489	241	0	0	0.0
+uidA	F2	inner	24	43	730	626	98	6	0	11.0
+uidA	LF	loop	54	71	730	506	85	88	51	136.0
+uidA	F1c	inner	78	99	730	683	47	0	0	
+uidA	B1c	inner	109	129	730	726	1	3	0	
+uidA	LB	loop	144	166	730	711	0	19	0	0.0
+uidA	B2	inner	171	189	730	692	35	3	0	0.0
+uidA	B3	outer	205	224	730	462	265	3	0	0.0
+papGII	F3	outer	1	19	140	140	0	0	0	0.0
+papGII	F2	inner	38	60	140	139	1	0	0	0.0
+papGII	LF	loop	61	85	140	140	0	0	0	0.0
+papGII	F1c	inner	90	111	140	138	2	0	0	
+papGII	B1c	inner	120	144	140	70	68	2	0	
+papGII	LB	loop	155	179	140	107	33	0	0	33.0
+papGII	B2	inner	181	199	140	133	5	2	0	3.0
+papGII	B3	outer	212	233	140	118	22	0	0	0.0
