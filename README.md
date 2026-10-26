@@ -12,7 +12,7 @@ papGII directly from urine (Rogenmoser et al.). Raw sequencing reads: ENA projec
 | `sample_metadata.csv` | Supplementary Table 1: semi-quantitative culture load (CFU/ml), culture result (MALDI-TOF; comma = mixed culture), papGII by WGS, LAMP result |
 | `lamp_phylogroups.tsv` | Clermont phylogroups of the 38 clinical E. coli isolates (EzClermont 1.0.0) |
 | `upec_phylogroups.tsv` | Clermont phylogroups of the 738 UPEC genomes (EzClermont 1.0.0; `scripts/phylogroups.sbatch`) |
-| `papG_reference_alleles.fasta` | PapG-I, PapG-II and PapG-III reference alleles used for papG typing and papGII primer design |
+| `papG_reference_alleles.fasta` | PapG-I, PapG-II and PapG-III reference alleles (papGII primer design) and PapG-IV (GenBank AF304159, strain BF31), used for papG typing |
 | `uida_lod_*.csv`, `papg_lod_*.csv` | Limit of detection: fluorescence over 60 min for the dilution series (10⁶–10² CFU/ml, NTC), three replicates |
 
 ## Analyses
@@ -26,8 +26,8 @@ papGII directly from urine (Rogenmoser et al.). Raw sequencing reads: ENA projec
 | `scripts/gene_scan.py` (+ `gene_scan.sbatch`) | `results/gene_scan/` | Per-position variability of uidA (738 genomes) and papGII (140 papGII genomes); amplicon and binding sites in gene coordinates |
 | `scripts/uidA_candidate_sets.py` | `results/uidA_candidate_sets/` | Comparison of the five uidA primer sets proposed by the NEB LAMP Primer Design Tool |
 | `scripts/clinical_phylogroups.py` | `results/clinical_phylogroups/` | Clinical isolates: phylogroup, uidA LF primer mismatches and time to threshold |
-| `scripts/papg_site_scan.py` (+ `papg_site_scan.sbatch`) | `results/papg_site_scan/` | Mismatches of the papGII binding sites to every papG locus of the 738 UPEC genomes (loci at ≥ 70% identity: papGII, papGIII and a divergent PapG-I-like gene; `locus_site_mismatches_id90.tsv` = same scan at ≥ 90%) |
-| `scripts/fig_primer_map.py` | `results/figures/` | Figure 2A: primer binding sites on both amplicons; median mismatches of the uidA sites per phylogroup and of the papGII sites per papG allele |
+| `scripts/papg_site_scan.py` (+ `papg_site_scan.sbatch`) | `results/papg_site_scan/` | Mismatches of the papGII binding sites to every papG locus (typed against PapG-I to PapG-IV) of the 738 UPEC genomes; `results/papg_site_scan_lamp/` = the clinical isolates |
+| `scripts/fig_primer_map.py` | `results/figures/` | Figure 2A: primer binding sites on both amplicons; median mismatches of the uidA sites per phylogroup and of the papGII sites per papG allele (papGII–IV; papGI reference) |
 | `scripts/tables_s_primer_conservation.py` | `results/figures/` | Supplementary tables: per-site mismatches to the primers in 738 UPEC genomes (descriptive) and presence of the papGII binding sites per papG allele group |
 
 Shared settings (fluorescence threshold ≥ 3-fold of cycle 1; time thresholds uidA 30 min, papGII 23 min) are in
