@@ -2,7 +2,9 @@
 uidA: median number of mismatches to the primer per binding site within each Clermont phylogroup (EzClermont,
 data/upec_phylogroups.tsv; Clermont phylogroups with >= MIN_GROUP genomes in which the amplicon region is present; unassigned 'U'/cryptic
 not shown).
-papGII: mismatches of each binding site to the PapG-III and PapG-I reference alleles (specificity rationale).
+papGII: median mismatches of each binding site per papG allele across the papG loci of the same genomes
+(results/papg_site_scan: best-matching locus per genome and allele); PapG-I does not occur in the collection, so
+its row shows the PapG-I reference allele (data/papG_reference_alleles.fasta).
 
 Amplicons and binding-site coordinates come from the reference genes of the design strain 700223-20
 (results/gene_scan/*/reference_gene.fasta) with the FIP/BIP split lengths of the design (primer_screen.SPLIT).
@@ -84,6 +86,20 @@ def draw_mismatch_rows(ax, st, rows, xmax, caption):
             color=INK2)
 
 
+def papg_rows(p, alleles):
+    """Median mismatches per papG allele group (one locus per genome and allele: the best-matching one)."""
+    d = pd.read_csv(RESULTS / "papg_site_scan" / "locus_site_mismatches.tsv", sep="\t")
+    tot = d.groupby(["genome", "locus", "allele"]).mismatches.sum().reset_index()
+    best = tot.loc[tot.groupby(["genome", "allele"]).mismatches.idxmin(), ["genome", "locus", "allele"]]
+    d = d.merge(best, on=["genome", "locus", "allele"])
+    med = d.groupby(["allele", "site"]).mismatches.median().unstack()
+    n = d.groupby("allele").genome.nunique()
+    rows = [(f"papG{a.split('-')[1]} (n={n[a]})", med.loc[a].to_dict()) for a in ("PapG-II", "PapG-III") if a in n]
+    if "PapG-I" not in n:
+        rows.append(("PapG-I reference", dict(zip(p.site, [best_mismatches(s, alleles["PapG-I"]) for s in p.sequence]))))
+    return rows, med.assign(genomes=n)
+
+
 def phylogroup_rows():
     """Median mismatches to the uidA primers per binding site within each phylogroup (>= MIN_GROUP genomes)."""
     mm = load_site_mismatches("uidA")["per_genome"]
@@ -105,20 +121,21 @@ def main():
     u, u_pos, u_len = sites_for("uidA")
     p, p_pos, p_len = sites_for("papGII")
     for name in ("PapG-III", "PapG-I", "PapG-II"):
-        p[f"mm_{name}"] = [best_mismatches(s, alleles[name]) for s in p.sequence]
+        p[f"mm_{name}_reference"] = [best_mismatches(s, alleles[name]) for s in p.sequence]
+    grows, gtable = papg_rows(p, alleles)
     xmax = max(u.end.max(), p.end.max()) + 8
     prows, excluded, ptable, pn = phylogroup_rows()
 
     fig = plt.figure(figsize=(180 / 25.4, 125 / 25.4))
-    gs = fig.add_gridspec(5, 1, height_ratios=[1.0, 1.35, 0.32, 1.0, 0.5], hspace=0.12)
+    gs = fig.add_gridspec(5, 1, height_ratios=[1.0, 1.35, 0.32, 1.0, 0.72], hspace=0.12)
     ax_u, ax_ut, ax_p, ax_t = fig.add_subplot(gs[0]), fig.add_subplot(gs[1]), fig.add_subplot(gs[3]), fig.add_subplot(gs[4])
     draw_map(ax_u, u, xmax)
     draw_mismatch_rows(ax_ut, u, prows, xmax,
                        f"Median mismatches to the primer per Clermont phylogroup ({excluded} genomes in smaller "
                        f"or unassigned groups not shown)")
     draw_map(ax_p, p, xmax)
-    draw_mismatch_rows(ax_t, p, [(a, dict(zip(p.site, p[f"mm_{a}"]))) for a in ("PapG-III", "PapG-I")], xmax,
-                       "Mismatches of each papGII binding site to the PapG-III and PapG-I reference alleles")
+    draw_mismatch_rows(ax_t, p, grows, xmax, "Median mismatches to the primer per papG allele in the same genomes "
+                       "(PapG-I: reference allele, absent from the collection)")
     for ax, name, (lo, hi), L, st in ((ax_u, "uidA", u_pos, u_len, u), (ax_p, "papGII", p_pos, p_len, p)):
         ax.text(-XPAD, 1.45, name, ha="left", va="bottom", fontsize=9, fontstyle="italic", color=INK)
         ax.text(xmax, 1.45, f"{st.end.max()}-bp amplicon · nt {lo}–{hi} of {L}-bp gene", ha="right", va="bottom",
@@ -131,6 +148,8 @@ def main():
     tab = pd.concat([u, p])
     tab.to_csv(OUT / "fig2a_binding_sites.tsv", sep="\t", index=False)
     ptable.to_csv(OUT / "fig2a_uidA_phylogroup_median_mismatches.tsv", sep="\t")
+    gtable.to_csv(OUT / "fig2a_papG_allele_median_mismatches.tsv", sep="\t")
+    print(gtable.to_string())
     print(ptable.to_string()); print("excluded genomes:", excluded)
     print(tab.drop(columns="sequence").to_string(index=False))
 
