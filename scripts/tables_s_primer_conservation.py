@@ -4,7 +4,8 @@ Per target and binding site: genomes with 0, 1, 2 or >= 3 mismatches to the prim
 3'-terminal 5 nt of primers with a free 3' end. Descriptive only: the effect of mismatches on amplification was
 not tested experimentally.
 Genomes: uidA - all genomes in which the amplicon region is present; papGII - genomes typed papGII.
-Presence of binding sites per papG allele group comes from results/primer_screen/upec.
+Presence of binding sites per papG group: coverage from results/primer_screen/upec, groups from the per-locus
+typing against PapG-I to PapG-IV (results/papg_site_scan).
 
 Output: results/figures/tableS_binding_site_mismatches.tsv, tableS_binding_site_presence.tsv
 """
@@ -72,15 +73,27 @@ def load(target):
 
 
 def presence_table():
-    """Binding sites present (covered by an alignment) per papG allele group, papGII primer set."""
+    """Binding sites of the papGII primer set present (covered by an alignment, primer_screen) per papG group.
+    Groups from the per-locus typing against PapG-I to PapG-IV (results/papg_site_scan); genomes carrying papGII
+    together with another allele are counted as papGII."""
     s = pd.read_csv(SCREEN / "genome_summary.tsv", sep="\t")
     m = pd.read_csv(SCREEN / "site_mismatches.tsv", sep="\t")
     m = m[m.target == "papGII"]
-    groups = {"papGII": s[s.papG_alleles.str.contains(r"PapG-II\(", regex=True)].genome,
-              "papGIII only": s[s.papG_alleles.str.match(r"^PapG-III\(\d+\)$")].genome,
-              "no papG allele called": s[s.papG_alleles == "none"].genome}
+    loci = pd.read_csv(RESULTS / "papg_site_scan" / "locus_site_mismatches.tsv", sep="\t")
+    alleles = loci.groupby("genome").allele.apply(set).reindex(s.genome).apply(
+        lambda a: a if isinstance(a, set) else set())
+    def group(a):
+        if "PapG-II" in a: return "papGII (alone or with papGIII/papGIV)"
+        if a == {"PapG-III"}: return "papGIII only"
+        if a == {"PapG-IV"}: return "papGIV only"
+        if not a: return "no papG allele"
+        return "+".join(sorted(a))
+    groups = alleles.map(group)
     rows = []
-    for name, gids in groups.items():
+    for name in ["papGII (alone or with papGIII/papGIV)", "papGIII only", "papGIV only", "no papG allele"] + \
+            sorted(set(groups) - {"papGII (alone or with papGIII/papGIV)", "papGIII only", "papGIV only", "no papG allele"}):
+        gids = groups[groups == name].index
+        if not len(gids): continue
         x = m[m.genome.isin(gids)].pivot(index="genome", columns="site", values="covered").reindex(gids).fillna(0)
         rows.append(dict(group=name, genomes=len(gids), **{site: int(x[site].sum()) for site in
                                                           ["F3", "F2", "LF", "F1c", "B1c", "LB", "B2", "B3"]}))

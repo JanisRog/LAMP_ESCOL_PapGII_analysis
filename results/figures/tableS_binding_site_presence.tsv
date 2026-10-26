@@ -1,4 +1,5 @@
 group	genomes	F3	F2	LF	F1c	B1c	LB	B2	B3
-papGII	140	140	140	140	140	140	140	140	140
+papGII (alone or with papGIII/papGIV)	140	140	140	140	140	140	140	140	140
 papGIII only	104	104	104	104	104	0	0	0	0
-no papG allele called	494	2	2	2	2	1	1	1	1
+papGIV only	20	0	0	0	0	0	0	0	0
+no papG allele	474	2	2	2	2	1	1	1	1
