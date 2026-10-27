@@ -1,0 +1,4 @@
+genomes checked: 8
+  absent	4
+  internal_gap	1
+  internal_truncation	3

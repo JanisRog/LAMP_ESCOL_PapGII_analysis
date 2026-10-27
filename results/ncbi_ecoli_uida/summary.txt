@@ -1,0 +1,13 @@
+uidA amplicon region in 5493 genomes
+  present	5395	98.2%	(95% CI 97.8-98.5%)
+  incomplete	3	0.1%	(95% CI 0.0-0.2%)
+  absent	95	1.7%	(95% CI 1.4-2.1%)
+binding sites in genomes with the region present (n = 5395): genomes with 0 / 1 / 2 / >=3 mismatches
+  F3	2117	3276	2	0
+  F2	4432	783	180	0
+  LF	2142	248	2308	697
+  F1c	4975	420	0	0
+  B1c	5373	21	1	0
+  LB	5044	13	335	3
+  B2	5331	63	1	0
+  B3	1751	3642	2	0

@@ -1,0 +1,4 @@
+date: 2026-10-27T15:59:58+01:00
+genomes: /home/jaroge/data/Aline_genomes/ncbi_work_20261027//ecoli (5493 files matching *_genomic.fna)
+tool: ezclermont 1.0.0
+command: ezclermont <genome.fasta> -e <genome>

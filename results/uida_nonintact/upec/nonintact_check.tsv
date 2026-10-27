@@ -1,0 +1,9 @@
+genome	n_contigs	gene_aligned_pct	best_pident	five_prime	three_prime	cls
+702354-20	1	75.7	100.0	complete	complete	internal_gap
+713268-19	1	0.0				absent
+714603-19	1	10.3	99.462	complete	internal	internal_truncation
+719554-18	1	10.3	99.462	complete	internal	internal_truncation
+721199-18	1	18.4	97.598	complete	internal	internal_truncation
+721912-18	1	0.0				absent
+722099-18	1	0.0				absent
+722117-18	1	0.0				absent

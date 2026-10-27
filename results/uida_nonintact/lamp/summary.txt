@@ -1,0 +1,2 @@
+genomes checked: 1
+  internal_truncation	1
