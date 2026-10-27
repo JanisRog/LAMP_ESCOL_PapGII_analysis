@@ -170,7 +170,8 @@ def main():
     fig.legend(handles=handles, loc="lower center", ncol=3, frameon=False, fontsize=7, bbox_to_anchor=(0.5, -0.02))
     fig.subplots_adjust(left=0.1, right=0.98, top=0.97, bottom=0.07)
     for ext in ("pdf", "png", "svg"):
-        fig.savefig(OUT / f"fig2a_primer_map.{ext}", dpi=600 if ext == "png" else None, bbox_inches="tight")
+        meta = {"pdf": {"CreationDate": None, "Creator": "fig_primer_map.py"}, "svg": {"Date": None}}.get(ext)
+        fig.savefig(OUT / f"fig2a_primer_map.{ext}", dpi=600 if ext == "png" else None, bbox_inches="tight", metadata=meta)
     pd.concat([u, p]).to_csv(OUT / "fig2a_binding_sites.tsv", sep="\t", index=False)
     ptable.to_csv(OUT / "fig2a_uidA_phylogroup_median_mismatches_upec.tsv", sep="\t")
     ptable_n.to_csv(OUT / "fig2a_uidA_phylogroup_median_mismatches_ncbi.tsv", sep="\t")

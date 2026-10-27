@@ -1,6 +1,7 @@
-pandas
-numpy
-scipy
-matplotlib
-scikit-learn
-seaborn
+# Versions used for the analyses in the manuscript (Python 3.9.6)
+pandas==2.3.2
+numpy==2.0.2
+scipy==1.13.1
+matplotlib==3.9.4
+scikit-learn==1.6.1
+seaborn==0.13.2
