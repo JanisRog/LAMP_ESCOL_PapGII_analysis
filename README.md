@@ -20,7 +20,8 @@ cluster-side steps (genome analyses) are listed below under "Genome analyses" an
 | Fig. 2B/C, 3–6; threshold selection (Youden's index); confusion matrices | `notebooks/LAMP_analysis.ipynb` (runs top to bottom, figures displayed inline) | `notebooks/` holds the stored exports: confusion matrices (`confusion_matrix_*`) and lists of false-positive/false-negative samples (`FP_*`, `FN_*`) |
 | Sensitivity, specificity, PPV, NPV with exact 95% CI | `scripts/diagnostic_metrics_ci.py` | `results/diagnostic_metrics/` |
 | Time to threshold vs bacterial density, papGII status, primer set (Supp. table) | `scripts/cfu_time_to_threshold.py` | `results/cfu_ttt/` |
-| Fig. 2A (primer maps and binding-site conservation) | `scripts/fig_primer_map.py` | `results/figures/fig2a_*` |
+| Fig. 2A (primer maps; median mismatches per binding site by phylogroup and papG class) | `scripts/fig_primer_lollipop.py` | `results/figures/fig2a_primer_lollipop.*`, `fig2a_lollipop_*.tsv` |
+| Agreement between the UPEC and NCBI genomes (Spearman) | `scripts/collection_agreement.py` | `results/collection_agreement/` |
 | Supp. tables on binding-site mismatches and presence | `scripts/tables_s_primer_conservation.py` | `results/figures/tableS_*` |
 | Clinical isolates: phylogroup, LF mismatches, time to threshold (Supp. table) | `scripts/clinical_phylogroups.py` | `results/clinical_phylogroups/` |
 | uidA target region intact/absent/truncated; contig-end check | `scripts/uida_ncbi_screen.py`, `scripts/uida_nonintact_check.py` | `results/ncbi_ecoli_uida/`, `results/uida_nonintact/` |

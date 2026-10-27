@@ -1,0 +1,4 @@
+phylogroups with >= 10 genomes in both collections: A, B1, B2, C, D, F (cells = 48)
+Spearman rho = 0.92 (p = 2.8e-20); Pearson r = 0.96
+absolute difference in the share of genomes with >= 1 mismatch: median 0.9 pp, maximum 39 pp
+largest differences: D/LF +39; D/F3 +39; D/F2 +31; D/F1c -30; D/LB -27; C/F1c -19
