@@ -33,7 +33,7 @@ XPAD = 4
 MIN_GROUP = 10
 
 mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
-                     "font.size": 8, "pdf.fonttype": 42, "svg.fonttype": "none"})
+                     "font.size": 8, "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig2a"})
 
 
 def best_mismatches(q, text):
