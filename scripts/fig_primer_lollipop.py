@@ -17,6 +17,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 
 from fig_primer_map import MIN_GROUP, NAMED, ROLE_COLOR, ROLE_LABEL, XPAD, draw_map, fmt, load_site_mismatches, sites_for
@@ -54,14 +55,53 @@ def papg_long():
     return pd.concat(parts, ignore_index=True)
 
 
-def block(fig, gs, st, xmax, groups, values, ymax, title, sub, xlabel=True):
+CONNECT = []   # (gene axis, primer-map axis, [(gene position, amplicon position), ...]) -> zoom lines drawn after layout
+
+
+def draw_zoom_lines(fig):
+    """Dashed lines from the amplicon edges in the gene strip to the ends of the primer map (figure coordinates)."""
+    fig.canvas.draw()
+    inv = fig.transFigure.inverted()
+    for axg, axt, ends in CONNECT:
+        for xg, xa in ends:
+            x0, y0 = inv.transform(axg.transData.transform((xg, 0)))
+            x1, y1 = inv.transform(axt.transData.transform((xa, 1.58)))
+            fig.add_artist(Line2D([x0, x1], [y0, y1], transform=fig.transFigure, color="#898781", lw=0.7,
+                                  ls=(0, (3, 2)), zorder=5))
+
+
+def gene_strip(ax, target, st):
+    """Whole gene of the design strain: % of genomes (UPEC collection) with a variant at each position; amplicon shaded.
+    For papGII the primers lie on the reverse strand, so the gene axis is reversed (F3 -> B3 runs left to right)."""
+    pv = pd.read_csv(RESULTS / "gene_scan" / target / "position_variability.tsv", sep="\t")
+    gs_ = pd.read_csv(RESULTS / "gene_scan" / target / "gene_sites.tsv", sep="\t").set_index("feature")
+    lo, hi, strand = int(gs_.loc["amplicon", "gene_start"]), int(gs_.loc["amplicon", "gene_end"]), gs_.loc["amplicon", "strand"]
+    pct = 100 * (pv.n_substitution + pv.n_gap) / pv.n_covered.where(pv.n_covered > 0)
+    ax.axvspan(lo, hi, color="#e8e6df", lw=0, zorder=0)
+    ax.bar(pv.position, pct, width=1.0, color="#52514e", lw=0, zorder=2)
+    L = len(pv)
+    ax.set_xlim((L + 1, 0) if strand == "-" else (0, L + 1)); ax.set_ylim(0, 100); ax.set_yticks([0, 50, 100])
+    ax.set_xticks([1, lo, hi, L]); ax.xaxis.tick_top()
+    ax.tick_params(axis="x", labelsize=6, colors=INK2, length=2, top=True, bottom=False, labeltop=True, labelbottom=False)
+    ax.tick_params(axis="y", labelsize=6, colors=INK2, length=2); ax.set_ylabel("Variant (%)", fontsize=6.5, color=INK2)
+    for sp in ("top", "right"): ax.spines[sp].set_visible(False)
+    for sp in ("left", "bottom"): ax.spines[sp].set_color("#c3c2b7")
+    return lo, hi, strand
+
+
+def block(fig, gs, st, xmax, groups, values, ymax, title, sub, target=None, xlabel=True):
     """gs: subgridspec with 1 + len(groups) rows (track, group rows)."""
-    axt = fig.add_subplot(gs[0]); draw_map(axt, st, xmax)
-    axt.text(-XPAD, 1.45, title, ha="left", va="bottom", fontsize=9, fontstyle="italic", color=INK)
-    axt.text(xmax, 1.45, sub, ha="right", va="bottom", fontsize=6.5, color=INK2)
+    axg = fig.add_subplot(gs[0])
+    lo, hi, strand = gene_strip(axg, target, st)
+    axg.set_title(title, loc="left", fontsize=9, fontstyle="italic", color=INK, pad=17)
+    axg.text(1.0, 1.36, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=6.2, color=INK2)
+    axt = fig.add_subplot(gs[1]); draw_map(axt, st, xmax)
+    amp_len = st.end.max()
+    ends = ((lo, 1), (hi, amp_len)) if strand == "+" else ((hi, 1), (lo, amp_len))
+    CONNECT.append((axg, axt, ends))
     axes = []
     for i, (key, label, c, m) in enumerate(groups):
-        ax = fig.add_subplot(gs[1 + i], sharex=axt)
+        ax = fig.add_subplot(gs[2 + i], sharex=axt)
         for _, r in st.iterrows():
             ax.axvspan(r.start - 1, r.end, color="#f4f3ef", lw=0, zorder=0)
             y, x = values[key][r.site], (r.start - 1 + r.end) / 2
@@ -114,21 +154,23 @@ def main():
     gp = [(a, f"{l} (n={n_g[a]:,})", COLORS[i], MARKERS[i]) for i, (a, l) in enumerate(classes)]
     vp = {a: stat[stat.allele == a].set_index("site")["median"].to_dict() for a, _ in classes}
 
-    ROW, TRK = 8.5, 24.0                                   # mm per group row / primer map
-    total = (TRK + ROW * len(gu)) + (TRK + ROW * len(gp)) + 70
+    ROW, TRK, GENE = 8.5, 24.0, 17.0                       # mm per group row / primer map / gene-wide strip
+    h_u, h_p = GENE + TRK + ROW * len(gu), GENE + TRK + ROW * len(gp)
+    total = h_u + h_p + 84
     fig = plt.figure(figsize=(180 / 25.4, total / 25.4))
-    outer = fig.add_gridspec(2, 1, height_ratios=[TRK + ROW * len(gu), TRK + ROW * len(gp)], hspace=0.2)
-    gs_u = outer[0].subgridspec(1 + len(gu), 1, height_ratios=[TRK] + [ROW] * len(gu), hspace=0.12)
-    gs_p = outer[1].subgridspec(1 + len(gp), 1, height_ratios=[TRK] + [ROW] * len(gp), hspace=0.12)
+    outer = fig.add_gridspec(2, 1, height_ratios=[h_u, h_p], hspace=0.2)
+    gs_u = outer[0].subgridspec(2 + len(gu), 1, height_ratios=[GENE, TRK] + [ROW] * len(gu), hspace=0.3)
+    gs_p = outer[1].subgridspec(2 + len(gp), 1, height_ratios=[GENE, TRK] + [ROW] * len(gp), hspace=0.3)
     block(fig, gs_u, u, xmax, gu, vu, ymax, "uidA",
-          f"{u.end.max()}-bp amplicon · nt {u_pos[0]}–{u_pos[1]} of {u_len}-bp gene · Clermont phylogroups, UPEC + NCBI pooled")
+          f"{u.end.max()}-bp amplicon (nt {u_pos[0]}–{u_pos[1]}) of the {u_len}-bp gene · variants: UPEC (n = 738)", target="uidA")
     block(fig, gs_p, p, xmax, gp, vp, ymax, "papGII",
-          f"{p.end.max()}-bp amplicon · nt {p_pos[0]}–{p_pos[1]} of {p_len}-bp gene · papG classes, UPEC + NCBI pooled")
-    fig.text(0.5, 0.043, f"Lollipop height = median number of mismatches to the primer (y-axis: 0–{ymax} nt, the length of the longest primer binding site)",
+          f"{p.end.max()}-bp amplicon (nt {p_pos[0]}–{p_pos[1]}) of the {p_len}-bp gene · variants: papGII genomes of UPEC (n = 140); axis reversed", target="papGII")
+    fig.text(0.5, 0.043, f"Rows: {'Clermont phylogroups' if False else 'groups'}, UPEC + NCBI pooled. Lollipop height = median number of mismatches to the primer (y-axis: 0–{ymax} nt, the length of the longest primer binding site)",
              ha="center", va="center", fontsize=6.8, color=INK2)
     role_handles = [Patch(color=ROLE_COLOR[k], label=ROLE_LABEL[k]) for k in ROLE_COLOR]
     fig.legend(handles=role_handles, loc="lower center", ncol=3, frameon=False, fontsize=7, bbox_to_anchor=(0.5, 0.0))
     fig.subplots_adjust(left=0.17, right=0.98, top=0.96, bottom=0.105)
+    draw_zoom_lines(fig)
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "fig_primer_lollipop.py"}, "svg": {"Date": None}}.get(ext)
         fig.savefig(OUT / f"fig2a_primer_lollipop.{ext}", dpi=600 if ext == "png" else None, bbox_inches="tight", metadata=meta)
