@@ -28,8 +28,9 @@ papGII directly from urine (Rogenmoser et al.). Raw sequencing reads: ENA projec
 | `scripts/clinical_phylogroups.py` | `results/clinical_phylogroups/` | Clinical isolates: phylogroup, uidA LF primer mismatches and time to threshold |
 | `scripts/papg_site_scan.py` (+ `papg_site_scan.sbatch`) | `results/papg_site_scan/` | Mismatches of the papGII binding sites to every papG locus (typed against PapG-I to PapG-IV) of the 738 UPEC genomes; `results/papg_site_scan_lamp/` = the clinical isolates |
 | `scripts/uida_ncbi_screen.py`, `ncbi_ecoli_uida.sbatch` | `results/ncbi_ecoli_uida/` | uidA binding sites in all NCBI RefSeq complete E. coli genomes (download, screen, EzClermont phylogroups) |
+| `scripts/papg_site_scan.py` (NCBI run) | `results/papg_site_scan_ncbi/` | papGII binding sites vs papG loci of the 5,493 NCBI RefSeq genomes (same method as the UPEC run) |
 | `scripts/uida_nonintact_check.py` | `results/uida_nonintact/` | Contig end vs genuine truncation for genomes without an intact uidA target |
-| `scripts/fig_primer_map.py` | `results/figures/` | Figure 2A: primer binding sites on both amplicons; median mismatches of the uidA sites per phylogroup and of the papGII sites per papG allele (papGII–IV; papGI reference) |
+| `scripts/fig_primer_map.py` | `results/figures/` | Figure 2A: primer binding sites on both amplicons; median mismatches of the uidA sites per phylogroup and of the papGII sites per papG allele, shown separately for the UPEC collection and the NCBI RefSeq genomes |
 | `scripts/tables_s_primer_conservation.py` | `results/figures/` | Supplementary tables: per-site mismatches to the primers in 738 UPEC genomes (descriptive) and presence of the papGII binding sites per papG allele group |
 
 Shared settings (fluorescence threshold ≥ 3-fold of cycle 1; time thresholds uidA 30 min, papGII 23 min) are in
