@@ -1,97 +1,33 @@
-		site	0
-PapG-II	median	B1c	1.0
-PapG-II	median	B2	0.0
-PapG-II	median	B3	0.0
-PapG-II	median	F1c	0.0
-PapG-II	median	F2	0.0
-PapG-II	median	F3	0.0
-PapG-II	median	LB	0.0
-PapG-II	median	LF	0.0
-PapG-II	min	B1c	0.0
-PapG-II	min	B2	0.0
-PapG-II	min	B3	0.0
-PapG-II	min	F1c	0.0
-PapG-II	min	F2	0.0
-PapG-II	min	F3	0.0
-PapG-II	min	LB	0.0
-PapG-II	min	LF	0.0
-PapG-II	max	B1c	2.0
-PapG-II	max	B2	2.0
-PapG-II	max	B3	1.0
-PapG-II	max	F1c	1.0
-PapG-II	max	F2	1.0
-PapG-II	max	F3	0.0
-PapG-II	max	LB	1.0
-PapG-II	max	LF	1.0
-PapG-III	median	B1c	11.0
-PapG-III	median	B2	8.0
-PapG-III	median	B3	9.0
-PapG-III	median	F1c	3.0
-PapG-III	median	F2	1.0
-PapG-III	median	F3	0.0
-PapG-III	median	LB	10.0
-PapG-III	median	LF	1.0
-PapG-III	min	B1c	10.0
-PapG-III	min	B2	8.0
-PapG-III	min	B3	9.0
-PapG-III	min	F1c	2.0
-PapG-III	min	F2	1.0
-PapG-III	min	F3	0.0
-PapG-III	min	LB	10.0
-PapG-III	min	LF	1.0
-PapG-III	max	B1c	11.0
-PapG-III	max	B2	8.0
-PapG-III	max	B3	9.0
-PapG-III	max	F1c	4.0
-PapG-III	max	F2	1.0
-PapG-III	max	F3	0.0
-PapG-III	max	LB	11.0
-PapG-III	max	LF	1.0
-PapG-IV	median	B1c	10.0
-PapG-IV	median	B2	8.0
-PapG-IV	median	B3	9.0
-PapG-IV	median	F1c	7.0
-PapG-IV	median	F2	5.0
-PapG-IV	median	F3	8.0
-PapG-IV	median	LB	8.0
-PapG-IV	median	LF	5.0
-PapG-IV	min	B1c	10.0
-PapG-IV	min	B2	8.0
-PapG-IV	min	B3	9.0
-PapG-IV	min	F1c	7.0
-PapG-IV	min	F2	5.0
-PapG-IV	min	F3	8.0
-PapG-IV	min	LB	8.0
-PapG-IV	min	LF	5.0
-PapG-IV	max	B1c	10.0
-PapG-IV	max	B2	8.0
-PapG-IV	max	B3	9.0
-PapG-IV	max	F1c	7.0
-PapG-IV	max	F2	5.0
-PapG-IV	max	F3	8.0
-PapG-IV	max	LB	8.0
-PapG-IV	max	LF	5.0
-PapG-I	median	B1c	9.0
-PapG-I	median	B2	8.0
-PapG-I	median	B3	8.0
-PapG-I	median	F1c	7.0
-PapG-I	median	F2	10.0
-PapG-I	median	F3	6.0
-PapG-I	median	LB	7.0
-PapG-I	median	LF	10.0
-PapG-I	min	B1c	9.0
-PapG-I	min	B2	8.0
-PapG-I	min	B3	8.0
-PapG-I	min	F1c	7.0
-PapG-I	min	F2	10.0
-PapG-I	min	F3	6.0
-PapG-I	min	LB	7.0
-PapG-I	min	LF	10.0
-PapG-I	max	B1c	9.0
-PapG-I	max	B2	8.0
-PapG-I	max	B3	8.0
-PapG-I	max	F1c	8.0
-PapG-I	max	F2	10.0
-PapG-I	max	F3	6.0
-PapG-I	max	LB	7.0
-PapG-I	max	LF	10.0
+allele	site	median	min	max	genomes
+PapG-I	B1c	9.0	9	9	3
+PapG-I	B2	8.0	8	8	3
+PapG-I	B3	8.0	8	8	3
+PapG-I	F1c	7.0	7	8	3
+PapG-I	F2	10.0	10	10	3
+PapG-I	F3	6.0	6	6	3
+PapG-I	LB	7.0	7	7	3
+PapG-I	LF	10.0	10	10	3
+PapG-II	B1c	1.0	0	2	645
+PapG-II	B2	0.0	0	2	645
+PapG-II	B3	0.0	0	1	645
+PapG-II	F1c	0.0	0	1	645
+PapG-II	F2	0.0	0	1	645
+PapG-II	F3	0.0	0	0	645
+PapG-II	LB	0.0	0	1	645
+PapG-II	LF	0.0	0	1	645
+PapG-III	B1c	11.0	10	11	239
+PapG-III	B2	8.0	8	8	239
+PapG-III	B3	9.0	9	9	239
+PapG-III	F1c	3.0	2	4	239
+PapG-III	F2	1.0	1	1	239
+PapG-III	F3	0.0	0	0	239
+PapG-III	LB	10.0	10	11	239
+PapG-III	LF	1.0	1	1	239
+PapG-IV	B1c	10.0	10	10	87
+PapG-IV	B2	8.0	8	8	87
+PapG-IV	B3	9.0	9	9	87
+PapG-IV	F1c	7.0	7	7	87
+PapG-IV	F2	5.0	5	5	87
+PapG-IV	F3	8.0	8	8	87
+PapG-IV	LB	8.0	8	8	87
+PapG-IV	LF	5.0	5	5	87
