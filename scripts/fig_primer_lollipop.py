@@ -1,6 +1,7 @@
 """Figure 2A (lollipop version): LAMP primer binding sites and median mismatches to the primers.
 
-Per target: the binding sites as a track (top) and one lollipop row per group underneath, aligned to the track:
+Per target: the primer map (top; forward primers above, reverse primers below the amplicon) and one lollipop row per
+group underneath, aligned to it:
 - uidA: median number of mismatches to the primer at each binding site, per Clermont phylogroup (UPEC collection +
   NCBI RefSeq complete genomes pooled; genomes with the amplicon region present).
 - papGII: median number of mismatches at the best-matching papG locus of each genome, per papG class (both
@@ -16,17 +17,14 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.lines import Line2D
-from matplotlib.patches import Polygon
+from matplotlib.patches import Patch
 
-from fig_primer_map import MIN_GROUP, NAMED, XPAD, fmt, load_site_mismatches, sites_for
+from fig_primer_map import MIN_GROUP, NAMED, ROLE_COLOR, ROLE_LABEL, XPAD, draw_map, fmt, load_site_mismatches, sites_for
 from lamp_common import DATA, RESULTS
 
 OUT = RESULTS / "figures"
 ORDER = ["F3", "F2", "LF", "F1c", "B1c", "LB", "B2", "B3"]
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e1e0d9"
-ROLE_TINT = {"outer": "#cfe0f7", "inner": "#fbd9cb", "loop": "#cdeee1"}          # pale tints of the role colours
-ROLE_LABEL = {"outer": "Outer (F3, B3)", "inner": "Inner (F2, F1c, B1c, B2)", "loop": "Loop (LF, LB)"}
 COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#4a3aa7", "#e34948"]   # fixed order
 MARKERS = ["o", "s", "^", "D", "v", "P", "h", "X"]
 PHYLO = ["A", "B1", "B2", "C", "D", "E", "F", "G"]
@@ -56,24 +54,11 @@ def papg_long():
     return pd.concat(parts, ignore_index=True)
 
 
-def track(ax, st):
-    """Binding sites as pointed boxes (tip = primer direction on the amplicon), labelled, tinted by primer role."""
-    for _, r in st.iterrows():
-        tip = min(3.0, (r.end - r.start + 1) * 0.25)
-        if r.orientation == "+":
-            pts = [(r.start - 1, 0), (r.end - tip, 0), (r.end, 0.5), (r.end - tip, 1), (r.start - 1, 1)]
-        else:
-            pts = [(r.end, 0), (r.start - 1 + tip, 0), (r.start - 1, 0.5), (r.start - 1 + tip, 1), (r.end, 1)]
-        ax.add_patch(Polygon(pts, closed=True, fc=ROLE_TINT[r.role], ec="#898781", lw=0.5))
-        ax.text((r.start - 1 + r.end) / 2, 0.5, r.site, ha="center", va="center", fontsize=6.8, color=INK, fontweight="bold")
-    ax.set_ylim(-0.1, 1.1); ax.axis("off")
-
-
 def block(fig, gs, st, xmax, groups, values, ymax, title, sub, xlabel=True):
     """gs: subgridspec with 1 + len(groups) rows (track, group rows)."""
-    axt = fig.add_subplot(gs[0]); track(axt, st); axt.set_xlim(-XPAD, xmax)
-    axt.set_title(title, loc="left", fontsize=9, fontstyle="italic", color=INK, pad=4)
-    axt.text(1.0, 1.15, sub, transform=axt.transAxes, ha="right", va="bottom", fontsize=6.5, color=INK2)
+    axt = fig.add_subplot(gs[0]); draw_map(axt, st, xmax)
+    axt.text(-XPAD, 1.45, title, ha="left", va="bottom", fontsize=9, fontstyle="italic", color=INK)
+    axt.text(xmax, 1.45, sub, ha="right", va="bottom", fontsize=6.5, color=INK2)
     axes = []
     for i, (key, label, c, m) in enumerate(groups):
         ax = fig.add_subplot(gs[1 + i], sharex=axt)
@@ -129,7 +114,7 @@ def main():
     gp = [(a, f"{l} (n={n_g[a]:,})", COLORS[i], MARKERS[i]) for i, (a, l) in enumerate(classes)]
     vp = {a: stat[stat.allele == a].set_index("site")["median"].to_dict() for a, _ in classes}
 
-    ROW, TRK = 8.5, 9.0                                    # mm per group row / track
+    ROW, TRK = 8.5, 24.0                                   # mm per group row / primer map
     total = (TRK + ROW * len(gu)) + (TRK + ROW * len(gp)) + 70
     fig = plt.figure(figsize=(180 / 25.4, total / 25.4))
     outer = fig.add_gridspec(2, 1, height_ratios=[TRK + ROW * len(gu), TRK + ROW * len(gp)], hspace=0.2)
@@ -141,8 +126,7 @@ def main():
           f"{p.end.max()}-bp amplicon · nt {p_pos[0]}–{p_pos[1]} of {p_len}-bp gene · papG classes, UPEC + NCBI pooled")
     fig.text(0.5, 0.043, f"Lollipop height = median number of mismatches to the primer (y-axis: 0–{ymax} nt, the length of the longest primer binding site)",
              ha="center", va="center", fontsize=6.8, color=INK2)
-    role_handles = [Line2D([], [], marker="s", color=ROLE_TINT[k], mec="#898781", mew=0.5, ls="none", ms=6, label=ROLE_LABEL[k])
-                    for k in ROLE_TINT]
+    role_handles = [Patch(color=ROLE_COLOR[k], label=ROLE_LABEL[k]) for k in ROLE_COLOR]
     fig.legend(handles=role_handles, loc="lower center", ncol=3, frameon=False, fontsize=7, bbox_to_anchor=(0.5, 0.0))
     fig.subplots_adjust(left=0.17, right=0.98, top=0.96, bottom=0.105)
     for ext in ("pdf", "png", "svg"):
