@@ -60,6 +60,7 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
 
 SUB_SEP = " · "   # separator in the amplicon subtitle (the composite figure uses a line break)
 LETTER_ARTIST = None
+SCALE = None   # (norm, vmax) of the last panel drawn
 TITLE_SHIFT = 0.07   # composite: target titles slightly right of the panel letter
 LETTER_KW = {"fontsize": 16, "fontweight": "bold", "family": "DejaVu Sans"}
 LETTER = None      # panel letter drawn left of the first target title (composite figure)
@@ -91,13 +92,17 @@ def draw_panel(fig, parent, dims, title_x=None):
     vu = {g: med.loc[g].to_dict() for g in keep}
     vp = {a: stat.loc[a].to_dict() for a, _ in classes}
     h_u, h_p = GENE + ZOOM + TRK + TIGHT + ROW * len(gu), GENE + ZOOM + TRK + TIGHT + ROW * len(gp)
-    outer = parent.subgridspec(4, 1, height_ratios=[h_u, BETWEEN, h_p, CB], hspace=0)
+    outer = parent.subgridspec(4, 1, height_ratios=[h_u, BETWEEN, h_p, max(CB, 1e-3)], hspace=0)
     gs_u = outer[0].subgridspec(5, 1, height_ratios=[GENE, ZOOM, TRK, TIGHT, ROW * len(gu)], hspace=0)
     gs_p = outer[2].subgridspec(5, 1, height_ratios=[GENE, ZOOM, TRK, TIGHT, ROW * len(gp)], hspace=0)
     block(fig, gs_u, u, xmax, gu, vu, norm, "uidA",
           f"{u.end.max()}-bp amplicon (nt {u_pos[0]}–{u_pos[1]}) of the {u_len}-bp gene · variants: UPEC + NCBI genomes (n = 6,231)", "uidA")
     block(fig, gs_p, p, xmax, gp, vp, norm, "papGII",
           f"{p.end.max()}-bp amplicon (nt {p_pos[0]}–{p_pos[1]}) of the {p_len}-bp gene · variants: papGII genomes of UPEC + NCBI (n = 645); axis reversed", "papGII")
+    global SCALE
+    SCALE = (norm, vmax)
+    if CB <= 0:          # composite figure draws its own (vertical) colour bar
+        return h_u + h_p + BETWEEN
     holder = fig.add_subplot(outer[3]); holder.axis("off")
     cax = holder.inset_axes([0.3, 0.32, 0.4, 0.1])
     cb = fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=CMAP), cax=cax, orientation="horizontal", ticks=range(0, vmax + 1, 1))

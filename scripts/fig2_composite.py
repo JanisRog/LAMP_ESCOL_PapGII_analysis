@@ -43,18 +43,26 @@ def lod_panel(ax, target, letter):
 
 
 def main():
-    dims = (4.6, 17.0, 12.0, 6.0, 0.5, 20.0, 20.0)
+    dims = (4.6, 17.0, 12.0, 6.0, 0.5, 20.0, 0.0)
     ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN, CB = dims
     hA = (GENE + ZOOM + TRK + TIGHT) * 2 + ROW * 12 + BETWEEN + CB
     W = 295.0
     fig = plt.figure(figsize=(W / 25.4, (hA + 10) / 25.4))
-    top = fig.add_gridspec(1, 2, width_ratios=[92, 130], wspace=0.3, left=40 / W, right=0.99, top=0.975, bottom=0.03)
+    top = fig.add_gridspec(1, 2, width_ratios=[92, 130], wspace=0.4, left=40 / W, right=0.99, top=0.975, bottom=0.03)
     H.SUB_SEP, H.LETTER = None, "(A)"
     H.draw_panel(fig, top[0], dims, title_x=-0.3)
     right = top[1].subgridspec(2, 1, hspace=0.42)
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")
     axc = lod_panel(fig.add_subplot(right[1]), "papGII", "(C)")
     draw_zoom_lines(fig)
+    # vertical colour bar right of panel A, centred between the uidA and papGII heatmaps
+    norm, vmax = H.SCALE
+    pa = top[0].get_position(fig)
+    yc, hgt = (pa.y0 + pa.y1) / 2, 0.36 * (pa.y1 - pa.y0)
+    cax = fig.add_axes([pa.x1 + 5 / W, yc - hgt / 2, 3 / W, hgt])
+    cb = fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=H.CMAP), cax=cax, ticks=range(0, vmax + 1))
+    cb.outline.set_visible(False); cb.ax.tick_params(labelsize=7, colors=H.INK2, length=2)
+    cb.set_label("Median mismatches to the primer", fontsize=7.5, color=H.INK2)
     a = H.LETTER_ARTIST                                     # (B) at the same height as (A)
     ya = fig.transFigure.inverted().transform(a.get_transform().transform(a.get_position()))[1]
     pb = axb.get_position()
