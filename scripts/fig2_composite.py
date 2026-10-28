@@ -91,7 +91,7 @@ def lod_panel(ax, target, letter):
 
 
 def main():
-    dims = (4.6, 10.0, 12.0, 6.0, 1.5, 30.0, 0.0)
+    dims = (4.6, 10.0, 12.0, 6.0, 5.5, 30.0, 0.0)
     ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN, CB = dims
     hA = (GENE + ZOOM + TRK + TIGHT) * 2 + ROW * 12 + BETWEEN + CB
     W = 295.0
@@ -129,7 +129,8 @@ def main():
     labels = [c.replace("10^", "10$^{") + "}$" if c.startswith("10^") else c for c in CONDS]
     leg = fig.legend(handles, labels, title="CFU/ml", ncol=len(CONDS), loc="upper center", frameon=False,
                bbox_to_anchor=(bC[0] + bC[2] / 2, nC[1] + 0.004 - LEG_DROP), bbox_transform=fig.transFigure,
-               prop={"family": "DejaVu Sans", "size": 11}, title_fontproperties={"family": "DejaVu Sans", "size": 12},
+               prop={"family": "DejaVu Sans", "size": LOD_FONTS["axes.titlesize"] * sc},
+               title_fontproperties={"family": "DejaVu Sans", "size": LOD_FONTS["axes.titlesize"] * sc},   # = size of the B/C plot titles on the page
                handlelength=1.6, handletextpad=0.4, columnspacing=1.3, borderaxespad=0)
     # vertical colour bar right of panel A, centred between the uidA and papGII heatmaps
     norm, vmax = H.SCALE
