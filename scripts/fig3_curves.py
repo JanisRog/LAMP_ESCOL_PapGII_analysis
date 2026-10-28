@@ -17,6 +17,7 @@ mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "
                      "mathtext.fontset": "custom", "mathtext.rm": "Arial", "mathtext.it": "Arial:italic", "mathtext.bf": "Arial:bold",
                      "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig3"})
 TITLE, LABEL, TICK, LEGEND = 9.8, 8.8, 7.9, 9.8
+LETTER_SHIFT_B = 4.0   # mm: panel letter (B) moved further left
 LETTER = {"fontsize": 16, "fontweight": "bold", "family": "DejaVu Sans"}
 PANELS = [("uidA", "culture_results.csv", "$\\it{E. coli}$ Culture", "(A)"), ("papGII", "papg_results.csv", "$\\it{papGII}$ WGS", "(B)")]
 
@@ -54,7 +55,7 @@ def main():
         ax.set_title(f"Fluorescence change over time $\\it{{{target}}}$ (Median ± IQR)", fontsize=TITLE, pad=7)
         ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.23), ncol=2, frameon=False, fontsize=LEGEND,
                   handlelength=1.8, columnspacing=1.6, borderaxespad=0)      # legend below the plot, as in Figure 2
-        fig.text((x0 - 14) / W, (H - 1.5) / H, letter, va="top", **LETTER)
+        fig.text((x0 - 14 - (LETTER_SHIFT_B if i == 1 else 0)) / W, (H - 1.5) / H, letter, va="top", **LETTER)
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "fig3_curves.py"}, "svg": {"Date": None}}.get(ext)
         fig.savefig(OUT / f"fig3.{ext}", dpi=600 if ext == "png" else None, metadata=meta)
