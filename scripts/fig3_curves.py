@@ -17,8 +17,8 @@ OUT = RESULTS / "figures"
 mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
                      "mathtext.fontset": "custom", "mathtext.rm": "Arial", "mathtext.it": "Arial:italic", "mathtext.bf": "Arial:bold",
                      "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig3"})
-TITLE, LABEL, TICK, LEGEND = 9.8, 8.8, 7.9, 9.8
-SC = 0.465   # Figure 2 B/C are the 10 x 6 in notebook plots scaled to this factor; line weights are scaled the same way
+SC = 0.465   # Figure 2 B/C are the 10 x 6 in notebook plots scaled to this factor (fonts 21 / 19 / 17 pt, line weights scaled the same way)
+TITLE, LABEL, TICK, LEGEND = 21 * SC, 19 * SC, 17 * SC, 21 * SC
 mpl.rcParams.update({"lines.linewidth": 1.5 * SC, "axes.linewidth": 0.8 * SC, "grid.linewidth": 0.8 * SC,
                      "xtick.major.size": 3.5 * SC, "ytick.major.size": 3.5 * SC,
                      "xtick.major.width": 0.8 * SC, "ytick.major.width": 0.8 * SC})
