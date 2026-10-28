@@ -1,5 +1,7 @@
 # LAMP assay for E. coli (uidA) and papGII – analysis code
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23740154.svg)](https://doi.org/10.5281/zenodo.23740154)
+
 Code and data to reproduce the analyses of the LAMP assay for rapid detection of *Escherichia coli* (uidA) and papGII
 directly from urine (Rogenmoser et al.). Raw sequencing reads: ENA project PRJEB106156.
 

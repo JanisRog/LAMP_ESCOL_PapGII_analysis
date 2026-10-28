@@ -27,6 +27,7 @@ authors:
   - family-names: Egli
     given-names: Adrian
     affiliation: "Institute of Medical Microbiology, University of Zurich"
+doi: 10.5281/zenodo.23740154
 repository-code: "https://github.com/JanisRog/LAMP_ESCOL_PapGII_analysis"
 license: MIT
 keywords: [LAMP, UPEC, papGII, urinary tract infection, diagnostics]
