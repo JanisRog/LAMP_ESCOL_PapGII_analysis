@@ -57,11 +57,14 @@ def style(ax, xlabel, ylabel, title):
     ax.set_title(title, fontsize=TITLE, pad=7)
 
 
+LW = 2.6 * SC   # metric curves in panels A, B, D, E (thicker than the default for readability)
+
+
 def metric_lines(ax, x, vals):
-    ax.plot(x, vals[0], color="C0", lw=2 * SC)
-    ax.plot(x, vals[1], color="C1", ls=":")
-    ax.plot(x, vals[2], color="C2", ls="-.")
-    ax.plot(x, vals[3], color="C3", alpha=0.7)
+    ax.plot(x, vals[0], color="C0", lw=LW * 1.25)
+    ax.plot(x, vals[1], color="C1", ls=":", lw=LW * 1.2)
+    ax.plot(x, vals[2], color="C2", ls="-.", lw=LW)
+    ax.plot(x, vals[3], color="C3", alpha=0.8, lw=LW)
 
 
 def main():
@@ -87,8 +90,8 @@ def main():
         tv = np.array([metrics(fc.loc[:t].max().values, y, FIXED_F) for t in times]).T
         ax, x0 = axes_at(col, 0, box_w, row_h)
         metric_lines(ax, times, tv)
-        ax.axvline(T, color="red", ls="--")
-        if target == "papGII": ax.axvline(UIDA_T, color="green", ls="--")
+        ax.axvline(T, color="red", ls="--", lw=LW)
+        if target == "papGII": ax.axvline(UIDA_T, color="green", ls="--", lw=LW)
         ax.set_xlim(-1, 41); style(ax, "Time [min]", "Score", f"Diagnostic Metrics for {gene} vs Time (Fluorescence ≥ 3-fold change)")
         fig.text((x0 - 14) / W, (H - 1.5 - 0 * pitch) / H, f"({'ABCDEF'[col * 3]})", va="top", **LETTER)
         # --- fluorescence sweep at the selected T
@@ -97,7 +100,7 @@ def main():
         fv = np.array([metrics(mx, y, f) for f in fluos]).T
         ax, x0 = axes_at(col, 1, box_w, row_h)
         metric_lines(ax, fluos, fv)
-        ax.axvline(FIXED_F, color="red", ls="--")
+        ax.axvline(FIXED_F, color="red", ls="--", lw=LW)
         ax.set_xlim(-0.5, fluos.max() + 0.5)
         style(ax, "Fluorescence Threshold (fold-change)", "Score", f"Diagnostic Metrics for {gene} vs Fluorescence (Time = {T} min)")
         fig.text((x0 - 14) / W, (H - 1.5 - pitch) / H, f"({'ABCDEF'[col * 3 + 1]})", va="top", **LETTER)
