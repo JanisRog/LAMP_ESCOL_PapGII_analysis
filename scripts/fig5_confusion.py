@@ -2,7 +2,7 @@
 
 (A) E. coli (uidA; time threshold 30 min, fluorescence threshold >= 3-fold) vs culture with MALDI-TOF;
 (B) papGII (23 min, >= 3-fold) vs whole genome sequencing. Cells: numbers of samples; margins: sensitivity, specificity, PPV
-and NPV in % (rounded to whole numbers). Same layout as the original figure; Arial. TP/FP/TN/FN follow lamp_common.time_to_threshold.
+and NPV in % (whole numbers) with exact (Clopper-Pearson) 95% confidence intervals. Same layout as the original figure; Arial. TP/FP/TN/FN follow lamp_common.time_to_threshold.
 
 Output: results/figures/fig5.{pdf,png,svg}
 """
@@ -12,6 +12,7 @@ import numpy as np
 from matplotlib.collections import LineCollection
 from matplotlib.patches import Rectangle
 
+from diagnostic_metrics_ci import clopper_pearson
 from lamp_common import RESULTS, TIME_THRESHOLD, load_samples
 
 OUT = RESULTS / "figures"
@@ -29,7 +30,9 @@ def counts(meta, target, ref_col):
 
 
 def pct(a, b):
-    return f"{100 * a / b:.0f}%"
+    """Proportion a/b in % (whole number) with the exact Clopper-Pearson 95% CI, e.g. '87%\n(72–96%)'."""
+    lo, hi = clopper_pearson(a, b)
+    return f"{100 * a / b:.0f}%\n({100 * lo:.0f}–{100 * hi:.0f}%)"
 
 
 def panel(ax, tp, fp, fn, tn, gene, ref_name):
@@ -58,13 +61,13 @@ def panel(ax, tp, fp, fn, tn, gene, ref_name):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     meta = load_samples()
-    fig, axes = plt.subplots(1, 2, figsize=(9.8, 3.6), gridspec_kw={"wspace": 0.75})
+    fig, axes = plt.subplots(1, 2, figsize=(10.4, 3.9), gridspec_kw={"wspace": 1.05})
     for ax, (target, ref_col, gene, ref_name, letter) in zip(axes, PANELS):
         tp, fp, fn, tn = counts(meta, target, ref_col)
         panel(ax, tp, fp, fn, tn, gene, ref_name)
-        ax.text(-0.52, 1.28, letter, transform=ax.transAxes, va="bottom", ha="left", **LETTER)
+        ax.text(-0.55, 1.28, letter, transform=ax.transAxes, va="bottom", ha="left", **LETTER)
         print(target, dict(TP=tp, FP=fp, FN=fn, TN=tn))
-    fig.subplots_adjust(left=0.12, right=0.93, top=0.78, bottom=0.2)
+    fig.subplots_adjust(left=0.11, right=0.90, top=0.78, bottom=0.2)
     for ext in ("pdf", "png", "svg"):
         meta_ = {"pdf": {"CreationDate": None, "Creator": "fig5_confusion.py"}, "svg": {"Date": None}}.get(ext)
         fig.savefig(OUT / f"fig5.{ext}", dpi=600 if ext == "png" else None, bbox_inches="tight", metadata=meta_)
