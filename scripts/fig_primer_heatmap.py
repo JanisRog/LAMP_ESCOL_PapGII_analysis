@@ -27,7 +27,7 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     axg = fig.add_subplot(gs[0])
     lo, hi, strand = gene_strip(axg, target, st)
     axg.tick_params(axis="both", labelsize=7.5); axg.set_ylabel("Variant (%)", fontsize=8, color=INK2)
-    axg.text(-0.215, 1.4, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
+    axg.text(TITLE_X, 1.4, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
     axg.text(1.0, 1.4, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=7.2, color=INK2)
     axt = fig.add_subplot(gs[2]); draw_map(axt, st, xmax)
     amp_len = st.end.max()
@@ -50,7 +50,16 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     return axt, ax
 
 
-def main():
+TITLE_X = -0.215   # x of the target titles (axes fraction of the gene strip)
+
+
+def draw_panel(fig, parent, dims, title_x=None):
+    """Draw the heatmap figure (both targets + colour bar) into the SubplotSpec `parent`.
+    dims = (ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN, CB) in mm. Returns the total height in mm."""
+    global TITLE_X
+    if title_x is not None:
+        TITLE_X = title_x
+    ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN, CB = dims
     u, u_pos, u_len = sites_for("uidA")
     p, p_pos, p_len = sites_for("papGII")
     xmax = max(u.end.max(), p.end.max()) + 6
@@ -68,22 +77,27 @@ def main():
     gp = [(a, f"{l} (n={n_g[a]:,})") for a, l in classes]
     vu = {g: med.loc[g].to_dict() for g in keep}
     vp = {a: stat.loc[a].to_dict() for a, _ in classes}
-
-    ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN = 8.5, 26.0, 18.0, 11.0, 0.5, 30.0   # mm; ZOOM = room for the zoom lines
     h_u, h_p = GENE + ZOOM + TRK + TIGHT + ROW * len(gu), GENE + ZOOM + TRK + TIGHT + ROW * len(gp)
-    fig = plt.figure(figsize=(180 / 25.4, (h_u + h_p + BETWEEN + 62) / 25.4))
-    outer = fig.add_gridspec(3, 1, height_ratios=[h_u, BETWEEN, h_p], hspace=0)
+    outer = parent.subgridspec(4, 1, height_ratios=[h_u, BETWEEN, h_p, CB], hspace=0)
     gs_u = outer[0].subgridspec(5, 1, height_ratios=[GENE, ZOOM, TRK, TIGHT, ROW * len(gu)], hspace=0)
     gs_p = outer[2].subgridspec(5, 1, height_ratios=[GENE, ZOOM, TRK, TIGHT, ROW * len(gp)], hspace=0)
     block(fig, gs_u, u, xmax, gu, vu, norm, "uidA",
           f"{u.end.max()}-bp amplicon (nt {u_pos[0]}–{u_pos[1]}) of the {u_len}-bp gene · variants: UPEC + NCBI genomes (n = 6,231)", "uidA")
     block(fig, gs_p, p, xmax, gp, vp, norm, "papGII",
           f"{p.end.max()}-bp amplicon (nt {p_pos[0]}–{p_pos[1]}) of the {p_len}-bp gene · variants: papGII genomes of UPEC + NCBI (n = 645); axis reversed", "papGII")
-    fig.subplots_adjust(left=0.17, right=0.98, top=0.96, bottom=0.085)
-    cax = fig.add_axes([0.37, 0.035, 0.26, 0.007])
+    holder = fig.add_subplot(outer[3]); holder.axis("off")
+    cax = holder.inset_axes([0.3, 0.32, 0.4, 0.1])
     cb = fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=CMAP), cax=cax, orientation="horizontal", ticks=range(0, vmax + 1, 1))
     cb.outline.set_visible(False); cb.ax.tick_params(labelsize=7.5, colors=INK2, length=2)
     cb.set_label("Median number of mismatches to the primer (UPEC + NCBI genomes pooled)", fontsize=8, color=INK2)
+    return h_u + h_p + BETWEEN + CB
+
+
+def main():
+    dims = (8.5, 26.0, 18.0, 11.0, 0.5, 30.0, 14.0)
+    fig = plt.figure(figsize=(180 / 25.4, (sum(dims[2:4]) * 2 + 2 * dims[1] + 12 * dims[0] + dims[5] + dims[6] + 62) / 25.4))
+    draw_panel(fig, fig.add_gridspec(1, 1)[0], dims)
+    fig.subplots_adjust(left=0.17, right=0.98, top=0.96, bottom=0.03)
     draw_zoom_lines(fig)
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "fig_primer_heatmap.py"}, "svg": {"Date": None}}.get(ext)
