@@ -10,6 +10,7 @@ import pandas as pd
 from matplotlib.lines import Line2D
 
 import fig_primer_heatmap as H
+import fig_primer_map as FM
 from fig_primer_lollipop import draw_zoom_lines
 from lamp_common import DATA, RESULTS
 
@@ -43,13 +44,14 @@ def lod_panel(ax, target, letter):
 
 
 def main():
-    dims = (4.6, 17.0, 12.0, 6.0, 0.5, 20.0, 0.0)
+    dims = (4.6, 10.0, 12.0, 6.0, 1.5, 30.0, 0.0)
     ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN, CB = dims
     hA = (GENE + ZOOM + TRK + TIGHT) * 2 + ROW * 12 + BETWEEN + CB
     W = 295.0
     fig = plt.figure(figsize=(W / 25.4, (hA + 10) / 25.4))
     top = fig.add_gridspec(1, 2, width_ratios=[92, 130], wspace=0.4, left=40 / W, right=0.99, top=0.975, bottom=0.03)
     H.SUB_SEP, H.LETTER = None, "(A)"
+    FM.LABEL_INSIDE, FM.PRIMER_FS = True, 7.5
     H.draw_panel(fig, top[0], dims, title_x=-0.3)
     right = top[1].subgridspec(2, 1, hspace=0.42)
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")

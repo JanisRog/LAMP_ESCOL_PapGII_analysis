@@ -65,7 +65,7 @@ def draw_zoom_lines(fig):
     for axg, axt, ends in CONNECT:
         for xg, xa in ends:
             x0, y0 = inv.transform(axg.transData.transform((xg, 0)))
-            x1, y1 = inv.transform(axt.transData.transform((xa, 1.58)))
+            x1, y1 = inv.transform(axt.transData.transform((xa, axt.get_ylim()[1] * 1.05)))
             fig.add_artist(Line2D([x0, x1], [y0, y1], transform=fig.transFigure, color="#898781", lw=0.7,
                                   ls=(0, (3, 2)), zorder=5))
 

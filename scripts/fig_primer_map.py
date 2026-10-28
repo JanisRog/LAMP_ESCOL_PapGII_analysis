@@ -32,6 +32,7 @@ INK, INK2 = "#0b0b0b", "#52514e"
 XPAD = 4
 MIN_GROUP = 10
 
+LABEL_INSIDE = False   # primer names inside the arrows (composite Figure 2)
 PRIMER_FS = 7.5   # primer-name labels on the map (fig_primer_heatmap.py enlarges it)
 mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
                      "font.size": 8, "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig2a"})
@@ -53,16 +54,23 @@ def sites_for(target):
 
 
 def draw_map(ax, st, xmax):
+    """Primer arrows above (forward) and below (reverse) the amplicon. LABEL_INSIDE puts the names in the arrows."""
     ax.plot([1, st.end.max()], [0, 0], color=INK2, lw=1.2, solid_capstyle="butt", zorder=1)
     for _, r in st.iterrows():
-        y = 0.55 if r.orientation == "+" else -0.55
-        x0, x1 = (r.start - 1, r.end) if r.orientation == "+" else (r.end, r.start - 1)
-        ax.add_patch(FancyArrow(x0, y, x1 - x0, 0, width=0.32, head_width=0.32, length_includes_head=True,
-                                head_length=min(6, abs(x1 - x0) * 0.35), color=ROLE_COLOR[r.role], lw=0, zorder=2))
-        up = y > 0
-        ax.text((r.start + r.end) / 2, y + (0.4 if up else -0.4), r.site, ha="center", va="bottom" if up else "top",
-                fontsize=PRIMER_FS, color=INK, fontweight="bold")
-    ax.set_xlim(-XPAD, xmax); ax.set_ylim(-1.5, 1.5); ax.axis("off")
+        up = r.orientation == "+"
+        y = (0.45 if up else -0.45) if LABEL_INSIDE else (0.55 if up else -0.55)
+        w = 0.7 if LABEL_INSIDE else 0.32
+        x0, x1 = (r.start - 1, r.end) if up else (r.end, r.start - 1)
+        head = min(6, abs(x1 - x0) * 0.35)
+        ax.add_patch(FancyArrow(x0, y, x1 - x0, 0, width=w, head_width=w, length_includes_head=True,
+                                head_length=head, color=ROLE_COLOR[r.role], lw=0, zorder=2))
+        if LABEL_INSIDE:
+            xc = (r.start - 1 + r.end) / 2 + (-head / 2 if up else head / 2)     # centre of the arrow body
+            ax.text(xc, y, r.site, ha="center", va="center", fontsize=PRIMER_FS, color="white", fontweight="bold", zorder=3)
+        else:
+            ax.text((r.start + r.end) / 2, y + (0.4 if up else -0.4), r.site, ha="center", va="bottom" if up else "top",
+                    fontsize=PRIMER_FS, color=INK, fontweight="bold")
+    ax.set_xlim(-XPAD, xmax); ax.set_ylim(*((-0.85, 0.85) if LABEL_INSIDE else (-1.5, 1.5))); ax.axis("off")
     ax.text(-XPAD, 0, "5′", ha="right", va="center", fontsize=PRIMER_FS - 0.5, color=INK2)
     ax.text(st.end.max() + 2, 0, "3′", ha="left", va="center", fontsize=PRIMER_FS - 0.5, color=INK2)
 
