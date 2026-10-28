@@ -21,6 +21,32 @@ from threshold_bootstrap import score_matrix, counts, youden
 from diagnostic_metrics_ci import clopper_pearson
 
 OUT = RESULTS / "supplement"
+
+# --- italics for gene and organism names (rich text) ---------------------------------------------------------------------------------------
+GENERA = ["Escherichia", "Klebsiella", "Enterobacter", "Enterococcus", "Proteus", "Morganella", "Pantoea", "Staphylococcus", "Streptococcus", "Aerococcus",
+          "Actinomyces", "Gardnerella", "Lactobacillus", "Candida"]
+ITALIC = re.compile(r"\b(?:" + "|".join(GENERA) + r")(?: (?!sp\.|spp\.)[a-z]{3,})?|\bE\. coli\b|\buidA\b|\bpapG(?:III|IV|II|I)?\b")
+
+
+def italicise(path):
+    """Set gene names (uidA, papG alleles) and organism names in italics in every text cell of the workbook (keeps bold headers)."""
+    from openpyxl import load_workbook
+    from openpyxl.cell.rich_text import CellRichText, TextBlock
+    from openpyxl.cell.text import InlineFont
+    wb = load_workbook(path, rich_text=True)
+    for ws in wb:
+        for row in ws.iter_rows():
+            for c in row:
+                if isinstance(c.value, str) and ITALIC.search(c.value):
+                    f = c.font
+                    mk = lambda it: InlineFont(rFont=f.name, sz=f.sz, b=bool(f.b), i=it)
+                    parts, pos = [], 0
+                    for m in ITALIC.finditer(c.value):
+                        if m.start() > pos: parts.append(TextBlock(mk(False), c.value[pos:m.start()]))
+                        parts.append(TextBlock(mk(True), m.group(0))); pos = m.end()
+                    if pos < len(c.value): parts.append(TextBlock(mk(False), c.value[pos:]))
+                    c.value = CellRichText(*parts)
+    wb.save(path)
 REF = {"uidA": "ecoli", "papGII": "wgs_papGII"}
 
 
@@ -56,7 +82,7 @@ def table1():
         "Sample": meta["sample"], "Sample ID": meta.sample_id,
         "Bacterial density (CFU/ml)": meta.cfu_category,
         "Culture (MALDI-TOF)": meta.culture_maldi, "E. coli by culture (1 = positive)": meta.ecoli,
-        "papGII by WGS (1 = positive)": meta.wgs_papGII, "papG alleles by WGS": meta["papG alleles (WGS)"], "Phylogroup": meta["Phylogroup"],
+        "papGII by WGS (1 = positive)": meta.wgs_papGII, "papG alleles by WGS": meta["papG alleles (WGS)"], "E. coli phylogroup": meta["Phylogroup"],
         "uidA LAMP result": meta.lamp_uidA, "uidA time to threshold (min)": meta.ttt_uidA,
         "papGII LAMP result": meta.lamp_papGII, "papGII time to threshold (min)": meta.ttt_papGII})
     out["uidA LAMP correct"] = (out["uidA LAMP result"] == out["E. coli by culture (1 = positive)"]).map({True: "yes", False: "no"})
@@ -176,6 +202,7 @@ def main():
         put(t7b, "Supp Table 7", "", first=False, startrow=len(t7) + 9)
         put(iso, "Supp Table 8", "Supplementary Table 8. E. coli isolates of the clinical urine samples: phylogroup, mismatches at the LF binding site and uidA time to threshold.",
             ["LF_mismatches_3prime: mismatches in the 3'-terminal part of the LF primer binding site."])
+    italicise(path)
     print("saved", path)
 
 
