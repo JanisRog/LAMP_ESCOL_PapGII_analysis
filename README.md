@@ -24,6 +24,7 @@ cluster-side steps (genome analyses) are listed below under "Genome analyses" an
 | Fig. 2B/C; threshold selection (Youden's index); confusion matrices | `notebooks/LAMP_analysis.ipynb` (runs top to bottom, figures displayed inline) | `notebooks/` holds the stored exports: confusion matrices (`confusion_matrix_*`) and lists of false-positive/false-negative samples (`FP_*`, `FN_*`) |
 | Sensitivity, specificity, PPV, NPV with exact 95% CI | `scripts/diagnostic_metrics_ci.py` | `results/diagnostic_metrics/` |
 | Classification of a new LAMP run with the study thresholds (TTT, positive/negative, NTC validity check) | `scripts/classify_lamp_run.py` (e.g. `python scripts/classify_lamp_run.py --target papGII --input data/all_measurements_papg.csv`) | table of calls on screen or `--output calls.tsv` |
+| Supplementary Fig. S1 (colorimetric LAMP photos) | `scripts/figS1_colorimetric.py` (cut-outs in `data/colorimetric/`; `--photos DIR` rebuilds them from the original HEIC photos) | `results/figures/figS1.*` |
 | Supplementary Tables 1-8 (one Excel workbook) | `scripts/supplementary_tables.py` (needs openpyxl) | `results/supplement/Supplementary_Tables.xlsx` |
 | Stability of the threshold selection (bootstrap, out-of-bag performance) | `scripts/threshold_bootstrap.py` | `results/threshold_bootstrap/` |
 | Time to threshold vs bacterial density, papGII status, primer set (Supp. table) | `scripts/cfu_time_to_threshold.py` | `results/cfu_ttt/` |
@@ -46,6 +47,7 @@ sets proposed by the NEB LAMP Primer Design Tool, `results/uidA_candidate_sets/`
 | `uida_lod_*.csv`, `papg_lod_*.csv` | Limit of detection: fluorescence over 60 min for the dilution series (10⁶–10² CFU/ml, NTC), three replicates |
 | `papG_reference_alleles.fasta` | PapG-I to PapG-IV reference alleles used for papG typing (PapG-IV: GenBank AF304159) |
 | `upec_phylogroups.tsv`, `lamp_phylogroups.tsv` | Clermont phylogroups (EzClermont 1.0.0) of the 738 UPEC genomes and the clinical E. coli isolates |
+| `colorimetric/crop_<min>_<E|P>.jpg` | Cut-outs of the photos of the colorimetric LAMP experiment (Supplementary Fig. S1): row E = uidA primers, row P = papGII primers |
 | `lamp_ecoli_genome_ids.txt` | Genome IDs of the clinical E. coli isolates (input list for the contig-end check) |
 
 Shared settings (fluorescence threshold ≥ 3-fold of cycle 1; time thresholds uidA 30 min, papGII 23 min) are in
