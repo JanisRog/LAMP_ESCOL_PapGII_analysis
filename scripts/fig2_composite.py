@@ -18,6 +18,8 @@ from lamp_common import DATA, RESULTS
 
 OUT = RESULTS / "figures"
 EXTRA = (0.55, 0.40, 0.35)   # extra canvas (inch) left / bottom / top around the unchanged 10 x 6 in plot box, for the larger text
+ARIAL = {"font.family": "sans-serif", "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],   # same font as panel A
+         "mathtext.fontset": "custom", "mathtext.rm": "Arial", "mathtext.it": "Arial:italic", "mathtext.bf": "Arial:bold"}
 LOD_FONTS = {"axes.titlesize": 21, "axes.labelsize": 19, "xtick.labelsize": 17, "ytick.labelsize": 17,
             "axes.titlepad": 14, "axes.labelpad": 10}
 HSPACE_BC = 0.12   # vertical gap between B and C
@@ -44,6 +46,7 @@ def original_lod_plot(target):
     file paths and without the legend (shared, below panel C), drawn with matplotlib's default style. Returns the rendered image (RGBA array)."""
     with mpl.rc_context(mpl.rcParamsDefault):
         mpl.rcParams["figure.dpi"] = 300
+        mpl.rcParams.update(ARIAL)
         mpl.rcParams.update(LOD_FONTS)   # larger title / axis / tick fonts for readability at panel size
         files = [DATA / f"{'uida' if target == 'uidA' else 'papg'}_lod_{i}.csv" for i in (1, 2, 3)]
         data = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
@@ -93,6 +96,7 @@ def lod_panel(ax, target, letter):
 
 
 def main():
+    mpl.rcParams.update(ARIAL)                                # superscripts in the legend labels: Arial as well
     dims = (4.6, 10.0, 12.0, 6.0, 5.5, 30.0, 0.0)
     ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN, CB = dims
     hA = (GENE + ZOOM + TRK + TIGHT) * 2 + ROW * 12 + BETWEEN + CB
@@ -101,10 +105,12 @@ def main():
     top = fig.add_gridspec(1, 2, width_ratios=[92, 130], wspace=0.4, left=40 / W, right=0.99, top=0.975, bottom=0.03)
     H.SUB_SEP, H.LETTER = None, "(A)"
     FM.LABEL_INSIDE, FM.PRIMER_FS = True, 7.5
+    right = top[1].subgridspec(3, 1, height_ratios=[1, 1, LEG_ROW], hspace=HSPACE_BC)
+    cell = right[0].get_position(fig)                       # on-page size of the B/C axis labels -> same size for the labels in panel A
+    H.LABEL_FS = LOD_FONTS["axes.labelsize"] * min(cell.width * fig.get_figwidth() / 10, cell.height * fig.get_figheight() / 6)
     pos = top[0].get_position(fig)                          # panel A sits A_DROP lower than the right column (fills the space under it)
     a_spec = fig.add_gridspec(1, 1, left=pos.x0, right=pos.x1, top=pos.y1 - A_DROP, bottom=pos.y0 - A_DROP)[0]
     H.draw_panel(fig, a_spec, dims, title_x=-0.3)
-    right = top[1].subgridspec(3, 1, height_ratios=[1, 1, LEG_ROW], hspace=HSPACE_BC)
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")
     axc = lod_panel(fig.add_subplot(right[1]), "papGII", "(C)")
     draw_zoom_lines(fig)
@@ -135,8 +141,8 @@ def main():
     labels = [c.replace("10^", "10$^{") + "}$" if c.startswith("10^") else c for c in CONDS]
     leg = fig.legend(handles, labels, title="CFU/ml", ncol=len(CONDS), loc="upper center", frameon=False,
                bbox_to_anchor=(bC[0] + bC[2] / 2, nC[1] + 0.004 - LEG_DROP), bbox_transform=fig.transFigure,
-               prop={"family": "DejaVu Sans", "size": LOD_FONTS["axes.titlesize"] * sc},
-               title_fontproperties={"family": "DejaVu Sans", "size": LOD_FONTS["axes.titlesize"] * sc},   # = size of the B/C plot titles on the page
+               prop={"family": "Arial", "size": LOD_FONTS["axes.titlesize"] * sc},
+               title_fontproperties={"family": "Arial", "size": LOD_FONTS["axes.titlesize"] * sc},   # = size of the B/C plot titles on the page
                handlelength=1.6, handletextpad=0.4, columnspacing=1.3, borderaxespad=0)
     # vertical colour bar right of panel A, centred between the uidA and papGII heatmaps
     norm, vmax = H.SCALE
