@@ -17,7 +17,8 @@ from fig_primer_lollipop import draw_zoom_lines
 from lamp_common import DATA, RESULTS
 
 OUT = RESULTS / "figures"
-LOD_FONTS = {"axes.titlesize": 21, "axes.labelsize": 19, "xtick.labelsize": 17, "ytick.labelsize": 17}
+LOD_FONTS = {"axes.titlesize": 21, "axes.labelsize": 19, "xtick.labelsize": 17, "ytick.labelsize": 17,
+            "axes.titlepad": 14, "axes.labelpad": 10}
 HSPACE_BC = 0.12   # vertical gap between B and C
 C_LIFT = 0.006       # figure fraction by which panel C is raised (more room above the legend)
 LEG_DROP = 0.016       # figure fraction by which C and the legend are lowered (more room between B and C)
