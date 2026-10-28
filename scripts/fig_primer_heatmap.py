@@ -31,7 +31,7 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     sub = sub.replace(" · ", SUB_SEP)
     if LETTER and target == "uidA":
         axg.text(TITLE_X - 0.13, 1.4, LETTER, transform=axg.transAxes, ha="left", va="bottom", fontsize=14, fontweight="bold", color=INK)
-    axg.text(1.0, 1.4, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=7.2, color=INK2)
+    axg.text(1.0, 1.62 if "\n" in sub else 1.4, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=7.2, color=INK2)
     axt = fig.add_subplot(gs[2]); draw_map(axt, st, xmax)
     amp_len = st.end.max()
     CONNECT.append((axg, axt, ((lo, 1), (hi, amp_len)) if strand == "+" else ((hi, 1), (lo, amp_len))))
@@ -42,7 +42,7 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
             v = values[key][r.site]
             ax.add_patch(Rectangle((r.start - 1, n - 1 - i - 0.5), r.end - r.start + 1, 1, facecolor=CMAP(norm(v)),
                                    edgecolor="white", lw=1.4))
-            ax.text((r.start - 1 + r.end) / 2, n - 1 - i, fmt(v), ha="center", va="center", fontsize=9,
+            ax.text((r.start - 1 + r.end) / 2, n - 1 - i, fmt(v), ha="center", va="center", fontsize=8,
                     color="white" if norm(v) > 0.55 else INK)
     ax.set_xlim(-XPAD, xmax); ax.set_ylim(-0.5, n - 0.5)
     ax.set_yticks(range(n)); ax.set_yticklabels([g[1] for g in groups][::-1], fontsize=8.5, color=INK2)
