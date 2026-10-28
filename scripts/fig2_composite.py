@@ -17,8 +17,10 @@ from fig_primer_lollipop import draw_zoom_lines
 from lamp_common import DATA, RESULTS
 
 OUT = RESULTS / "figures"
+LOD_FONTS = {"axes.titlesize": 17, "axes.labelsize": 15, "xtick.labelsize": 13, "ytick.labelsize": 13}
 HSPACE_BC = 0.12   # vertical gap between B and C
-C_LIFT = 0.022       # figure fraction by which panel C is raised (more room above the legend)
+C_LIFT = 0.006       # figure fraction by which panel C is raised (more room above the legend)
+LEG_DROP = 0.016       # figure fraction by which C and the legend are lowered (more room between B and C)
 LEG_ROW = 0.001     # relative height of the empty row kept free below C for the shared legend
 CONDS = ["10^6", "10^5", "10^4", "10^3", "10^2", "NTC"]   # default colour cycle, as in the notebook
 
@@ -28,6 +30,7 @@ def original_lod_plot(target):
     file paths and without the legend (shared, below panel C), drawn with matplotlib's default style. Returns the rendered image (RGBA array)."""
     with mpl.rc_context(mpl.rcParamsDefault):
         mpl.rcParams["figure.dpi"] = 300
+        mpl.rcParams.update(LOD_FONTS)   # larger title / axis / tick fonts for readability at panel size
         files = [DATA / f"{'uida' if target == 'uidA' else 'papg'}_lod_{i}.csv" for i in (1, 2, 3)]
         data = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
         data.columns = ["sample", "time_min", "fluorescence"]
@@ -88,7 +91,7 @@ def main():
     draw_zoom_lines(fig)
     fig.canvas.draw()
     pc = axc.get_position()                                 # centre the legend under the (aspect-fitted) image of C
-    leg_y = pc.y0 + 0.004                                   # legend stays where it was; C moves up away from it
+    leg_y = pc.y0 + 0.004 - LEG_DROP                        # legend and C both move down together (C_LIFT = 0.022 - LEG_DROP)
     cyc = mpl.rcParamsDefault["axes.prop_cycle"].by_key()["color"]
     handles = [Line2D([], [], color=cyc[i], lw=3) for i in range(len(CONDS))]
     labels = [c.replace("10^", "10$^{") + "}$" if c.startswith("10^") else c for c in CONDS]
