@@ -28,6 +28,9 @@ LEG_DROP = 0.016       # figure fraction by which C and the legend are lowered (
 DIV_POS = 0.4         # divider position between the right edge of A (0) and the left edge of B/C (1)
 A_DROP = 0.05         # figure fraction by which panel A is moved down
 LEG_ROW = 0.001     # relative height of the empty row kept free below C for the shared legend
+# colour-blind-safe colours for the dilution series (Okabe-Ito; the five series pass the dataviz validator for adjacent curves, the old default
+# cycle did not separate orange / green for protan viewers) and a dark grey for the no-template control
+LOD_COLORS = ["#0072B2", "#E69F00", "#009E73", "#D55E00", "#CC79A7", "#333333"]
 CONDS = ["10^6", "10^5", "10^4", "10^3", "10^2", "NTC"]   # default colour cycle, as in the notebook
 
 
@@ -65,12 +68,12 @@ def original_lod_plot(target):
         cw, ch = 10 + ex, 6 + eyb + eyt
         f = plt.figure(figsize=(cw, ch))
         plt.axes([(l0 + ex) / cw, (b0 + eyb) / ch, w0 / cw, h0 / ch])   # plot box: same size and place as the notebook figure
-        for cond in order:
+        for cond, col in zip(order, LOD_COLORS):
             m = median[median["condition"] == cond]
             q1 = q25[q25["condition"] == cond]
             q3 = q75[q75["condition"] == cond]
-            plt.plot(m["time_min"], m["median"], label=cond)
-            plt.fill_between(m["time_min"], q1["q25"], q3["q75"], alpha=0.2)
+            plt.plot(m["time_min"], m["median"], label=cond, color=col)
+            plt.fill_between(m["time_min"], q1["q25"], q3["q75"], alpha=0.2, color=col)
         plt.xlabel("Time [min]")
         plt.ylabel("Relative Fluorescence (fold-change)")
         plt.title(f"LAMP limit of detection for $\\it{{{target}}}$ (median ± IQR)")
@@ -138,7 +141,7 @@ def main():
     bC[1] += C_LIFT
     nB, nC = extended(bB, sc), extended(bC, sc)
     axb.set_position(nB); axc.set_position(nC)
-    cyc = mpl.rcParamsDefault["axes.prop_cycle"].by_key()["color"]
+    cyc = LOD_COLORS
     handles = [Line2D([], [], color=cyc[i], lw=3) for i in range(len(CONDS))]
     labels = [c.replace("10^", "10$^{") + "}$" if c.startswith("10^") else c for c in CONDS]
     leg = fig.legend(handles, labels, title="CFU/ml", ncol=len(CONDS), loc="upper center", frameon=False,
