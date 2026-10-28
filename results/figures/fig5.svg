@@ -95,13 +95,13 @@ L 178.2072 231.15092
 " clip-path="url(#pb8a6d96cb6)" style="fill: none; stroke: #000000; stroke-width: 1.8"/>
    </g>
    <g id="text_6">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(269.41104 99.704795)">PPV</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(269.41104 111.950701)">80%</text>
+    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(283.418228 99.704795)">PPV</text>
+    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(283.416353 111.950701)">80%</text>
     <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(269.41104 124.364795)">(65–91%)</text>
    </g>
    <g id="text_7">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(269.41104 181.136795)">NPV</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(269.41104 193.382701)">97%</text>
+    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(283.08729 181.136795)">NPV</text>
+    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(283.416353 193.382701)">97%</text>
     <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(269.41104 205.796795)">(92–99%)</text>
    </g>
    <g id="text_8">
@@ -207,13 +207,13 @@ L 575.807725 231.15092
 " clip-path="url(#pb9b1f7f30c)" style="fill: none; stroke: #000000; stroke-width: 1.8"/>
    </g>
    <g id="text_21">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(667.011565 99.704795)">PPV</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(667.011565 111.950701)">100%</text>
+    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(684.355315 99.704795)">PPV</text>
+    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(681.016877 111.950701)">100%</text>
     <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(667.011565 124.364795)">(54–100%)</text>
    </g>
    <g id="text_22">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(667.011565 181.136795)">NPV</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(667.011565 193.382701)">100%</text>
+    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(684.024377 181.136795)">NPV</text>
+    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(681.016877 193.382701)">100%</text>
     <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(667.011565 205.796795)">(98–100%)</text>
    </g>
    <g id="text_23">

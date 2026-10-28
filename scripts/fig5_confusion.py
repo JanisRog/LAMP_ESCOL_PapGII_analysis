@@ -53,7 +53,7 @@ def panel(ax, tp, fp, fn, tn, gene, ref_name):
     ax.set_title(f"{gene} {ref_name}", fontsize=12.5, pad=30)                   # reference method on top
     ax.set_ylabel(f"{gene} LAMP", fontsize=12.5, labelpad=8)
     for y, lab, val in ((0.5, "PPV", pct(tp, tp + fp)), (1.5, "NPV", pct(tn, tn + fn))):
-        ax.text(2.12, y, f"{lab}\n{val}", ha="left", va="center", fontsize=12, fontweight="bold", linespacing=1.15, clip_on=False)
+        ax.text(2.12, y, f"{lab}\n{val}", ha="left", va="center", multialignment="center", fontsize=12, fontweight="bold", linespacing=1.15, clip_on=False)
     for x, lab, val in ((0.5, "Sensitivity", pct(tp, tp + fn)), (1.5, "Specificity", pct(tn, tn + fp))):
         ax.text(x, 2.1, f"{lab}\n{val}", ha="center", va="top", fontsize=12, fontweight="bold", linespacing=1.15, clip_on=False)
 
