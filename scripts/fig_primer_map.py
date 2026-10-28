@@ -32,6 +32,7 @@ INK, INK2 = "#0b0b0b", "#52514e"
 XPAD = 4
 MIN_GROUP = 10
 
+PRIMER_FS = 7.5   # primer-name labels on the map (fig_primer_heatmap.py enlarges it)
 mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
                      "font.size": 8, "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig2a"})
 
@@ -60,10 +61,10 @@ def draw_map(ax, st, xmax):
                                 head_length=min(6, abs(x1 - x0) * 0.35), color=ROLE_COLOR[r.role], lw=0, zorder=2))
         up = y > 0
         ax.text((r.start + r.end) / 2, y + (0.4 if up else -0.4), r.site, ha="center", va="bottom" if up else "top",
-                fontsize=7.5, color=INK, fontweight="bold")
+                fontsize=PRIMER_FS, color=INK, fontweight="bold")
     ax.set_xlim(-XPAD, xmax); ax.set_ylim(-1.5, 1.5); ax.axis("off")
-    ax.text(-XPAD, 0, "5′", ha="right", va="center", fontsize=7, color=INK2)
-    ax.text(st.end.max() + 2, 0, "3′", ha="left", va="center", fontsize=7, color=INK2)
+    ax.text(-XPAD, 0, "5′", ha="right", va="center", fontsize=PRIMER_FS - 0.5, color=INK2)
+    ax.text(st.end.max() + 2, 0, "3′", ha="left", va="center", fontsize=PRIMER_FS - 0.5, color=INK2)
 
 
 def fmt(v):

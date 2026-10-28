@@ -13,19 +13,22 @@ from matplotlib.colors import Normalize
 from matplotlib.patches import Rectangle
 
 import fig_primer_lollipop as L
+import fig_primer_map as FM
 from fig_primer_lollipop import CONNECT, INK, INK2, ORDER, PAPG, PHYLO, draw_zoom_lines, gene_strip, papg_long, uida_long
 from fig_primer_map import MIN_GROUP, NAMED, XPAD, draw_map, fmt, sites_for
 from lamp_common import RESULTS
 
 OUT = RESULTS / "figures"
 CMAP = mpl.colormaps["YlOrRd"]
+FM.PRIMER_FS = 9.5   # larger text than the lollipop version
 
 
 def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     axg = fig.add_subplot(gs[0])
     lo, hi, strand = gene_strip(axg, target, st)
-    axg.set_title(title, loc="left", fontsize=9, fontstyle="italic", color=INK, pad=17)
-    axg.text(1.0, 1.36, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=6.2, color=INK2)
+    axg.tick_params(axis="both", labelsize=7.5); axg.set_ylabel("Variant (%)", fontsize=8, color=INK2)
+    axg.text(-0.215, 1.4, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
+    axg.text(1.0, 1.4, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=7.2, color=INK2)
     axt = fig.add_subplot(gs[2]); draw_map(axt, st, xmax)
     amp_len = st.end.max()
     CONNECT.append((axg, axt, ((lo, 1), (hi, amp_len)) if strand == "+" else ((hi, 1), (lo, amp_len))))
@@ -36,14 +39,14 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
             v = values[key][r.site]
             ax.add_patch(Rectangle((r.start - 1, n - 1 - i - 0.5), r.end - r.start + 1, 1, facecolor=CMAP(norm(v)),
                                    edgecolor="white", lw=1.4))
-            ax.text((r.start - 1 + r.end) / 2, n - 1 - i, fmt(v), ha="center", va="center", fontsize=6.8,
+            ax.text((r.start - 1 + r.end) / 2, n - 1 - i, fmt(v), ha="center", va="center", fontsize=9,
                     color="white" if norm(v) > 0.55 else INK)
     ax.set_xlim(-XPAD, xmax); ax.set_ylim(-0.5, n - 0.5)
-    ax.set_yticks(range(n)); ax.set_yticklabels([g[1] for g in groups][::-1], fontsize=7, color=INK2)
-    ax.tick_params(axis="y", length=0); ax.tick_params(axis="x", labelsize=7, colors=INK2)
+    ax.set_yticks(range(n)); ax.set_yticklabels([g[1] for g in groups][::-1], fontsize=8.5, color=INK2)
+    ax.tick_params(axis="y", length=0); ax.tick_params(axis="x", labelsize=8, colors=INK2)
     for sp in ax.spines.values(): sp.set_visible(False)
     ax.spines["bottom"].set_visible(True); ax.spines["bottom"].set_color("#c3c2b7")
-    ax.set_xlabel("Position in amplicon (nt)", fontsize=7, color=INK2)
+    ax.set_xlabel("Position in amplicon (nt)", fontsize=8.5, color=INK2)
     return axt, ax
 
 
@@ -66,7 +69,7 @@ def main():
     vu = {g: med.loc[g].to_dict() for g in keep}
     vp = {a: stat.loc[a].to_dict() for a, _ in classes}
 
-    ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN = 7.5, 24.0, 17.0, 10.0, 0.5, 26.0   # mm; ZOOM = room for the zoom lines
+    ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN = 8.5, 26.0, 18.0, 11.0, 0.5, 30.0   # mm; ZOOM = room for the zoom lines
     h_u, h_p = GENE + ZOOM + TRK + TIGHT + ROW * len(gu), GENE + ZOOM + TRK + TIGHT + ROW * len(gp)
     fig = plt.figure(figsize=(180 / 25.4, (h_u + h_p + BETWEEN + 62) / 25.4))
     outer = fig.add_gridspec(3, 1, height_ratios=[h_u, BETWEEN, h_p], hspace=0)
@@ -79,8 +82,8 @@ def main():
     fig.subplots_adjust(left=0.17, right=0.98, top=0.96, bottom=0.085)
     cax = fig.add_axes([0.37, 0.035, 0.26, 0.007])
     cb = fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=CMAP), cax=cax, orientation="horizontal", ticks=range(0, vmax + 1, 1))
-    cb.outline.set_visible(False); cb.ax.tick_params(labelsize=6, colors=INK2, length=2)
-    cb.set_label("Median number of mismatches to the primer (UPEC + NCBI genomes pooled)", fontsize=6.8, color=INK2)
+    cb.outline.set_visible(False); cb.ax.tick_params(labelsize=7.5, colors=INK2, length=2)
+    cb.set_label("Median number of mismatches to the primer (UPEC + NCBI genomes pooled)", fontsize=8, color=INK2)
     draw_zoom_lines(fig)
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "fig_primer_heatmap.py"}, "svg": {"Date": None}}.get(ext)
