@@ -4,6 +4,8 @@ to the first cycle). Layout as in the original figure (A left, divider, B above 
 
 Output: results/figures/fig2.{pdf,png,svg}
 """
+import io
+
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -18,28 +20,50 @@ OUT = RESULTS / "figures"
 CONDS = ["10^6", "10^5", "10^4", "10^3", "10^2", "NTC"]   # default colour cycle, as in the notebook
 
 
-def lod(target):
-    d = pd.concat([pd.read_csv(DATA / f"{'uida' if target == 'uidA' else 'papg'}_lod_{i}.csv") for i in (1, 2, 3)], ignore_index=True)
-    d.columns = ["sample", "time_min", "fluorescence"]
-    d["condition"] = d["sample"].str.replace(r"_\d+$", "", regex=True)
-    d["rel"] = d["fluorescence"] / d.groupby("sample")["fluorescence"].transform("first")
-    g = d.groupby(["condition", "time_min"]).rel
-    return g.median().reset_index(name="median").merge(g.quantile(0.25).reset_index(name="q25")).merge(g.quantile(0.75).reset_index(name="q75"))
+def original_lod_plot(target):
+    """The notebook's median + IQR plot (notebooks/LAMP_analysis.ipynb, cells 1 and 3), code unchanged apart from
+    file paths, drawn with matplotlib's default style. Returns the rendered image (RGBA array)."""
+    with mpl.rc_context(mpl.rcParamsDefault):
+        mpl.rcParams["figure.dpi"] = 300
+        files = [DATA / f"{'uida' if target == 'uidA' else 'papg'}_lod_{i}.csv" for i in (1, 2, 3)]
+        data = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
+        data.columns = ["sample", "time_min", "fluorescence"]
+        data["replicate"] = data["sample"].str.extract(r"_(\d+)$")
+        data["condition"] = data["sample"].str.replace(r"_\d+$", "", regex=True)
+        baseline = data.groupby("sample")["fluorescence"].transform("first")
+        data["fluorescence_norm"] = data["fluorescence"] / baseline
+        grouped = data.groupby(["condition", "time_min"])["fluorescence_norm"]
+        q25 = grouped.quantile(0.25).reset_index(name="q25")
+        q75 = grouped.quantile(0.75).reset_index(name="q75")
+        median = grouped.median().reset_index(name="median")
+        order = ["10^6", "10^5", "10^4", "10^3", "10^2", "NTC"]
+        f = plt.figure(figsize=(10, 6))
+        for cond in order:
+            m = median[median["condition"] == cond]
+            q1 = q25[q25["condition"] == cond]
+            q3 = q75[q75["condition"] == cond]
+            plt.plot(m["time_min"], m["median"], label=cond)
+            plt.fill_between(m["time_min"], q1["q25"], q3["q75"], alpha=0.2)
+        plt.xlabel("Time [min]")
+        plt.ylabel("Relative Fluorescence (fold-change)")
+        plt.title(f"LAMP limit of detection for $\\it{{{target}}}$ (median ± IQR)")
+        plt.legend(title="CFU/ml", loc="upper left")
+        plt.xlim(0, 60)
+        plt.ylim(0, None)
+        plt.grid(True)
+        plt.tight_layout()
+        buf = io.BytesIO()
+        f.savefig(buf, format="png", dpi=600)
+        plt.close(f)
+    buf.seek(0)
+    return plt.imread(buf)
 
 
 def lod_panel(ax, target, letter):
-    m = lod(target)
-    for c in CONDS:
-        d = m[m.condition == c]
-        ax.plot(d.time_min, d["median"], label=c, lw=1.0)
-        ax.fill_between(d.time_min, d.q25, d.q75, alpha=0.2)
-    ax.set_xlim(0, 60); ax.set_ylim(0, None); ax.grid(True)
-    ax.set_xlabel("Time [min]", fontsize=7); ax.set_ylabel("Relative Fluorescence (fold-change)", fontsize=7)
-    ax.tick_params(labelsize=6.5)
-    ax.set_title(f"LAMP limit of detection for $\\it{{{target}}}$ (median ± IQR)", fontsize=7.5)
-    ax.legend(title="CFU/ml", title_fontsize=6.5, fontsize=6.5, loc="upper left")
+    ax.imshow(original_lod_plot(target), interpolation="lanczos")
+    ax.set_anchor("NW"); ax.axis("off")
     if letter != "(B)":   # (B) is placed at the height of (A) in main()
-        ax.text(-0.1, 1.12, letter, transform=ax.transAxes, va="bottom", **H.LETTER_KW)
+        ax.text(-0.03, 1.02, letter, transform=ax.transAxes, va="bottom", **H.LETTER_KW)
     return ax
 
 
@@ -53,7 +77,7 @@ def main():
     H.SUB_SEP, H.LETTER = None, "(A)"
     FM.LABEL_INSIDE, FM.PRIMER_FS = True, 7.5
     H.draw_panel(fig, top[0], dims, title_x=-0.3)
-    right = top[1].subgridspec(2, 1, hspace=0.42)
+    right = top[1].subgridspec(2, 1, hspace=0.12)
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")
     axc = lod_panel(fig.add_subplot(right[1]), "papGII", "(C)")
     draw_zoom_lines(fig)
@@ -68,8 +92,8 @@ def main():
     a = H.LETTER_ARTIST                                     # (B) at the same height as (A)
     ya = fig.transFigure.inverted().transform(a.get_transform().transform(a.get_position()))[1]
     pb = axb.get_position()
-    fig.text(pb.x0 - 0.1 * pb.width, ya, "(B)", va="bottom", **H.LETTER_KW)
-    x = axb.get_position().x0 - 20 / W                      # divider between A and B/C
+    fig.text(pb.x0 - 0.03 * pb.width, ya, "(B)", va="bottom", **H.LETTER_KW)
+    x = axb.get_position().x0 - 8 / W                      # divider between A and B/C
     fig.add_artist(Line2D([x, x], [0.0, 1.0], transform=fig.transFigure, color="black", lw=1.0))
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "fig2_composite.py"}, "svg": {"Date": None}}.get(ext)
