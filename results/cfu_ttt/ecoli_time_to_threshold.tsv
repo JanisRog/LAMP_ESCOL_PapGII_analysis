@@ -1,39 +1,39 @@
-sample_id	cfu_ml	culture_maldi	mixed_culture	wgs_papGII	ttt_uidA	ttt_papGII
-LAMP111	100000	Escherichia coli	0	0	14.0	30.0
-LAMP062	10000	Escherichia coli	0	0	16.0	35.0
-LAMP009	100000	Escherichia coli	0	1	18.0	16.0
-LAMP172	100000	Escherichia coli	0	1	18.0	13.0
-LAMP157	100000	Escherichia coli	0	0	18.0	33.0
-LAMP065	100000	Escherichia coli	0	0	18.0	
-LAMP047	100000	Escherichia coli	0	0	18.0	
-LAMP098	100000	Escherichia coli	0	0	18.0	
-LAMP005	100000	Proteus mirabilis, Escherichia coli	1	0	19.0	30.0
-LAMP063	100000	Escherichia coli	0	0	19.0	
-LAMP004	100000	Escherichia coli	0	0	20.0	
-LAMP042	100000	Escherichia coli	0	0	20.0	35.0
-LAMP124	100000	Escherichia coli	0	0	21.0	
-LAMP019	100000	Escherichia coli	0	0	21.0	39.0
-LAMP017	100000	Escherichia coli	0	1	21.0	16.0
-LAMP112	100000	Escherichia coli	0	1	21.0	18.0
-LAMP024	100000	Escherichia coli	0	0	22.0	
-LAMP139	100000	Escherichia coli	0	0	22.0	
-LAMP154	100000	Escherichia coli	0	0	22.0	
-LAMP086	100000	Escherichia coli	0	0	24.0	
-LAMP031	100000	Escherichia coli	0	0	25.0	
-LAMP182	100000	Escherichia coli	0	1	26.0	18.0
-LAMP181	100000	Escherichia coli	0	0	26.0	
-LAMP018	100000	Escherichia coli	0	1	26.0	20.0
-LAMP011	100000	Escherichia coli	0	0	26.0	
-LAMP035	100000	Escherichia coli	0	0	27.0	
-LAMP072	100000	Staphylococcus xylosus, Escherichia coli, Pantoea calida	1	0	27.0	33.0
-LAMP153	100000	Escherichia coli	0	0	28.0	
-LAMP015	100000	Escherichia coli	0	0	28.0	
-LAMP079	10000	Klebsiella pneumoniae, Escherichia coli	1	0	28.0	29.0
-LAMP074	10000	Escherichia coli	0	0	29.0	
-LAMP093	10000	Escherichia coli	0	0	30.0	33.0
-LAMP026	100000	Escherichia coli	0	0	30.0	
-LAMP173	100000	Escherichia coli	0	0	33.0	33.0
-LAMP156	100000	Enterococcus faecalis, Escherichia coli	1	0	34.0	
-LAMP155	100000	Escherichia coli, Aerococcus urinae	1	0	35.0	
-LAMP013	100000	Escherichia coli	0	0	36.0	32.0
-LAMP107	100000	Escherichia coli	0	0		
+sample_id	cfu_category	culture_maldi	mixed_culture	wgs_papGII	ttt_uidA	ttt_papGII
+LAMP111	>10^5	Escherichia coli	0	0	14.0	30.0
+LAMP062	10^4	Escherichia coli	0	0	16.0	35.0
+LAMP009	>10^5	Escherichia coli	0	1	18.0	16.0
+LAMP172	>10^5	Escherichia coli	0	1	18.0	13.0
+LAMP157	>10^5	Escherichia coli	0	0	18.0	33.0
+LAMP065	>10^5	Escherichia coli	0	0	18.0	
+LAMP047	>10^5	Escherichia coli	0	0	18.0	
+LAMP098	>10^5	Escherichia coli	0	0	18.0	
+LAMP005	>10^5	Proteus mirabilis, Escherichia coli	1	0	19.0	30.0
+LAMP063	>10^5	Escherichia coli	0	0	19.0	
+LAMP004	>10^5	Escherichia coli	0	0	20.0	
+LAMP042	>10^5	Escherichia coli	0	0	20.0	35.0
+LAMP124	>10^5	Escherichia coli	0	0	21.0	
+LAMP019	>10^5	Escherichia coli	0	0	21.0	39.0
+LAMP017	10^5	Escherichia coli	0	1	21.0	16.0
+LAMP112	>10^5	Escherichia coli	0	1	21.0	18.0
+LAMP024	>10^5	Escherichia coli	0	0	22.0	
+LAMP139	>10^5	Escherichia coli	0	0	22.0	
+LAMP154	>10^5	Escherichia coli	0	0	22.0	
+LAMP086	>10^5	Escherichia coli	0	0	24.0	
+LAMP031	>10^5	Escherichia coli	0	0	25.0	
+LAMP182	>10^5	Escherichia coli	0	1	26.0	18.0
+LAMP181	>10^5	Escherichia coli	0	0	26.0	
+LAMP018	>10^5	Escherichia coli	0	1	26.0	20.0
+LAMP011	10^5	Escherichia coli	0	0	26.0	
+LAMP035	10^5	Escherichia coli	0	0	27.0	
+LAMP072	>10^5	Staphylococcus xylosus, Escherichia coli, Pantoea calida	1	0	27.0	33.0
+LAMP153	10^5	Escherichia coli	0	0	28.0	
+LAMP015	>10^5	Escherichia coli	0	0	28.0	
+LAMP079	10^4	Klebsiella pneumoniae, Escherichia coli	1	0	28.0	29.0
+LAMP074	10^4	Escherichia coli	0	0	29.0	
+LAMP093	10^4	Escherichia coli	0	0	30.0	33.0
+LAMP026	10^5	Escherichia coli	0	0	30.0	
+LAMP173	10^5	Escherichia coli	0	0	33.0	33.0
+LAMP156	>10^5	Enterococcus faecalis, Escherichia coli	1	0	34.0	
+LAMP155	>10^5	Escherichia coli, Aerococcus urinae	1	0	35.0	
+LAMP013	>10^5	Escherichia coli	0	0	36.0	32.0
+LAMP107	10^5	Escherichia coli	0	0		

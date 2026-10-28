@@ -2,6 +2,11 @@
   10^4 CFU/ml: n=4 median=28.5 IQR=25.0-29.2 range=16-30 never_crossed=0
   >=10^5 CFU/ml: n=34 median=22.0 IQR=19.0-27.0 range=14-36 never_crossed=1
   Mann-Whitney p = 0.377
+  category 10^4: n=4 median=28.5 IQR=25.0-29.2 range=16-30 never_crossed=0; papGII-positive: 0
+  category 10^5: n=7 median=27.5 IQR=26.2-29.5 range=21-33 never_crossed=1; papGII-positive: 1
+  category >10^5: n=27 median=21.0 IQR=18.5-26.0 range=14-36 never_crossed=0; papGII-positive: 5
+  >10^5 vs <=10^5 CFU/ml: n=27 median=21.0 IQR=18.5-26.0 range=14-36 never_crossed=0 vs n=11 median=28.0 IQR=26.2-29.8 range=16-33 never_crossed=1; Mann-Whitney p = 0.028
+  within >10^5 CFU/ml: papGII+ n=5 median=21.0 IQR=18.0-26.0 range=18-26 never_crossed=0 vs papGII- n=22 median=21.5 IQR=19.0-25.8 range=14-36 never_crossed=0; Mann-Whitney p = 0.729
 2. uidA TTT by papGII status
   all loads: papGII+ n=6 median=21.0 IQR=18.8-24.8 range=18-26 never_crossed=0
   all loads: papGII- n=32 median=24.0 IQR=19.5-28.0 range=14-36 never_crossed=1

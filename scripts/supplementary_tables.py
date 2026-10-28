@@ -54,7 +54,7 @@ def table1():
     meta["Phylogroup"] = meta.sample_id.map(ph).fillna("")
     out = pd.DataFrame({
         "Sample": meta["sample"], "Sample ID": meta.sample_id,
-        "Bacterial density (CFU/ml)": meta.cfu_ml.map(lambda v: "no growth" if v == 0 else ("10^4" if v == 10000 else "10^5 (includes >10^5)")),
+        "Bacterial density (CFU/ml)": meta.cfu_category,
         "Culture (MALDI-TOF)": meta.culture_maldi, "E. coli by culture (1 = positive)": meta.ecoli,
         "papGII by WGS (1 = positive)": meta.wgs_papGII, "papG alleles by WGS": meta["papG alleles (WGS)"], "Phylogroup": meta["Phylogroup"],
         "uidA LAMP result": meta.lamp_uidA, "uidA time to threshold (min)": meta.ttt_uidA,
@@ -116,8 +116,7 @@ def main():
     t3 = metric_table("papGII", [(T, f) for T in list(range(18, 28)) + [30, 39]])
     # Table 6
     cf = pd.read_csv(RESULTS / "cfu_ttt" / "ecoli_time_to_threshold.tsv", sep="\t")
-    cf["cfu_ml"] = cf.cfu_ml.map({10000: "10^4", 100000: "10^5 (includes >10^5)"})
-    cf = cf.rename(columns={"sample_id": "Sample ID", "cfu_ml": "Bacterial density (CFU/ml)", "culture_maldi": "Culture (MALDI-TOF)", "mixed_culture": "Mixed culture (1 = yes)",
+    cf = cf.rename(columns={"sample_id": "Sample ID", "cfu_category": "Bacterial density (CFU/ml)", "culture_maldi": "Culture (MALDI-TOF)", "mixed_culture": "Mixed culture (1 = yes)",
                             "wgs_papGII": "papGII by WGS", "ttt_uidA": "uidA time to threshold (min)", "ttt_papGII": "papGII time to threshold (min)"})
     summ = (RESULTS / "cfu_ttt" / "summary.txt").read_text().splitlines()
     # Table 7
@@ -151,7 +150,7 @@ def main():
                 ws.column_dimensions[col[0].column_letter].width = min(max(len(str(c.value)) if c.value is not None else 0 for c in col[2:30]) + 2, 46)
         put(t1, "Supp Table 1", "Supplementary Table 1. Overview of all 191 clinical urine samples, reference results and LAMP results.",
             ["LAMP result: 1 = positive (uidA: <= 30 min and >= 3-fold; papGII: <= 23 min and >= 3-fold); time to threshold empty = fluorescence threshold not reached within 40 min. "
-             "Bacterial density from semi-quantitative culture of 10 ul; the category 10^5 includes >10^5 CFU/ml. papG alleles: BLASTN vs papG classes I-IV (>= 90% identity, >= 80% coverage); phylogroups: EzClermont."])
+             "Bacterial density from semi-quantitative culture of 10 ul (categories <10^4, 10^4, 10^5 and >10^5 CFU/ml). papG alleles: BLASTN vs papG classes I-IV (>= 90% identity, >= 80% coverage); phylogroups: EzClermont."])
         put(t2, "Supp Table 2", "Supplementary Table 2. uidA: the ten highest-ranking results of the threshold search by Youden's index (191 samples).",
             ["All combinations of 40 time thresholds (1-40 min) and 200 fluorescence thresholds (fold-change relative to the first measurement; equally spaced between the lowest and highest observed value) were evaluated; "
              "combinations with the same classification result are summarised in one row. The selected thresholds (30 min, 3-fold) and the combination of 39 min and 11.4-fold are given below the table."])
