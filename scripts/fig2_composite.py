@@ -22,7 +22,7 @@ CONDS = ["10^6", "10^5", "10^4", "10^3", "10^2", "NTC"]   # default colour cycle
 
 def original_lod_plot(target):
     """The notebook's median + IQR plot (notebooks/LAMP_analysis.ipynb, cells 1 and 3), code unchanged apart from
-    file paths, drawn with matplotlib's default style. Returns the rendered image (RGBA array)."""
+    file paths and without the legend (shared, below panel C), drawn with matplotlib's default style. Returns the rendered image (RGBA array)."""
     with mpl.rc_context(mpl.rcParamsDefault):
         mpl.rcParams["figure.dpi"] = 300
         files = [DATA / f"{'uida' if target == 'uidA' else 'papg'}_lod_{i}.csv" for i in (1, 2, 3)]
@@ -47,7 +47,7 @@ def original_lod_plot(target):
         plt.xlabel("Time [min]")
         plt.ylabel("Relative Fluorescence (fold-change)")
         plt.title(f"LAMP limit of detection for $\\it{{{target}}}$ (median ± IQR)")
-        plt.legend(title="CFU/ml", loc="upper left")
+        # legend omitted here: one shared legend for B and C is drawn below (C) in main()
         plt.xlim(0, 60)
         plt.ylim(0, None)
         plt.grid(True)
@@ -77,10 +77,18 @@ def main():
     H.SUB_SEP, H.LETTER = None, "(A)"
     FM.LABEL_INSIDE, FM.PRIMER_FS = True, 7.5
     H.draw_panel(fig, top[0], dims, title_x=-0.3)
-    right = top[1].subgridspec(2, 1, hspace=0.12)
+    right = top[1].subgridspec(3, 1, height_ratios=[1, 1, 0.1], hspace=0.11)
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")
     axc = lod_panel(fig.add_subplot(right[1]), "papGII", "(C)")
+    leg_ax = fig.add_subplot(right[2]); leg_ax.axis("off")
+    cyc = mpl.rcParamsDefault["axes.prop_cycle"].by_key()["color"]
+    handles = [Line2D([], [], color=cyc[i], lw=2) for i in range(len(CONDS))]
+    LEG = leg_ax.legend(handles, CONDS, title="CFU/ml", ncol=len(CONDS), loc="upper center", frameon=False,
+                  prop={"family": "DejaVu Sans", "size": 8}, title_fontproperties={"family": "DejaVu Sans", "size": 8},
+                  handlelength=2.0, columnspacing=1.4)
     draw_zoom_lines(fig)
+    pc = axc.get_position()                                 # centre the legend under the (aspect-fitted) image of C
+    LEG.set_bbox_to_anchor(((pc.x0 + pc.x1) / 2, pc.y0 - 0.005), transform=fig.transFigure)
     # vertical colour bar right of panel A, centred between the uidA and papGII heatmaps
     norm, vmax = H.SCALE
     pa = top[0].get_position(fig)
