@@ -19,7 +19,7 @@ mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "
                      "mathtext.fontset": "custom", "mathtext.rm": "Arial", "mathtext.it": "Arial:italic", "mathtext.bf": "Arial:bold",
                      "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig5"})
 LETTER = {"fontsize": 16, "fontweight": "bold", "family": "DejaVu Sans"}
-PANELS = [("uidA", "ecoli", "$\\it{E. coli}$", "culture", "A"), ("papGII", "wgs_papGII", "$\\it{papGII}$", "WGS", "B")]
+PANELS = [("uidA", "ecoli", "$\\it{E. coli}$", "culture", "(A)"), ("papGII", "wgs_papGII", "$\\it{papGII}$", "WGS", "(B)")]
 
 
 def counts(meta, target, ref_col):

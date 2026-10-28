@@ -111,7 +111,7 @@ L 160.54272 215.11508
     <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(186.118283 243.770911)">95%</text>
    </g>
    <g id="text_10">
-    <text style="font: 700 16px 'DejaVu Sans'; text-anchor: start" x="7.2" y="19.3575" transform="rotate(-0 7.2 19.3575)">A</text>
+    <text style="font: 700 16px 'DejaVu Sans'; text-anchor: start" x="7.2" y="19.3575" transform="rotate(-0 7.2 19.3575)">(A)</text>
    </g>
    <g id="text_11">
     <!-- $\it{E. coli}$ culture -->
@@ -219,7 +219,7 @@ L 524.247447 215.11508
     <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(546.486447 243.770911)">100%</text>
    </g>
    <g id="text_25">
-    <text style="font: 700 16px 'DejaVu Sans'; text-anchor: start" x="370.904727" y="19.3575" transform="rotate(-0 370.904727 19.3575)">B</text>
+    <text style="font: 700 16px 'DejaVu Sans'; text-anchor: start" x="370.904727" y="19.3575" transform="rotate(-0 370.904727 19.3575)">(B)</text>
    </g>
    <g id="text_26">
     <!-- $\it{papGII}$ WGS -->
