@@ -37,7 +37,8 @@ def lod_panel(ax, target, letter):
     ax.tick_params(labelsize=6.5)
     ax.set_title(f"LAMP limit of detection for $\\it{{{target}}}$ (median ± IQR)", fontsize=7.5)
     ax.legend(title="CFU/ml", title_fontsize=6.5, fontsize=6.5, loc="upper left")
-    ax.text(-0.1, 1.12, letter, transform=ax.transAxes, fontsize=12, fontweight="bold", va="bottom")
+    if letter != "(B)":   # (B) is placed at the height of (A) in main()
+        ax.text(-0.1, 1.12, letter, transform=ax.transAxes, fontsize=14, fontweight="bold", va="bottom")
     return ax
 
 
@@ -54,6 +55,10 @@ def main():
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")
     axc = lod_panel(fig.add_subplot(right[1]), "papGII", "(C)")
     draw_zoom_lines(fig)
+    a = H.LETTER_ARTIST                                     # (B) at the same height as (A)
+    ya = fig.transFigure.inverted().transform(a.get_transform().transform(a.get_position()))[1]
+    pb = axb.get_position()
+    fig.text(pb.x0 - 0.1 * pb.width, ya, "(B)", fontsize=14, fontweight="bold", va="bottom")
     x = axb.get_position().x0 - 20 / W                      # divider between A and B/C
     fig.add_artist(Line2D([x, x], [0.0, 1.0], transform=fig.transFigure, color="black", lw=1.0))
     for ext in ("pdf", "png", "svg"):
