@@ -67,10 +67,10 @@ def metric_lines(ax, x, vals):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     left, box_w, gap, right = 17.0, 105.0, 30.0, 10.0                     # mm
-    row_h, pitch, top, legend_h = 63.0, 84.0, 12.0, 22.0                  # box height, row pitch (box + title + labels), top margin, legend room
+    row_h, pitch, top, legend_h = 63.0, 90.0, 12.0, 22.0                  # box height, row pitch (box + title + labels), top margin, legend room
     W = left + 2 * box_w + gap + right
     roc = 86.0                                                            # ROC plot box (square), larger than the metric plots are high
-    H = top + 2 * pitch + (roc + 21) + legend_h - 8 - 8                  # whitespace above the shared legend
+    H = top + 2 * pitch + (roc + 21) + legend_h - 8 - 2                  # whitespace above the shared legend
     fig = plt.figure(figsize=(W / 25.4, H / 25.4))
     mpl.rcParams["axes.titlepad"] = 7
 
