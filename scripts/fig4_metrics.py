@@ -69,7 +69,8 @@ def main():
     left, box_w, gap, right = 17.0, 105.0, 30.0, 10.0                     # mm
     row_h, pitch, top, legend_h = 63.0, 84.0, 12.0, 22.0                  # box height, row pitch (box + title + labels), top margin, legend room
     W = left + 2 * box_w + gap + right
-    H = top + 3 * pitch + legend_h - 8
+    roc = 86.0                                                            # ROC plot box (square), larger than the metric plots are high
+    H = top + 2 * pitch + (roc + 21) + legend_h - 8 + 6                  # + whitespace above the shared legend
     fig = plt.figure(figsize=(W / 25.4, H / 25.4))
     mpl.rcParams["axes.titlepad"] = 7
 
@@ -102,7 +103,7 @@ def main():
         fig.text((x0 - 14) / W, (H - 1.5 - pitch) / H, f"({'ABCDEF'[col * 3 + 1]})", va="top", **LETTER)
         # --- ROC at T
         fpr, tpr, _ = roc_curve(y, mx); a = auc(fpr, tpr)
-        ax, x0 = axes_at(col, 2, row_h, row_h, dx=(box_w - row_h) / 2)
+        ax, x0 = axes_at(col, 2, roc, roc, dx=(box_w - roc) / 2)
         ax.plot(fpr, tpr, color="blue", lw=2 * SC)
         ax.plot([0, 1], [0, 1], ls="--", color="gray", lw=1 * SC)
         se, sp = metrics(mx, y, FIXED_F)[1:3]
@@ -115,7 +116,7 @@ def main():
         ax.set_xlim(-0.05, 1.05); ax.set_ylim(-0.05, 1.05)
         style(ax, "False Positive Rate (1 - Specificity)", "True Positive Rate (Sensitivity)", f"ROC Curve for {gene} at {T} min")
         ax.grid(True, ls="--", alpha=0.6)
-        fig.text((x0 - 14 - (box_w - row_h) / 2) / W, (H - 1.5 - 2 * pitch) / H, f"({'ABCDEF'[col * 3 + 2]})", va="top", **LETTER)
+        fig.text((x0 - 14 - (box_w - roc) / 2) / W, (H - 1.5 - 2 * pitch) / H, f"({'ABCDEF'[col * 3 + 2]})", va="top", **LETTER)
 
     # shared legend below the figure (row 1: metrics; row 2: thresholds and cutoffs)
     h = [Line2D([], [], color="C0", lw=3), Line2D([], [], color="C1", lw=3, ls=":"), Line2D([], [], color="C2", lw=3, ls="-."),
