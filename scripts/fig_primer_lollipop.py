@@ -6,8 +6,8 @@ group underneath, aligned to it:
   NCBI RefSeq complete genomes pooled; genomes with the amplicon region present).
 - papGII: median number of mismatches at the best-matching papG locus of each genome, per papG class (both
   collections pooled).
-All rows share one y-axis from 0 to the length of the longest primer binding site (25 nt), so the height of a lollipop
-is the part of the primer that does not match. Groups differ by colour and marker shape. Both collections are also
+All rows share one y-axis from 0 to the highest median observed (11 mismatches), so lollipop heights are comparable
+across both targets. Groups differ by colour and marker shape. Both collections are also
 reported separately in the output tables.
 
 Output: results/figures/fig2a_primer_lollipop.{pdf,png,svg}; fig2a_lollipop_{uidA,papGII}.tsv (pooled, with n, and
@@ -142,7 +142,6 @@ def main():
     u, u_pos, u_len = sites_for("uidA")
     p, p_pos, p_len = sites_for("papGII")
     xmax = max(u.end.max(), p.end.max()) + 6
-    ymax = int(max((u.end - u.start + 1).max(), (p.end - p.start + 1).max()))          # longest binding site = 25 nt
 
     long = uida_long()
     n_u = long.groupby("phylogroup").genome.nunique()
@@ -160,6 +159,7 @@ def main():
     pl.groupby(["collection", "allele", "site"]).mismatches.median().unstack()[ORDER].to_csv(
         OUT / "fig2a_lollipop_papGII_by_collection.tsv", sep="\t")
     classes = [(a, l) for a, l in PAPG if a in n_g]
+    ymax = int(max(med.loc[keep].max().max(), stat["median"].max()))                  # highest median shown (11)
 
     gu = [(g, f"{g} (n={n_u[g]:,})", COLORS[i], MARKERS[i]) for i, g in enumerate(keep)]
     vu = {g: med.loc[g].to_dict() for g in keep}
@@ -177,7 +177,7 @@ def main():
           f"{u.end.max()}-bp amplicon (nt {u_pos[0]}–{u_pos[1]}) of the {u_len}-bp gene · variants: UPEC + NCBI genomes (n = 6,231)", target="uidA")
     block(fig, gs_p, p, xmax, gp, vp, ymax, "papGII",
           f"{p.end.max()}-bp amplicon (nt {p_pos[0]}–{p_pos[1]}) of the {p_len}-bp gene · variants: papGII genomes of UPEC + NCBI (n = 645); axis reversed", target="papGII")
-    fig.text(0.5, 0.043, f"Rows: {'Clermont phylogroups' if False else 'groups'}, UPEC + NCBI pooled. Lollipop height = median number of mismatches to the primer (y-axis: 0–{ymax} nt, the length of the longest primer binding site)",
+    fig.text(0.5, 0.043, f"Rows: {'Clermont phylogroups' if False else 'groups'}, UPEC + NCBI pooled. Lollipop height = median number of mismatches to the primer (y-axis: 0–{ymax}, the highest median observed)",
              ha="center", va="center", fontsize=6.8, color=INK2)
     role_handles = [Patch(color=ROLE_COLOR[k], label=ROLE_LABEL[k]) for k in ROLE_COLOR]
     fig.legend(handles=role_handles, loc="lower center", ncol=3, frameon=False, fontsize=7, bbox_to_anchor=(0.5, 0.0))
