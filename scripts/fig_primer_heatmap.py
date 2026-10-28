@@ -54,7 +54,7 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     ax.tick_params(axis="y", length=0); ax.tick_params(axis="x", labelsize=TICK_FS, colors=INK2)
     for sp in ax.spines.values(): sp.set_visible(False)
     ax.spines["bottom"].set_visible(True); ax.spines["bottom"].set_color("#c3c2b7")
-    ax.set_xlabel("Position in amplicon (nt)", fontsize=LABEL_FS, color=INK2)
+    ax.set_xlabel("Position in target region (nt)", fontsize=LABEL_FS, color=INK2)
     return axt, ax
 
 

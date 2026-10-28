@@ -15347,7 +15347,7 @@ L 0 3.5
      </g>
     </g>
     <g id="text_26">
-     <text style="fill: #52514e; font: 8.834541px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="236.585498" y="284.50732" transform="rotate(-0 236.585498 284.50732)">Position in amplicon (nt)</text>
+     <text style="fill: #52514e; font: 8.834541px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="236.585498" y="284.50732" transform="rotate(-0 236.585498 284.50732)">Position in target region (nt)</text>
     </g>
    </g>
    <g id="matplotlib.axis_4">
@@ -24236,7 +24236,7 @@ z
      </g>
     </g>
     <g id="text_123">
-     <text style="fill: #52514e; font: 8.834541px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="236.585498" y="518.095778" transform="rotate(-0 236.585498 518.095778)">Position in amplicon (nt)</text>
+     <text style="fill: #52514e; font: 8.834541px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="236.585498" y="518.095778" transform="rotate(-0 236.585498 518.095778)">Position in target region (nt)</text>
     </g>
    </g>
    <g id="matplotlib.axis_8">
