@@ -145,7 +145,7 @@ def main():
     cax = fig.add_axes([pa.x1 + 5 / W, yc - hgt / 2, 3 / W, hgt])
     cb = fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=H.CMAP), cax=cax, ticks=range(0, vmax + 1))
     cb.outline.set_visible(False); cb.ax.tick_params(labelsize=7, colors=H.INK2, length=2)
-    cb.set_label("Median mismatches to the primer", fontsize=7.5, color=H.INK2)
+    cb.set_label("Median mismatches to the primer", fontsize=H.LABEL_FS, color=H.INK2)
     tb = fig.text(nB[0] - 0.03 * nB[2], ya, "(B)", va="bottom", **H.LETTER_KW)
     fig.canvas.draw()                                                             # lay out the colour-bar label before measuring it
     inv = fig.transFigure.inverted()

@@ -128,7 +128,7 @@ L -2 0
      </g>
     </g>
     <g id="text_8">
-     <text style="fill: #52514e; font: 8px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="89.564102" y="76.455874" transform="rotate(-90 89.564102 76.455874)">Variant (%)</text>
+     <text style="fill: #52514e; font: 10px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="89.143164" y="76.455874" transform="rotate(-90 89.143164 76.455874)">Variant (%)</text>
     </g>
    </g>
    <g id="patch_4">
@@ -15347,7 +15347,7 @@ L 0 3.5
      </g>
     </g>
     <g id="text_26">
-     <text style="fill: #52514e; font: 8.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="236.585498" y="284.35104" transform="rotate(-0 236.585498 284.35104)">Position in amplicon (nt)</text>
+     <text style="fill: #52514e; font: 10px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="236.585498" y="285.442994" transform="rotate(-0 236.585498 285.442994)">Position in amplicon (nt)</text>
     </g>
    </g>
    <g id="matplotlib.axis_4">
@@ -15689,7 +15689,7 @@ z
      </g>
     </g>
     <g id="text_106">
-     <text style="fill: #52514e; font: 8px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="89.564102" y="362.523301" transform="rotate(-90 89.564102 362.523301)">Variant (%)</text>
+     <text style="fill: #52514e; font: 10px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="89.143164" y="362.523301" transform="rotate(-90 89.143164 362.523301)">Variant (%)</text>
     </g>
    </g>
    <g id="patch_1894">
@@ -24236,7 +24236,7 @@ z
      </g>
     </g>
     <g id="text_123">
-     <text style="fill: #52514e; font: 8.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="236.585498" y="517.939498" transform="rotate(-0 236.585498 517.939498)">Position in amplicon (nt)</text>
+     <text style="fill: #52514e; font: 10px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="236.585498" y="519.031451" transform="rotate(-0 236.585498 519.031451)">Position in amplicon (nt)</text>
     </g>
    </g>
    <g id="matplotlib.axis_8">
@@ -24521,14 +24521,14 @@ L 2 0
      </g>
     </g>
     <g id="text_173">
-     <text style="fill: #52514e; font: 7.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="405.233723" y="276.390766" transform="rotate(-90 405.233723 276.390766)">Median mismatches to the primer</text>
+     <text style="fill: #52514e; font: 10px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="407.023176" y="276.390766" transform="rotate(-90 407.023176 276.390766)">Median mismatches to the primer</text>
     </g>
    </g>
    <g id="LineCollection_1"/>
   </g>
   <g id="line2d_51">
-   <path d="M 433.860956 533.889681 
-L 433.860956 7.205 
+   <path d="M 435.399956 533.889681 
+L 435.399956 7.205 
 " style="fill: none; stroke: #000000; stroke-linecap: square"/>
   </g>
   <g id="text_174">
