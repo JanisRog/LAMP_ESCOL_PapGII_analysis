@@ -26,6 +26,10 @@ mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "
                      "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig4",
                      "lines.linewidth": 1.5 * SC, "axes.linewidth": 0.8 * SC, "grid.linewidth": 0.8 * SC,
                      "xtick.major.size": 3.5 * SC, "ytick.major.size": 3.5 * SC, "xtick.major.width": 0.8 * SC, "ytick.major.width": 0.8 * SC})
+# colour-blind-safe palette (Okabe-Ito; the four metric colours pass the CVD check of the dataviz validator, the old blue/orange/green/red did not:
+# orange and green were indistinguishable for protan viewers). Line styles (solid / dotted / dash-dot) add a second cue.
+BLUE, ORANGE, GREEN, VERM = "#0072B2", "#E69F00", "#009E73", "#D55E00"
+SEL, UIDA = "black", "#CC79A7"          # selected threshold / uidA time threshold (reference marks): black and reddish purple
 LETTER = {"fontsize": 16, "fontweight": "bold", "family": "DejaVu Sans"}
 FIXED_F = 3.0
 TARGETS = [("uidA", "culture_results.csv", 30), ("papGII", "papg_results.csv", 23)]
@@ -61,10 +65,10 @@ LW = 2.6 * SC   # metric curves in panels A, B, D, E (thicker than the default f
 
 
 def metric_lines(ax, x, vals):
-    ax.plot(x, vals[0], color="C0", lw=LW * 1.25)
-    ax.plot(x, vals[1], color="C1", ls=":", lw=LW * 1.2)
-    ax.plot(x, vals[2], color="C2", ls="-.", lw=LW)
-    ax.plot(x, vals[3], color="C3", alpha=0.8, lw=LW)
+    ax.plot(x, vals[0], color=BLUE, lw=LW * 1.25)
+    ax.plot(x, vals[1], color=ORANGE, ls=":", lw=LW * 1.2)
+    ax.plot(x, vals[2], color=GREEN, ls="-.", lw=LW)
+    ax.plot(x, vals[3], color=VERM, lw=LW)
 
 
 def main():
@@ -90,8 +94,8 @@ def main():
         tv = np.array([metrics(fc.loc[:t].max().values, y, FIXED_F) for t in times]).T
         ax, x0 = axes_at(col, 0, box_w, row_h)
         metric_lines(ax, times, tv)
-        ax.axvline(T, color="red", ls="--", lw=LW)
-        if target == "papGII": ax.axvline(UIDA_T, color="green", ls="--", lw=LW)
+        ax.axvline(T, color=SEL, ls="--", lw=LW)
+        if target == "papGII": ax.axvline(UIDA_T, color=UIDA, ls="--", lw=LW)
         ax.set_xlim(-1, 41); style(ax, "Time [min]", "Score", f"Diagnostic Metrics for {gene} vs Time (Fluorescence ≥ 3-fold change)")
         fig.text((x0 - 14) / W, (H - 1.5 - 0 * pitch) / H, f"({'ABCDEF'[col * 3]})", va="top", **LETTER)
         # --- fluorescence sweep at the selected T
@@ -100,21 +104,21 @@ def main():
         fv = np.array([metrics(mx, y, f) for f in fluos]).T
         ax, x0 = axes_at(col, 1, box_w, row_h)
         metric_lines(ax, fluos, fv)
-        ax.axvline(FIXED_F, color="red", ls="--", lw=LW)
+        ax.axvline(FIXED_F, color=SEL, ls="--", lw=LW)
         ax.set_xlim(-0.5, fluos.max() + 0.5)
         style(ax, "Fluorescence Threshold (fold-change)", "Score", f"Diagnostic Metrics for {gene} vs Fluorescence (Time = {T} min)")
         fig.text((x0 - 14) / W, (H - 1.5 - pitch) / H, f"({'ABCDEF'[col * 3 + 1]})", va="top", **LETTER)
         # --- ROC at T
         fpr, tpr, _ = roc_curve(y, mx); a = auc(fpr, tpr)
         ax, x0 = axes_at(col, 2, roc, roc, dx=(box_w - roc) / 2)
-        ax.plot(fpr, tpr, color="blue", lw=2 * SC)
+        ax.plot(fpr, tpr, color=BLUE, lw=2 * SC)
         ax.plot([0, 1], [0, 1], ls="--", color="gray", lw=1 * SC)
         se, sp = metrics(mx, y, FIXED_F)[1:3]
-        ax.scatter(1 - sp, se, s=70, facecolors="none", edgecolors="red", linewidths=2 * SC, zorder=3)
+        ax.scatter(1 - sp, se, s=70, facecolors="none", edgecolors=SEL, linewidths=2 * SC, zorder=3)
         if target == "papGII":
             m30 = fc.loc[:UIDA_T].max().values
             se30, sp30 = metrics(m30, y, FIXED_F)[1:3]
-            ax.scatter(1 - sp30, se30, s=70, facecolors="none", edgecolors="green", linewidths=2 * SC, zorder=3)
+            ax.scatter(1 - sp30, se30, s=70, facecolors="none", edgecolors=UIDA, linewidths=2 * SC, zorder=3)
         roc_bottom = (H - top - 2 * pitch - roc) / H                          # bottom of the ROC axes (figure fraction)
         ax.text(0.97, 0.06, f"AUC = {a:.3f}", ha="right", va="bottom", transform=ax.transAxes, fontsize=LABEL)
         ax.set_xlim(-0.05, 1.05); ax.set_ylim(-0.05, 1.05)
@@ -123,10 +127,10 @@ def main():
         fig.text((x0 - 14 - (box_w - roc) / 2) / W, (H - 1.5 - 2 * pitch) / H, f"({'ABCDEF'[col * 3 + 2]})", va="top", **LETTER)
 
     # shared legend below the figure (row 1: metrics; row 2: thresholds and cutoffs)
-    h = [Line2D([], [], color="C0", lw=3), Line2D([], [], color="C1", lw=3, ls=":"), Line2D([], [], color="C2", lw=3, ls="-."),
-         Line2D([], [], color="C3", lw=3, alpha=0.7),
-         Line2D([], [], color="red", lw=2.4, ls="--"), Line2D([], [], color="red", marker="o", mfc="none", mew=1.5, ms=8, ls=""),
-         Line2D([], [], color="green", lw=2.4, ls="--"), Line2D([], [], color="green", marker="o", mfc="none", mew=1.5, ms=8, ls="")]
+    h = [Line2D([], [], color=BLUE, lw=3), Line2D([], [], color=ORANGE, lw=3, ls=":"), Line2D([], [], color=GREEN, lw=3, ls="-."),
+         Line2D([], [], color=VERM, lw=3),
+         Line2D([], [], color=SEL, lw=2.4, ls="--"), Line2D([], [], color=SEL, marker="o", mfc="none", mew=1.5, ms=8, ls=""),
+         Line2D([], [], color=UIDA, lw=2.4, ls="--"), Line2D([], [], color=UIDA, marker="o", mfc="none", mew=1.5, ms=8, ls="")]
     lab = ["Youden's index", "Sensitivity", "Specificity", "PPV",
            "Selected threshold", "Selected cutoff (ROC)", "uidA time threshold (30 min)", "uidA cutoff (ROC)"]
     order = [0, 4, 1, 5, 2, 6, 3, 7]                                       # column-major fill -> two tidy rows
