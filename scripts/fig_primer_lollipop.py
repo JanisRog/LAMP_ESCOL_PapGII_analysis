@@ -70,10 +70,22 @@ def draw_zoom_lines(fig):
                                   ls=(0, (3, 2)), zorder=5))
 
 
+def pooled_variability(target):
+    """Per-position counts of the UPEC collection (results/gene_scan) and the NCBI genomes (results/gene_scan_ncbi), added
+    up (both scans use the same reference gene of E. coli 700223-20)."""
+    parts = [pd.read_csv(RESULTS / folder / target / "position_variability.tsv", sep="\t")
+             for folder in ("gene_scan", "gene_scan_ncbi")]
+    assert (parts[0].position == parts[1].position).all() and (parts[0].ref_base == parts[1].ref_base).all()
+    pv = parts[0].copy()
+    for c in ("n_covered", "n_substitution", "n_gap"):
+        pv[c] = parts[0][c] + parts[1][c]
+    return pv
+
+
 def gene_strip(ax, target, st):
-    """Whole gene of the design strain: % of genomes (UPEC collection) with a variant at each position; amplicon shaded.
+    """Whole gene of the design strain: % of genomes (UPEC + NCBI) with a variant at each position; amplicon shaded.
     For papGII the primers lie on the reverse strand, so the gene axis is reversed (F3 -> B3 runs left to right)."""
-    pv = pd.read_csv(RESULTS / "gene_scan" / target / "position_variability.tsv", sep="\t")
+    pv = pooled_variability(target)
     gs_ = pd.read_csv(RESULTS / "gene_scan" / target / "gene_sites.tsv", sep="\t").set_index("feature")
     lo, hi, strand = int(gs_.loc["amplicon", "gene_start"]), int(gs_.loc["amplicon", "gene_end"]), gs_.loc["amplicon", "strand"]
     pct = 100 * (pv.n_substitution + pv.n_gap) / pv.n_covered.where(pv.n_covered > 0)
@@ -162,9 +174,9 @@ def main():
     gs_u = outer[0].subgridspec(2 + len(gu), 1, height_ratios=[GENE, TRK] + [ROW] * len(gu), hspace=0.3)
     gs_p = outer[1].subgridspec(2 + len(gp), 1, height_ratios=[GENE, TRK] + [ROW] * len(gp), hspace=0.3)
     block(fig, gs_u, u, xmax, gu, vu, ymax, "uidA",
-          f"{u.end.max()}-bp amplicon (nt {u_pos[0]}–{u_pos[1]}) of the {u_len}-bp gene · variants: UPEC (n = 738)", target="uidA")
+          f"{u.end.max()}-bp amplicon (nt {u_pos[0]}–{u_pos[1]}) of the {u_len}-bp gene · variants: UPEC + NCBI genomes (n = 6,231)", target="uidA")
     block(fig, gs_p, p, xmax, gp, vp, ymax, "papGII",
-          f"{p.end.max()}-bp amplicon (nt {p_pos[0]}–{p_pos[1]}) of the {p_len}-bp gene · variants: papGII genomes of UPEC (n = 140); axis reversed", target="papGII")
+          f"{p.end.max()}-bp amplicon (nt {p_pos[0]}–{p_pos[1]}) of the {p_len}-bp gene · variants: papGII genomes of UPEC + NCBI (n = 645); axis reversed", target="papGII")
     fig.text(0.5, 0.043, f"Rows: {'Clermont phylogroups' if False else 'groups'}, UPEC + NCBI pooled. Lollipop height = median number of mismatches to the primer (y-axis: 0–{ymax} nt, the length of the longest primer binding site)",
              ha="center", va="center", fontsize=6.8, color=INK2)
     role_handles = [Patch(color=ROLE_COLOR[k], label=ROLE_LABEL[k]) for k in ROLE_COLOR]

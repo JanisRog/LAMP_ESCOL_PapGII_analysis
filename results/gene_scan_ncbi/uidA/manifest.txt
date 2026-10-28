@@ -1,0 +1,9 @@
+date: 2026-10-27T18:00:03
+script: /home/jaroge/data/Aline_genomes/gene_scan.py
+target: uidA
+gene_query: /home/jaroge/data/Aline_genomes/extracted_sequences/beta_glucuronidase_sequences/700223-20_beta_glucuronidase.fasta
+design_genome: /home/jaroge/data/Aline_genomes/prokka_output_aline/700223-20/700223-20.fna
+reference_gene: 700223-20_pilon (1812 bp, 100.0% identity to query)
+genomes: /home/jaroge/data/Aline_genomes/ncbi_work_20261027/ecoli (5493 files matching *_genomic.fna)
+blastn: 2.17.0+
+per genome: best HSP of the reference gene (by bitscore)

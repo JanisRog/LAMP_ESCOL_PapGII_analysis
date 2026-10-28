@@ -1,0 +1,10 @@
+feature	role	gene_start	gene_end	strand
+amplicon	-	510	742	-
+F3	outer	724	742	-
+F2	inner	683	705	-
+LF	loop	658	682	-
+F1c	inner	632	653	-
+B1c	inner	599	623	-
+LB	loop	564	588	-
+B2	inner	544	562	-
+B3	outer	510	531	-

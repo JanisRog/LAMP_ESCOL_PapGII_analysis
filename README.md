@@ -57,7 +57,7 @@ isolates (ENA PRJEB106156) and all 5,493 NCBI RefSeq complete *E. coli* assembli
 |---|---|---|
 | Binding-site screen, papG typing | `primer_screen.py` / `.sbatch` | `results/primer_screen/` |
 | papGII sites vs every papG locus | `papg_site_scan.py` / `.sbatch` | `results/papg_site_scan*/` |
-| Gene-wide variability, amplicon position | `gene_scan.py` / `.sbatch` | `results/gene_scan/` |
+| Gene-wide variability, amplicon position | `gene_scan.py` / `.sbatch` (UPEC); `ncbi_gene_scan.sbatch` (NCBI RefSeq genomes, by accession) | `results/gene_scan/`, `results/gene_scan_ncbi/` |
 | uidA in NCBI RefSeq genomes (download, screen, phylogroups) | `ncbi_ecoli_uida.sbatch` | `results/ncbi_ecoli_uida/` |
 | Phylogroups | `phylogroups.sbatch` | `data/*_phylogroups.tsv` |
 | Contig end vs genuine truncation | `uida_nonintact_check.py` | `results/uida_nonintact/` |

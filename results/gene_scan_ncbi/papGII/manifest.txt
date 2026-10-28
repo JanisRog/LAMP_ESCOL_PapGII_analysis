@@ -1,0 +1,9 @@
+date: 2026-10-27T18:00:09
+script: /home/jaroge/data/Aline_genomes/gene_scan.py
+target: papGII
+gene_query: /home/jaroge/data/Aline_genomes/ncbi_gene_scan_20261027/PapG-II_query.fasta
+design_genome: /home/jaroge/data/Aline_genomes/prokka_output_aline/700223-20/700223-20.fna
+reference_gene: 700223-20_pilon (1011 bp, 99.011% identity to query)
+genomes: /home/jaroge/data/Aline_genomes/ncbi_work_20261027/ecoli (505 files matching *_genomic.fna, restricted to /home/jaroge/data/Aline_genomes/ncbi_gene_scan_20261027/papGII_genomes.txt)
+blastn: 2.17.0+
+per genome: best HSP of the reference gene (by bitscore)
