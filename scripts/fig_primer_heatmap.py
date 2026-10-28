@@ -30,8 +30,8 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     if LETTER:   # composite figure: panel letter at top left, target title underneath it, no subtitle
         if target == "uidA":
             global LETTER_ARTIST
-            LETTER_ARTIST = axg.text(TITLE_X - 0.13, 1.4, LETTER, transform=axg.transAxes, ha="left", va="bottom", fontsize=14, fontweight="bold", color=INK)
-        axg.text(TITLE_X - 0.13, 1.05, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
+            LETTER_ARTIST = axg.text(TITLE_X - 0.13, 1.4, LETTER, transform=axg.transAxes, ha="left", va="bottom", color=INK, **LETTER_KW)
+        axg.text(TITLE_X - 0.13, 0.5, title, transform=axg.transAxes, ha="left", va="center", fontsize=12, fontstyle="italic", color=INK)
     else:
         axg.text(TITLE_X, 1.4, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
     sub = sub.replace(" · ", SUB_SEP) if SUB_SEP else None
@@ -60,6 +60,7 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
 
 SUB_SEP = " · "   # separator in the amplicon subtitle (the composite figure uses a line break)
 LETTER_ARTIST = None
+LETTER_KW = {"fontsize": 16, "fontweight": "bold", "family": "DejaVu Sans"}
 LETTER = None      # panel letter drawn left of the first target title (composite figure)
 TITLE_X = -0.215   # x of the target titles (axes fraction of the gene strip)
 

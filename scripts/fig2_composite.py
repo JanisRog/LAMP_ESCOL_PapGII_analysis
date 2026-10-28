@@ -38,7 +38,7 @@ def lod_panel(ax, target, letter):
     ax.set_title(f"LAMP limit of detection for $\\it{{{target}}}$ (median ± IQR)", fontsize=7.5)
     ax.legend(title="CFU/ml", title_fontsize=6.5, fontsize=6.5, loc="upper left")
     if letter != "(B)":   # (B) is placed at the height of (A) in main()
-        ax.text(-0.1, 1.12, letter, transform=ax.transAxes, fontsize=14, fontweight="bold", va="bottom")
+        ax.text(-0.1, 1.12, letter, transform=ax.transAxes, va="bottom", **H.LETTER_KW)
     return ax
 
 
@@ -48,7 +48,7 @@ def main():
     hA = (GENE + ZOOM + TRK + TIGHT) * 2 + ROW * 12 + BETWEEN + CB
     W = 295.0
     fig = plt.figure(figsize=(W / 25.4, (hA + 10) / 25.4))
-    top = fig.add_gridspec(1, 2, width_ratios=[100, 118], wspace=0.3, left=40 / W, right=0.99, top=0.975, bottom=0.03)
+    top = fig.add_gridspec(1, 2, width_ratios=[92, 130], wspace=0.3, left=40 / W, right=0.99, top=0.975, bottom=0.03)
     H.SUB_SEP, H.LETTER = None, "(A)"
     H.draw_panel(fig, top[0], dims, title_x=-0.3)
     right = top[1].subgridspec(2, 1, hspace=0.42)
@@ -58,7 +58,7 @@ def main():
     a = H.LETTER_ARTIST                                     # (B) at the same height as (A)
     ya = fig.transFigure.inverted().transform(a.get_transform().transform(a.get_position()))[1]
     pb = axb.get_position()
-    fig.text(pb.x0 - 0.1 * pb.width, ya, "(B)", fontsize=14, fontweight="bold", va="bottom")
+    fig.text(pb.x0 - 0.1 * pb.width, ya, "(B)", va="bottom", **H.LETTER_KW)
     x = axb.get_position().x0 - 20 / W                      # divider between A and B/C
     fig.add_artist(Line2D([x, x], [0.0, 1.0], transform=fig.transFigure, color="black", lw=1.0))
     for ext in ("pdf", "png", "svg"):
