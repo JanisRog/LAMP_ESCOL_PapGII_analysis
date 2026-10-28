@@ -4,7 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 PY=${PYTHON:-python3}
-for s in diagnostic_metrics_ci cfu_time_to_threshold clinical_phylogroups tables_s_primer_conservation uidA_candidate_sets fig_primer_map fig_primer_lollipop fig_primer_heatmap fig2_composite fig3_curves fig4_metrics fig5_confusion fig6_ttt collection_agreement; do
+for s in diagnostic_metrics_ci cfu_time_to_threshold threshold_bootstrap clinical_phylogroups tables_s_primer_conservation uidA_candidate_sets fig_primer_map fig_primer_lollipop fig_primer_heatmap fig2_composite fig3_curves fig4_metrics fig5_confusion fig6_ttt collection_agreement; do
   echo "== $s"; $PY $s.py > /dev/null
 done
 echo "done: results/ updated"

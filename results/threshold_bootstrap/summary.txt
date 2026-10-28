@@ -1,0 +1,23 @@
+Bootstrap of the threshold selection: B = 2000 stratified resamples of the 191 samples (seed 20261028); selection by the maximum Youden's index (ties: PPV, then shorter time); evaluation on the out-of-bag samples.
+
+== uidA - (a) time threshold selected at the fixed fluorescence threshold of 3-fold (study rule: maximum Youden's index, midpoint of a plateau)
+  selected T: median 30 min (IQR 30-30; 2.5-97.5%: 28-35); within +-3 min of 30 min: 96%; exactly 30: 89%
+  Youden's index of the selected T: in the resample 0.819, out-of-bag 0.794 (optimism 0.025)
+== uidA - (b) both thresholds selected on the full grid (maximum Youden's index; ties: PPV, then shorter T)
+  (study rule: 30 min, >= 3-fold; full-data optimum: T = 27 min, f = 1.5, J = 0.816; the Youden index is flat over a wide range of combinations)
+  selected time threshold T: median 36 min (IQR 26-40; 2.5-97.5%: 24-40)
+  resamples selecting T within +-3 min of the fixed rule: 17%; selecting exactly T = 30: 0%
+  selected fluorescence threshold f: median 7.6 (IQR 1.1-12.0); f <= 4: 48%
+  Youden's index of the selected combination: in the resample 0.851, out-of-bag 0.750 (optimism 0.101)
+  Youden's index of the fixed rule: in the resample 0.817, out-of-bag 0.815; 2.5-97.5% out-of-bag: 0.661-0.964
+
+== papGII - (a) time threshold selected at the fixed fluorescence threshold of 3-fold (study rule: maximum Youden's index, midpoint of a plateau)
+  selected T: median 23 min (IQR 22-23; 2.5-97.5%: 22-24); within +-3 min of 23 min: 100%; exactly 23: 66%
+  Youden's index of the selected T: in the resample 1.000, out-of-bag 0.982 (optimism 0.018)
+== papGII - (b) both thresholds selected on the full grid (maximum Youden's index; ties: PPV, then shorter T)
+  (study rule: 23 min, >= 3-fold; full-data optimum: T = 18 min, f = 1.2, J = 1.000; the Youden index is flat over a wide range of combinations)
+  selected time threshold T: median 17 min (IQR 16-18; 2.5-97.5%: 15-18)
+  resamples selecting T within +-3 min of the fixed rule: 0%; selecting exactly T = 23: 0%
+  selected fluorescence threshold f: median 1.2 (IQR 1.1-1.2); f <= 4: 100%
+  Youden's index of the selected combination: in the resample 1.000, out-of-bag 0.811 (optimism 0.189)
+  Youden's index of the fixed rule: in the resample 1.000, out-of-bag 0.982; 2.5-97.5% out-of-bag: 1.000-1.000
