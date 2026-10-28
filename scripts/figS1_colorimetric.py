@@ -92,7 +92,7 @@ def main():
     mm = 1 / 25.4
     W, left, col_w, gap = 192.0, 22.0, 78.0, 10.0
     row_h = col_w * CROP_H / CROP_W
-    top, head, leg = 10.0, 12.0, 74.0
+    top, head, leg = 10.0, 13.0, 80.0
     exp_h = 19.0
     H = top + head + len(TIMES) * (row_h + 2.0) + leg
     fig = plt.figure(figsize=(W * mm, H * mm))
@@ -109,7 +109,7 @@ def main():
         # tube numbers above the first row (tube centres from the 0-min cut-out geometry: 0.95 pitch margin on each side)
         for k in range(8):
             xx = x0 + col_w * (0.95 + k) / (7 + 1.9)
-            fig.text(xx / W, 1 - (top + head - 1.5) / H, str(k + 1), ha="center", va="bottom", fontsize=9)
+            fig.text(xx / W, 1 - (top + head - 1.5) / H, str(k + 1), ha="center", va="bottom", fontsize=12.5)
     # expected result: tubes 1-6 (E. coli) positive for uidA, tubes 1-3 (papGII) positive for papGII; all others negative (icons: yellow = amplification, pink = none)
     pos, neg = Image.open(CROPS / "icon_positive_yellow.png"), Image.open(CROPS / "icon_negative_pink.png")
     ey = top + head + len(TIMES) * (row_h + 2.0) + 3
@@ -125,12 +125,12 @@ def main():
     kx = left + 2
     for img_, lab, dx in ((pos, "Positive: amplification (yellow)", 0), (neg, "Negative: no amplification (pink)", 78)):
         ax = fig.add_axes([(kx + dx) / W, 1 - (ky + 9) / H, 9 * pos.width / pos.height / W, 9 / H]); ax.imshow(img_); ax.axis("off")
-        fig.text((kx + dx + 5) / W, 1 - (ky + 4.5) / H, lab, ha="left", va="center", fontsize=9.5)
+        fig.text((kx + dx + 5) / W, 1 - (ky + 4.5) / H, lab, ha="left", va="center", fontsize=12)
     # strain legend
     ly = ky + 14
     for k, s in enumerate(STRAINS):
         col, row = divmod(k, 4)
-        fig.text((left + col * 80) / W, 1 - (ly + row * 6.0) / H, f"{k + 1}.  {s}", ha="left", va="top", fontsize=9.5)
+        fig.text((left + col * 80) / W, 1 - (ly + row * 7.4) / H, f"{k + 1}.  {s}", ha="left", va="top", fontsize=12)
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "figS1_colorimetric.py"}, "svg": {"Date": None}}.get(ext)
         fig.savefig(OUT / f"figS1.{ext}", dpi=600 if ext == "png" else None, metadata=meta)
