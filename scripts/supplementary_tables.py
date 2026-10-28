@@ -1,11 +1,12 @@
 """Supplementary Tables 1-8 of the manuscript as one Excel workbook (results/supplement/Supplementary_Tables.xlsx).
 
+Numbered in the order of first citation in the manuscript:
 1  all clinical samples: culture, density, WGS papGII and papG alleles, phylogroup, LAMP calls, times to threshold
-2  uidA: highest-ranking threshold combinations (Youden's index) and the selected thresholds
-3  papGII: metrics at different time thresholds (fluorescence threshold 3-fold)
-4  binding-site mismatches of the primers (UPEC + NCBI genomes) per phylogroup / papG class (data of Figure 2A) and presence of the sites
-5  plate counts of the limit-of-detection dilution series and the resulting densities
-6  times to threshold of the E. coli-positive urines by density, papGII status and primer set
+2  plate counts of the limit-of-detection dilution series and the resulting densities
+3  binding-site mismatches of the primers (UPEC + NCBI genomes) per phylogroup / papG class (data of Figure 2A) and presence of the sites
+4  times to threshold of the E. coli-positive urines by density, papGII status and primer set
+5  uidA: highest-ranking threshold combinations (Youden's index) and the selected thresholds
+6  papGII: metrics at different time thresholds (fluorescence threshold 3-fold)
 7  bootstrap of the threshold selection
 8  clinical isolates: phylogroup, mismatches at the LF binding site and uidA time to threshold
 
@@ -34,6 +35,7 @@ def italicise(path):
     from openpyxl.cell.rich_text import CellRichText, TextBlock
     from openpyxl.cell.text import InlineFont
     wb = load_workbook(path, rich_text=True)
+    wb._sheets.sort(key=lambda w: int(w.title.split()[-1]))
     for ws in wb:
         for row in ws.iter_rows():
             for c in row:
@@ -218,25 +220,25 @@ def main():
         put(t1, "Supp Table 1", "Supplementary Table 1. Overview of all 191 clinical urine samples, reference results and LAMP results.",
             ["LAMP result: 1 = positive (uidA: <= 30 min and >= 3-fold; papGII: <= 23 min and >= 3-fold); time to threshold empty = fluorescence threshold not reached within 40 min. "
              "Bacterial density from semi-quantitative culture of 10 ul (categories <10^4, 10^4, 10^5 and >10^5 CFU/ml). papG alleles: BLASTN vs papG classes I-IV (>= 90% identity, >= 80% coverage); phylogroups: EzClermont."])
-        put(t2, "Supp Table 2", "Supplementary Table 2. uidA: the ten highest-ranking results of the threshold search by Youden's index (191 samples).",
+        put(t2, "Supp Table 5", "Supplementary Table 5. uidA: the ten highest-ranking results of the threshold search by Youden's index (191 samples).",
             ["All combinations of 40 time thresholds (1-40 min) and 200 fluorescence thresholds (fold-change relative to the first measurement; equally spaced between the lowest and highest observed value) were evaluated; "
              "combinations with the same classification result are summarised in one row. The selected thresholds (30 min, 3-fold) and the combination of 39 min and 11.4-fold are given below the table."])
-        put(sel, "Supp Table 2", "", first=False, startrow=len(t2) + 6)
-        put(t3, "Supp Table 3", "Supplementary Table 3. papGII: diagnostic metrics at different time thresholds (fluorescence threshold >= 3-fold change; 191 samples).",
+        put(sel, "Supp Table 5", "", first=False, startrow=len(t2) + 6)
+        put(t3, "Supp Table 6", "Supplementary Table 6. papGII: diagnostic metrics at different time thresholds (fluorescence threshold >= 3-fold change; 191 samples).",
             ["The selected time threshold of 23 min is the midpoint of the range (20-25 min) in which the Youden's index was 1.00."])
-        put(lol, "Supp Table 4", "Supplementary Table 4. Median number of mismatches between the primers and their binding sites (UPEC + NCBI RefSeq genomes pooled; data of Figure 2A).",
+        put(lol, "Supp Table 3", "Supplementary Table 3. Median number of mismatches between the primers and their binding sites (UPEC + NCBI RefSeq genomes pooled; data of Figure 2A).",
             ["uidA: per Clermont phylogroup (genomes with the target region present). papGII: per PapG class (best-matching papG locus of each genome), with minimum and maximum."])
-        put(pg, "Supp Table 4", "", first=False, startrow=len(lol) + 6)
-        put(mm, "Supp Table 4", "", first=False, startrow=len(lol) + len(pg) + 9)
-        put(pres, "Supp Table 4", "", first=False, startrow=len(lol) + len(pg) + len(mm) + 12)
+        put(pg, "Supp Table 3", "", first=False, startrow=len(lol) + 6)
+        put(mm, "Supp Table 3", "", first=False, startrow=len(lol) + len(pg) + 9)
+        put(pres, "Supp Table 3", "", first=False, startrow=len(lol) + len(pg) + len(mm) + 12)
         raw, dens = plate_tables()
-        put(raw, "Supp Table 5", "Supplementary Table 5. Plate counts of the dilution series used for the limit of detection and the resulting bacterial densities.",
+        put(raw, "Supp Table 2", "Supplementary Table 2. Plate counts of the dilution series used for the limit of detection and the resulting bacterial densities.",
             ["Colonies per plate after plating 100, 10 and 1 ul of each dilution on COS agar. Densities were calculated from plates with 30-300 colonies; for 10^2 CFU/ml (< 30 colonies) the count of the 100 ul plate is given as an estimate. "
              "The density of the 10^6 CFU/ml dilution was inferred from the 10^5 CFU/ml count (10-fold)."])
-        put(dens, "Supp Table 5", "", first=False, startrow=len(raw) + 7)
-        put(cf, "Supp Table 6", "Supplementary Table 6. Time to threshold of the 38 E. coli-positive urine samples by bacterial density, papGII status and primer set.",
+        put(dens, "Supp Table 2", "", first=False, startrow=len(raw) + 7)
+        put(cf, "Supp Table 4", "Supplementary Table 4. Time to threshold of the 38 E. coli-positive urine samples by bacterial density, papGII status and primer set.",
             ["Time to threshold: first minute with a fold-change >= 3 (empty: not reached within 40 min)."])
-        put(pd.DataFrame({"Summary (results/cfu_ttt/summary.txt)": summ}), "Supp Table 6", "", first=False, startrow=len(cf) + 7)
+        put(pd.DataFrame({"Summary (results/cfu_ttt/summary.txt)": summ}), "Supp Table 4", "", first=False, startrow=len(cf) + 7)
         put(t7, "Supp Table 7", "Supplementary Table 7. Bootstrap of the threshold selection (2,000 stratified resamples of the 191 samples).",
             ["(a) Time threshold selected at a fluorescence threshold of 3-fold change (maximum Youden's index; midpoint if reached over a range) and its Youden's index in the resample and in the samples not drawn (out-of-bag)."])
         put(pd.DataFrame({"": ["(b) Both thresholds selected simultaneously from the full grid (ties: higher PPV, then shorter time): the Youden's index is similar over a wide range of combinations, so that this selection is not stable."]}), "Supp Table 7", "", first=False, startrow=len(t7) + 6)
