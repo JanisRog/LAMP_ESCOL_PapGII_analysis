@@ -28,7 +28,7 @@ cluster-side steps (genome analyses) are listed below under "Genome analyses" an
 | Supplementary Tables 1-8 (one Excel workbook) | `scripts/supplementary_tables.py` (needs openpyxl) | `results/supplement/Supplementary_Tables.xlsx` |
 | Stability of the threshold selection (bootstrap, out-of-bag performance) | `scripts/threshold_bootstrap.py` | `results/threshold_bootstrap/` |
 | Time to threshold vs bacterial density, papGII status, primer set (Supp. table) | `scripts/cfu_time_to_threshold.py` | `results/cfu_ttt/` |
-| Fig. 2A (primer maps; median mismatches per binding site by phylogroup and papG class) | `scripts/fig_primer_lollipop.py` | `results/figures/fig2a_primer_lollipop.*`, `fig2a_lollipop_*.tsv` |
+| Fig. 2 (A: primer maps and median mismatches per binding site by phylogroup and papG class; B, C: LoD amplification plots) | `scripts/fig2_composite.py` (panel A from `fig_primer_heatmap.py`, `fig_primer_map.py`; `fig_primer_lollipop.py` provides the shared helpers and the tables `fig2a_*.tsv`) | `results/figures/fig2.*`, `fig2a_*.tsv` |
 | Agreement between the UPEC and NCBI genomes (Spearman) | `scripts/collection_agreement.py` | `results/collection_agreement/` |
 | Supp. tables on binding-site mismatches and presence | `scripts/tables_s_primer_conservation.py` | `results/figures/tableS_*` |
 | Clinical isolates: phylogroup, LF mismatches, time to threshold (Supp. table) | `scripts/clinical_phylogroups.py` | `results/clinical_phylogroups/` |
@@ -70,3 +70,7 @@ isolates (ENA PRJEB106156) and all 5,493 NCBI RefSeq complete *E. coli* assembli
 | uidA in NCBI RefSeq genomes (download, screen, phylogroups) | `ncbi_ecoli_uida.sbatch` | `results/ncbi_ecoli_uida/` |
 | Phylogroups | `phylogroups.sbatch` | `data/*_phylogroups.tsv` |
 | Contig end vs genuine truncation | `uida_nonintact_check.py` | `results/uida_nonintact/` |
+
+## License
+
+Code (`scripts/`, `notebooks/`): MIT License (`LICENSE`). Data and results (`data/`, `results/`): CC BY 4.0 (`LICENSE-DATA.md`). How to cite: `CITATION.cff`.

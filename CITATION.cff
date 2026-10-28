@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below and the associated article."
+title: "Analysis code and data: LAMP assay for rapid detection of Escherichia coli and papGII in urine"
+type: software
+authors:
+  - family-names: Rogenmoser
+    given-names: Janis
+    affiliation: "Institute of Medical Microbiology, University of Zurich"
+  - family-names: Guerrero-López
+    given-names: Alejandro
+    affiliation: "Institute of Medical Microbiology, University of Zurich"
+  - family-names: Nolte
+    given-names: Oliver
+    affiliation: "Institute of Medical Microbiology, University of Zurich"
+  - family-names: Quiblier
+    given-names: Chantal
+    affiliation: "Institute of Medical Microbiology, University of Zurich"
+  - family-names: Hinic
+    given-names: Vladimira
+    affiliation: "Institute of Medical Microbiology, University of Zurich"
+  - family-names: Kolesnik-Goldmann
+    given-names: Natalia
+    affiliation: "Institute of Medical Microbiology, University of Zurich"
+  - family-names: Biggel
+    given-names: Michael
+    affiliation: "Institute for Food Safety and Hygiene, University of Zurich"
+  - family-names: Egli
+    given-names: Adrian
+    affiliation: "Institute of Medical Microbiology, University of Zurich"
+repository-code: "https://github.com/JanisRog/LAMP_ESCOL_PapGII_analysis"
+license: MIT
+keywords: [LAMP, UPEC, papGII, urinary tract infection, diagnostics]
