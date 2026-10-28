@@ -26,7 +26,7 @@ FM.PRIMER_FS = 9.5   # larger text than the lollipop version
 def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     axg = fig.add_subplot(gs[0])
     lo, hi, strand = gene_strip(axg, target, st)
-    axg.tick_params(axis="both", labelsize=7.5); axg.set_ylabel("Variant (%)", fontsize=LABEL_FS, color=INK2)
+    axg.tick_params(axis="both", labelsize=TICK_FS); axg.set_ylabel("Variant (%)", fontsize=LABEL_FS, color=INK2)
     if LETTER:   # composite figure: panel letter at top left, target title underneath it, no subtitle
         if target == "uidA":
             global LETTER_ARTIST
@@ -51,13 +51,14 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
                     color="white" if norm(v) > 0.55 else INK)
     ax.set_xlim(-XPAD, xmax); ax.set_ylim(-0.5, n - 0.5)
     ax.set_yticks(range(n)); ax.set_yticklabels([g[1] for g in groups][::-1], fontsize=8.5, color=INK2)
-    ax.tick_params(axis="y", length=0); ax.tick_params(axis="x", labelsize=8, colors=INK2)
+    ax.tick_params(axis="y", length=0); ax.tick_params(axis="x", labelsize=TICK_FS, colors=INK2)
     for sp in ax.spines.values(): sp.set_visible(False)
     ax.spines["bottom"].set_visible(True); ax.spines["bottom"].set_color("#c3c2b7")
     ax.set_xlabel("Position in amplicon (nt)", fontsize=LABEL_FS, color=INK2)
     return axt, ax
 
 
+TICK_FS = 8       # tick-label size (the composite figure sets it to the size of the B/C tick labels)
 LABEL_FS = 10      # axis / colour-bar label size (Arial) - visually matches the DejaVu Sans labels of panels B and C
 SUB_SEP = " · "   # separator in the amplicon subtitle (the composite figure uses a line break)
 LETTER_ARTIST = None

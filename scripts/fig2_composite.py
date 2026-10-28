@@ -107,7 +107,9 @@ def main():
     FM.LABEL_INSIDE, FM.PRIMER_FS = True, 7.5
     right = top[1].subgridspec(3, 1, height_ratios=[1, 1, LEG_ROW], hspace=HSPACE_BC)
     cell = right[0].get_position(fig)                       # on-page size of the B/C axis labels -> same size for the labels in panel A
-    H.LABEL_FS = LOD_FONTS["axes.labelsize"] * min(cell.width * fig.get_figwidth() / 10, cell.height * fig.get_figheight() / 6)
+    scale = min(cell.width * fig.get_figwidth() / 10, cell.height * fig.get_figheight() / 6)
+    H.LABEL_FS = LOD_FONTS["axes.labelsize"] * scale
+    H.TICK_FS = LOD_FONTS["xtick.labelsize"] * scale          # tick numbers: same on-page size in A, B and C
     pos = top[0].get_position(fig)                          # panel A sits A_DROP lower than the right column (fills the space under it)
     a_spec = fig.add_gridspec(1, 1, left=pos.x0, right=pos.x1, top=pos.y1 - A_DROP, bottom=pos.y0 - A_DROP)[0]
     H.draw_panel(fig, a_spec, dims, title_x=-0.3)
@@ -150,7 +152,7 @@ def main():
     yc, hgt = (pa.y0 + pa.y1) / 2, 0.36 * (pa.y1 - pa.y0)
     cax = fig.add_axes([pa.x1 + 5 / W, yc - hgt / 2, 3 / W, hgt])
     cb = fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=H.CMAP), cax=cax, ticks=range(0, vmax + 1))
-    cb.outline.set_visible(False); cb.ax.tick_params(labelsize=7, colors=H.INK2, length=2)
+    cb.outline.set_visible(False); cb.ax.tick_params(labelsize=H.TICK_FS, colors=H.INK2, length=2)
     cb.set_label("Median mismatches to the primer", fontsize=H.LABEL_FS, color=H.INK2)
     tb = fig.text(nB[0] - 0.03 * nB[2], ya, "(B)", va="bottom", **H.LETTER_KW)
     fig.canvas.draw()                                                             # lay out the colour-bar label before measuring it
