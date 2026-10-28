@@ -37,24 +37,24 @@ def lod_panel(ax, target, letter):
     ax.tick_params(labelsize=6.5)
     ax.set_title(f"LAMP limit of detection for $\\it{{{target}}}$ (median ± IQR)", fontsize=7.5)
     ax.legend(title="CFU/ml", title_fontsize=6.5, fontsize=6.5, loc="upper left")
-    ax.text(-0.17, 1.12, letter, transform=ax.transAxes, fontsize=12, fontweight="bold", va="bottom")
+    ax.text(-0.1, 1.12, letter, transform=ax.transAxes, fontsize=12, fontweight="bold", va="bottom")
     return ax
 
 
 def main():
-    dims = (4.6, 17.0, 12.0, 6.0, 0.5, 27.0, 20.0)
+    dims = (4.6, 17.0, 12.0, 6.0, 0.5, 20.0, 20.0)
     ROW, TRK, GENE, ZOOM, TIGHT, BETWEEN, CB = dims
     hA = (GENE + ZOOM + TRK + TIGHT) * 2 + ROW * 12 + BETWEEN + CB
-    W = 270.0
+    W = 295.0
     fig = plt.figure(figsize=(W / 25.4, (hA + 10) / 25.4))
-    top = fig.add_gridspec(1, 2, width_ratios=[100, 96], wspace=0.34, left=40 / W, right=0.99, top=0.975, bottom=0.03)
-    H.SUB_SEP, H.LETTER = "\n", "(A)"
+    top = fig.add_gridspec(1, 2, width_ratios=[100, 118], wspace=0.3, left=40 / W, right=0.99, top=0.975, bottom=0.03)
+    H.SUB_SEP, H.LETTER = None, "(A)"
     H.draw_panel(fig, top[0], dims, title_x=-0.3)
     right = top[1].subgridspec(2, 1, hspace=0.42)
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")
     axc = lod_panel(fig.add_subplot(right[1]), "papGII", "(C)")
     draw_zoom_lines(fig)
-    x = axb.get_position().x0 - 17 / W                      # divider between A and B/C
+    x = axb.get_position().x0 - 20 / W                      # divider between A and B/C
     fig.add_artist(Line2D([x, x], [0.0, 1.0], transform=fig.transFigure, color="black", lw=1.0))
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "fig2_composite.py"}, "svg": {"Date": None}}.get(ext)

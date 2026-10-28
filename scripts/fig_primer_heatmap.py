@@ -27,11 +27,15 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     axg = fig.add_subplot(gs[0])
     lo, hi, strand = gene_strip(axg, target, st)
     axg.tick_params(axis="both", labelsize=7.5); axg.set_ylabel("Variant (%)", fontsize=8, color=INK2)
-    axg.text(TITLE_X, 1.4, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
-    sub = sub.replace(" · ", SUB_SEP)
-    if LETTER and target == "uidA":
-        axg.text(TITLE_X - 0.13, 1.4, LETTER, transform=axg.transAxes, ha="left", va="bottom", fontsize=14, fontweight="bold", color=INK)
-    axg.text(1.0, 1.62 if "\n" in sub else 1.4, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=7.2, color=INK2)
+    if LETTER:   # composite figure: panel letter at top left, target title underneath it, no subtitle
+        if target == "uidA":
+            axg.text(TITLE_X - 0.13, 1.4, LETTER, transform=axg.transAxes, ha="left", va="bottom", fontsize=14, fontweight="bold", color=INK)
+        axg.text(TITLE_X - 0.13, 1.05, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
+    else:
+        axg.text(TITLE_X, 1.4, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
+    sub = sub.replace(" · ", SUB_SEP) if SUB_SEP else None
+    if sub:
+        axg.text(1.0, 1.62 if "\n" in sub else 1.4, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=7.2, color=INK2)
     axt = fig.add_subplot(gs[2]); draw_map(axt, st, xmax)
     amp_len = st.end.max()
     CONNECT.append((axg, axt, ((lo, 1), (hi, amp_len)) if strand == "+" else ((hi, 1), (lo, amp_len))))
