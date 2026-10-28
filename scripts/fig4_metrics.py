@@ -111,14 +111,14 @@ def main():
         # --- ROC at T
         fpr, tpr, _ = roc_curve(y, mx); a = auc(fpr, tpr)
         ax, x0 = axes_at(col, 2, roc, roc, dx=(box_w - roc) / 2)
-        ax.plot(fpr, tpr, color=BLUE, lw=2 * SC)
-        ax.plot([0, 1], [0, 1], ls="--", color="gray", lw=1 * SC)
+        ax.plot(fpr, tpr, color=BLUE, lw=LW * 1.25)
+        ax.plot([0, 1], [0, 1], ls="--", color="gray", lw=LW * 0.6)
         se, sp = metrics(mx, y, FIXED_F)[1:3]
-        ax.scatter(1 - sp, se, s=70, facecolors="none", edgecolors=SEL, linewidths=2 * SC, zorder=3)
+        ax.scatter(1 - sp, se, s=80, facecolors="none", edgecolors=SEL, linewidths=LW, zorder=3)
         if target == "papGII":
             m30 = fc.loc[:UIDA_T].max().values
             se30, sp30 = metrics(m30, y, FIXED_F)[1:3]
-            ax.scatter(1 - sp30, se30, s=70, facecolors="none", edgecolors=UIDA, linewidths=2 * SC, zorder=3)
+            ax.scatter(1 - sp30, se30, s=80, facecolors="none", edgecolors=UIDA, linewidths=LW, zorder=3)
         roc_bottom = (H - top - 2 * pitch - roc) / H                          # bottom of the ROC axes (figure fraction)
         ax.text(0.97, 0.06, f"AUC = {a:.3f}", ha="right", va="bottom", transform=ax.transAxes, fontsize=LABEL)
         ax.set_xlim(-0.05, 1.05); ax.set_ylim(-0.05, 1.05)
