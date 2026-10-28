@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="732.91219pt" height="282.57287pt" viewBox="0 0 732.91219 282.57287" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="735.477246pt" height="274.37725pt" viewBox="0 0 735.477246 274.37725" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -20,244 +20,196 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 282.57287 
-L 732.91219 282.57287 
-L 732.91219 0 
+   <path d="M 0 274.37725 
+L 735.477246 274.37725 
+L 735.477246 0 
 L 0 0 
 z
 " style="fill: #ffffff"/>
   </g>
   <g id="axes_1">
-   <g id="patch_2">
-    <path d="M 96.7752 231.15092 
-L 259.6392 231.15092 
-L 259.6392 68.28692 
-L 96.7752 68.28692 
-z
-" style="fill: #ffffff"/>
-   </g>
-   <g clip-path="url(#pb8a6d96cb6)">
+   <g clip-path="url(#p2103f479b0)">
     <image xlink:href="data:image/png;base64,
-iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVR4nGM4dffD/zeff/9n+PDtz38Og+z/AH8PDPOb9LqYAAAAAElFTkSuQmCC" id="image63a00435e1" transform="matrix(81.432 0 0 81.432 96.7752 68.28692)" style="image-rendering:crisp-edges;image-rendering:pixelated" width="2" height="2"/>
+iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVR4nGM4dffD/zeff/9n+PDtz38Og+z/AH8PDPOb9LqYAAAAAElFTkSuQmCC" id="image63a00435e1" transform="matrix(103.491322 0 0 86.537288 72.402421 53.651653)" style="image-rendering:crisp-edges;image-rendering:pixelated" width="2" height="2"/>
    </g>
-   <g id="matplotlib.axis_1">
-    <g id="xtick_1">
-     <g id="line2d_1"/>
-     <g id="text_1">
-      <text style="font: 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="137.4912" y="61.90192" transform="rotate(-0 137.4912 61.90192)">positive</text>
-     </g>
-    </g>
-    <g id="xtick_2">
-     <g id="line2d_2"/>
-     <g id="text_2">
-      <text style="font: 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="218.9232" y="61.761295" transform="rotate(-0 218.9232 61.761295)">negative</text>
-     </g>
-    </g>
-   </g>
-   <g id="matplotlib.axis_2">
-    <g id="ytick_1">
-     <g id="line2d_3"/>
-     <g id="text_3">
-      <text style="font: 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="92.7752" y="113.297607" transform="rotate(-0 92.7752 113.297607)">positive</text>
-     </g>
-    </g>
-    <g id="ytick_2">
-     <g id="line2d_4"/>
-     <g id="text_4">
-      <text style="font: 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="92.7752" y="194.729607" transform="rotate(-0 92.7752 194.729607)">negative</text>
-     </g>
-    </g>
-    <g id="text_5">
-     <!-- $\it{E. coli}$ LAMP -->
-     <g transform="translate(36.9252 184.84392) rotate(-90)">
-      <text>
-       <tspan style="font: italic 12.5px 'Arial'" x="0 13.892822 20.142822 27.094727 29.871826" y="-0.6875">Ecoli</tspan>
-       <tspan style="font: 12.5px 'Arial'" x="8.337402 32.648926 36.121826 43.07373 51.411133 61.82373" y="-0.6875">. LAMP</tspan>
-      </text>
-     </g>
-    </g>
-   </g>
-   <g id="patch_3">
-    <path d="M 96.7752 68.28692 
-L 259.6392 68.28692 
-L 259.6392 231.15092 
-L 96.7752 231.15092 
-L 96.7752 68.28692 
+   <g id="patch_2">
+    <path d="M 72.402421 53.651653 
+L 279.385065 53.651653 
+L 279.385065 226.726229 
+L 72.402421 226.726229 
+L 72.402421 53.651653 
 z
-" style="fill: none; stroke: #000000; stroke-width: 1.8; stroke-linejoin: miter"/>
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="LineCollection_1">
-    <path d="M 96.7752 149.71892 
-L 259.6392 149.71892 
-" clip-path="url(#pb8a6d96cb6)" style="fill: none; stroke: #000000; stroke-width: 1.8"/>
-    <path d="M 178.2072 68.28692 
-L 178.2072 231.15092 
-" clip-path="url(#pb8a6d96cb6)" style="fill: none; stroke: #000000; stroke-width: 1.8"/>
+    <path d="M 72.402421 140.188941 
+L 279.385065 140.188941 
+" clip-path="url(#p2103f479b0)" style="fill: none; stroke: #000000; stroke-width: 2"/>
+    <path d="M 175.893743 53.651653 
+L 175.893743 226.726229 
+" clip-path="url(#p2103f479b0)" style="fill: none; stroke: #000000; stroke-width: 2"/>
    </g>
-   <g id="text_6">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(283.418228 99.704795)">PPV</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(283.416353 111.950701)">80%</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(269.41104 124.364795)">(65–91%)</text>
+   <g id="text_1">
+    <text style="font: 13px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="124.148082" y="100.281" transform="rotate(-0 124.148082 100.281)">33</text>
    </g>
-   <g id="text_7">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(283.08729 181.136795)">NPV</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(283.416353 193.382701)">97%</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(269.41104 205.796795)">(92–99%)</text>
+   <g id="text_2">
+    <text style="font: 13px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="227.639404" y="100.281" transform="rotate(-0 227.639404 100.281)">8</text>
    </g>
-   <g id="text_8">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(107.481825 248.029745)">Sensitivity</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(125.482763 260.433151)">87%</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(111.47745 272.847245)">(72–96%)</text>
+   <g id="text_3">
+    <text style="font: 13px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="124.148082" y="186.818288" transform="rotate(-0 124.148082 186.818288)">5</text>
    </g>
-   <g id="text_9">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(188.913825 248.029745)">Specificity</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(206.914762 260.433151)">95%</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(192.90945 272.847245)">(90–98%)</text>
-   </g>
-   <g id="text_10">
-    <text style="font: 700 16px 'DejaVu Sans'; text-anchor: start" x="7.2" y="19.3575" transform="rotate(-0 7.2 19.3575)">(A)</text>
-   </g>
-   <g id="text_11">
-    <!-- $\it{E. coli}$ culture -->
-    <g transform="translate(141.3322 38.28692)">
-     <text>
-      <tspan style="font: italic 12.5px 'Arial'" x="0 13.892822 20.142822 27.094727 29.871826" y="-0.6875">Ecoli</tspan>
-      <tspan style="font: 12.5px 'Arial'" x="8.337402 32.648926 36.121826 42.371826 49.32373 52.10083 55.57373 62.525635 66.688232" y="-0.6875">. culture</tspan>
-     </text>
-    </g>
-   </g>
-   <g id="text_12">
-    <text style="font: 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="137.4912" y="112.622139" transform="rotate(-0 137.4912 112.622139)">33</text>
-   </g>
-   <g id="text_13">
-    <text style="font: 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="218.9232" y="112.622139" transform="rotate(-0 218.9232 112.622139)">8</text>
-   </g>
-   <g id="text_14">
-    <text style="font: 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="137.4912" y="194.054139" transform="rotate(-0 137.4912 194.054139)">5</text>
-   </g>
-   <g id="text_15">
-    <text style="fill: #ffffff; font: 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="218.9232" y="194.054139" transform="rotate(-0 218.9232 194.054139)">145</text>
+   <g id="text_4">
+    <text style="fill: #ffffff; font: 13px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="227.639404" y="186.818288" transform="rotate(-0 227.639404 186.818288)">145</text>
    </g>
   </g>
   <g id="axes_2">
-   <g id="patch_4">
-    <path d="M 494.375725 231.15092 
-L 657.239725 231.15092 
-L 657.239725 68.28692 
-L 494.375725 68.28692 
-z
-" style="fill: #ffffff"/>
-   </g>
-   <g clip-path="url(#pb9b1f7f30c)">
+   <g clip-path="url(#p662e70c8f4)">
     <image xlink:href="data:image/png;base64,
-iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVR4nGP88O3Pf3ZWZgaG77///+cwyP4PAFjxCYRFsdGSAAAAAElFTkSuQmCC" id="imageca8a708640" transform="matrix(81.432 0 0 81.432 494.375725 68.28692)" style="image-rendering:crisp-edges;image-rendering:pixelated" width="2" height="2"/>
+iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVR4nGP88O3Pf3ZWZgaG77///+cwyP4PAFjxCYRFsdGSAAAAAElFTkSuQmCC" id="imageca8a708640" transform="matrix(103.491322 0 0 86.537288 454.985333 53.651653)" style="image-rendering:crisp-edges;image-rendering:pixelated" width="2" height="2"/>
    </g>
-   <g id="matplotlib.axis_3">
-    <g id="xtick_3">
-     <g id="line2d_5"/>
-     <g id="text_16">
-      <text style="font: 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="535.091725" y="61.90192" transform="rotate(-0 535.091725 61.90192)">positive</text>
-     </g>
-    </g>
-    <g id="xtick_4">
-     <g id="line2d_6"/>
-     <g id="text_17">
-      <text style="font: 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="616.523725" y="61.761295" transform="rotate(-0 616.523725 61.761295)">negative</text>
-     </g>
-    </g>
-   </g>
-   <g id="matplotlib.axis_4">
-    <g id="ytick_3">
-     <g id="line2d_7"/>
-     <g id="text_18">
-      <text style="font: 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="490.375725" y="113.297607" transform="rotate(-0 490.375725 113.297607)">positive</text>
-     </g>
-    </g>
-    <g id="ytick_4">
-     <g id="line2d_8"/>
-     <g id="text_19">
-      <text style="font: 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="490.375725" y="194.729607" transform="rotate(-0 490.375725 194.729607)">negative</text>
-     </g>
-    </g>
-    <g id="text_20">
-     <!-- $\it{papGII}$ LAMP -->
-     <g transform="translate(434.5101 187.28142) rotate(-90)">
-      <text>
-       <tspan style="font: italic 12.5px 'Arial'" x="0 6.951904 13.903809 20.855713 30.578613 34.051514" y="-0.53125">papGII</tspan>
-       <tspan style="font: 12.5px 'Arial'" x="37.524414 40.997314 47.949219 56.286621 66.699219" y="-0.53125"> LAMP</tspan>
-      </text>
-     </g>
-    </g>
-   </g>
-   <g id="patch_5">
-    <path d="M 494.375725 68.28692 
-L 657.239725 68.28692 
-L 657.239725 231.15092 
-L 494.375725 231.15092 
-L 494.375725 68.28692 
+   <g id="patch_3">
+    <path d="M 454.985333 53.651653 
+L 661.967977 53.651653 
+L 661.967977 226.726229 
+L 454.985333 226.726229 
+L 454.985333 53.651653 
 z
-" style="fill: none; stroke: #000000; stroke-width: 1.8; stroke-linejoin: miter"/>
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="LineCollection_2">
-    <path d="M 494.375725 149.71892 
-L 657.239725 149.71892 
-" clip-path="url(#pb9b1f7f30c)" style="fill: none; stroke: #000000; stroke-width: 1.8"/>
-    <path d="M 575.807725 68.28692 
-L 575.807725 231.15092 
-" clip-path="url(#pb9b1f7f30c)" style="fill: none; stroke: #000000; stroke-width: 1.8"/>
+    <path d="M 454.985333 140.188941 
+L 661.967977 140.188941 
+" clip-path="url(#p662e70c8f4)" style="fill: none; stroke: #000000; stroke-width: 2"/>
+    <path d="M 558.476655 53.651653 
+L 558.476655 226.726229 
+" clip-path="url(#p662e70c8f4)" style="fill: none; stroke: #000000; stroke-width: 2"/>
    </g>
-   <g id="text_21">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(684.355315 99.704795)">PPV</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(681.016877 111.950701)">100%</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(667.011565 124.364795)">(54–100%)</text>
+   <g id="text_5">
+    <text style="font: 13px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="506.730994" y="100.281" transform="rotate(-0 506.730994 100.281)">6</text>
    </g>
-   <g id="text_22">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(684.024377 181.136795)">NPV</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(681.016877 193.382701)">100%</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(667.011565 205.796795)">(98–100%)</text>
+   <g id="text_6">
+    <text style="font: 13px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="610.222316" y="100.281" transform="rotate(-0 610.222316 100.281)">0</text>
    </g>
-   <g id="text_23">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(505.08235 248.029745)">Sensitivity</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(519.746725 260.433151)">100%</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(505.741412 272.847245)">(54–100%)</text>
+   <g id="text_7">
+    <text style="font: 13px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="506.730994" y="186.818288" transform="rotate(-0 506.730994 186.818288)">0</text>
    </g>
-   <g id="text_24">
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(586.51435 248.029745)">Specificity</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(601.178725 260.433151)">100%</text>
-    <text style="font: 700 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(587.173412 272.847245)">(98–100%)</text>
+   <g id="text_8">
+    <text style="fill: #ffffff; font: 13px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="610.222316" y="186.818288" transform="rotate(-0 610.222316 186.818288)">185</text>
    </g>
-   <g id="text_25">
-    <text style="font: 700 16px 'DejaVu Sans'; text-anchor: start" x="404.800525" y="19.3575" transform="rotate(-0 404.800525 19.3575)">(B)</text>
+  </g>
+  <g id="text_9">
+   <text style="font: 11.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="124.148082" y="47.319497" transform="rotate(-0 124.148082 47.319497)">positive</text>
+  </g>
+  <g id="text_10">
+   <text style="font: 11.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="227.639404" y="47.252115" transform="rotate(-0 227.639404 47.252115)">negative</text>
+  </g>
+  <g id="text_11">
+   <text style="font: 11.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="68.876311" y="99.893226" transform="rotate(-0 68.876311 99.893226)">positive</text>
+  </g>
+  <g id="text_12">
+   <text style="font: 11.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="68.876311" y="186.363132" transform="rotate(-0 68.876311 186.363132)">negative</text>
+  </g>
+  <g id="text_13">
+   <!-- $\it{E. coli}$ culture -->
+   <g transform="translate(141.968743 30.570345)">
+    <text>
+     <tspan style="font: italic 11.5px 'Arial'" x="0 12.781396 18.531396 24.927148 27.48208" y="-0.40625">Ecoli</tspan>
+     <tspan style="font: 11.5px 'Arial'" x="7.67041 30.037012 33.23208 38.98208 45.377832 47.932764 51.127832 57.523584 61.353174" y="-0.40625">. culture</tspan>
+    </text>
    </g>
-   <g id="text_26">
-    <!-- $\it{papGII}$ WGS -->
-    <g transform="translate(540.370225 38.28692)">
-     <text>
-      <tspan style="font: italic 12.5px 'Arial'" x="0 6.951904 13.903809 20.855713 30.578613 34.051514" y="-0.53125">papGII</tspan>
-      <tspan style="font: 12.5px 'Arial'" x="37.524414 40.997314 52.79541 62.518311" y="-0.53125"> WGS</tspan>
-     </text>
-    </g>
+  </g>
+  <g id="text_14">
+   <!-- $\it{E. coli}$ LAMP -->
+   <g transform="translate(15.431484 172.503941) rotate(-90)">
+    <text>
+     <tspan style="font: italic 11.5px 'Arial'" x="0 12.781396 18.531396 24.927148 27.48208" y="-0.40625">Ecoli</tspan>
+     <tspan style="font: 11.5px 'Arial'" x="7.67041 30.037012 33.23208 39.627832 47.298242 56.877832" y="-0.40625">. LAMP</tspan>
+    </text>
    </g>
-   <g id="text_27">
-    <text style="font: 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="535.091725" y="112.622139" transform="rotate(-0 535.091725 112.622139)">6</text>
+  </g>
+  <g id="text_15">
+   <text style="font: 700 16px 'DejaVu Sans'; text-anchor: start" x="10.6955" y="19.3575" transform="rotate(-0 10.6955 19.3575)">(A)</text>
+  </g>
+  <g id="text_16">
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(293.842116 88.324359)">PPV</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(293.842116 99.52094)">80%</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(293.842116 110.872547)">(65–91%)</text>
+  </g>
+  <g id="text_17">
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(293.842116 174.861647)">NPV</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(293.842116 186.058228)">97%</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(293.842116 197.409835)">(92–99%)</text>
+  </g>
+  <g id="text_18">
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(97.639801 242.258969)">Sensitivity</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(113.540629 253.594675)">87%</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(101.16927 264.946281)">(72–96%)</text>
+  </g>
+  <g id="text_19">
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(201.131123 242.258969)">Specificity</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(217.031951 253.594675)">95%</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(204.660592 264.946281)">(90–98%)</text>
+  </g>
+  <g id="text_20">
+   <text style="font: 11.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="506.730994" y="47.319497" transform="rotate(-0 506.730994 47.319497)">positive</text>
+  </g>
+  <g id="text_21">
+   <text style="font: 11.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="610.222316" y="47.252115" transform="rotate(-0 610.222316 47.252115)">negative</text>
+  </g>
+  <g id="text_22">
+   <text style="font: 11.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="451.459223" y="99.893226" transform="rotate(-0 451.459223 99.893226)">positive</text>
+  </g>
+  <g id="text_23">
+   <text style="font: 11.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="451.459223" y="186.363132" transform="rotate(-0 451.459223 186.363132)">negative</text>
+  </g>
+  <g id="text_24">
+   <!-- $\it{papGII}$ WGS -->
+   <g transform="translate(525.874155 30.644915)">
+    <text>
+     <tspan style="font: italic 11.5px 'Arial'" x="0 6.395752 12.791504 19.187256 28.132324 31.327393" y="-0.265625">papGII</tspan>
+     <tspan style="font: 11.5px 'Arial'" x="34.522461 37.717529 48.571777 57.516846" y="-0.265625"> WGS</tspan>
+    </text>
    </g>
-   <g id="text_28">
-    <text style="font: 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="616.523725" y="112.622139" transform="rotate(-0 616.523725 112.622139)">0</text>
+  </g>
+  <g id="text_25">
+   <!-- $\it{papGII}$ LAMP -->
+   <g transform="translate(397.383744 174.746441) rotate(-90)">
+    <text>
+     <tspan style="font: italic 11.5px 'Arial'" x="0 6.395752 12.791504 19.187256 28.132324 31.327393" y="-0.265625">papGII</tspan>
+     <tspan style="font: 11.5px 'Arial'" x="34.522461 37.717529 44.113281 51.783691 61.363281" y="-0.265625"> LAMP</tspan>
+    </text>
    </g>
-   <g id="text_29">
-    <text style="font: 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="535.091725" y="194.054139" transform="rotate(-0 535.091725 194.054139)">0</text>
-   </g>
-   <g id="text_30">
-    <text style="fill: #ffffff; font: 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="616.523725" y="194.054139" transform="rotate(-0 616.523725 194.054139)">185</text>
-   </g>
+  </g>
+  <g id="text_26">
+   <text style="font: 700 16px 'DejaVu Sans'; text-anchor: start" x="393.278411" y="19.3575" transform="rotate(-0 393.278411 19.3575)">(B)</text>
+  </g>
+  <g id="text_27">
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(676.425027 88.324359)">PPV</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(676.425027 99.52094)">100%</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(676.425027 110.872547)">(54–100%)</text>
+  </g>
+  <g id="text_28">
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(676.425027 174.861647)">NPV</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(676.425027 186.058228)">100%</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(676.425027 197.409835)">(98–100%)</text>
+  </g>
+  <g id="text_29">
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(480.222713 242.258969)">Sensitivity</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(493.176244 253.594675)">100%</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(480.804884 264.946281)">(54–100%)</text>
+  </g>
+  <g id="text_30">
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(583.714035 242.258969)">Specificity</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(596.667566 253.594675)">100%</text>
+   <text style="font: 700 10.6px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(584.296207 264.946281)">(98–100%)</text>
   </g>
  </g>
  <defs>
-  <clipPath id="pb8a6d96cb6">
-   <rect x="96.7752" y="68.28692" width="162.864" height="162.864"/>
+  <clipPath id="p2103f479b0">
+   <rect x="72.402421" y="53.651653" width="206.982644" height="173.074576"/>
   </clipPath>
-  <clipPath id="pb9b1f7f30c">
-   <rect x="494.375725" y="68.28692" width="162.864" height="162.864"/>
+  <clipPath id="p662e70c8f4">
+   <rect x="454.985333" y="53.651653" width="206.982644" height="173.074576"/>
   </clipPath>
  </defs>
 </svg>
