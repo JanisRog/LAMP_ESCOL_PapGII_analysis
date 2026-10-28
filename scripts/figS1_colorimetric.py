@@ -24,7 +24,7 @@ from lamp_common import DATA, RESULTS
 CROPS = DATA / "colorimetric"
 OUT = RESULTS / "figures"
 TIMES = [0, 10, 15, 20, 25, 30, 35]
-CROP_W, CROP_H = 1400, 500                      # px of each cut-out (aspect of 8 tubes + margin)
+CROP_W, CROP_H = 1400, 540                      # px of each cut-out (8 tubes + margin: 8.9 x 3.45 tube pitches)
 STRAINS = [("$\\it{E. coli}$ 700223-20 ($\\it{papGII}$)"), ("$\\it{E. coli}$ ATCC-41-3 ($\\it{papGII}$)"), ("$\\it{E. coli}$ AVS0171 ($\\it{papGII}$)"),
            ("$\\it{E. coli}$ EC6804 ($\\it{papGIII}$)"), ("$\\it{E. coli}$ EC6792 ($\\it{papGIII}$)"), ("$\\it{E. coli}$ 700636-20 (no $\\it{papG}$)"),
            ("$\\it{K. pneumoniae}$ (no $\\it{papG}$)"), "NTC"]
@@ -49,15 +49,22 @@ def tube_rows(img):
         pts = np.array(pts)
         if len(pts) >= 12:
             break
-    y_split = np.median(pts[:, 1])
+    ys = np.sort(pts[:, 1]); y_split = (ys[np.argmax(np.diff(ys))] + ys[np.argmax(np.diff(ys)) + 1]) / 2      # between the two rows (largest gap)
     rows = []
     for sel in (pts[:, 1] < y_split, pts[:, 1] >= y_split):
         r = pts[sel][np.argsort(pts[sel][:, 0])]
         p0 = np.median(np.diff(r[:, 0]))
         idx = np.round((r[:, 0] - r[0, 0]) / p0).astype(int)
-        pitch, x0 = np.polyfit(idx, r[:, 0], 1)                         # x = x0 + i * pitch
-        y = np.polyval(np.polyfit(idx, r[:, 1], 1), [0, 7]).mean()
-        rows.append((x0, pitch, y))
+        for _ in range(3):                                                 # robust line fits: drop blobs that are not tubes (shadows, stains)
+            pitch, x0 = np.polyfit(idx, r[:, 0], 1)                        # x = x0 + i * pitch
+            slope, icpt = np.polyfit(idx, r[:, 1], 1)
+            ok = (np.abs(r[:, 1] - (icpt + slope * idx)) < 0.2 * pitch) & (np.abs(r[:, 0] - (x0 + pitch * idx)) < 0.2 * pitch)
+            if ok.all() or ok.sum() < 5: break
+            r, idx = r[ok], idx[ok]
+        pitch, x0 = np.polyfit(idx, r[:, 0], 1)
+        slope, icpt = np.polyfit(idx, r[:, 1], 1)
+        y = np.polyval([slope, icpt], [0, 7]).mean()
+        rows.append((x0, pitch, y, float(np.degrees(np.arctan(slope / pitch)))))   # slope in px/px -> row angle (deg)
     return rows
 
 
@@ -69,10 +76,12 @@ def make_crops(photos):
             jpg = Path(d) / f"C_{t}.jpg"
             subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "95", str(src), "--out", str(jpg)], capture_output=True, check=True)
             img = Image.open(jpg).convert("RGB")
-            for name, (x0, pitch, y) in zip("EP", tube_rows(img)):
-                box = (x0 - 0.95 * pitch, y - 2.55 * pitch, x0 + 7 * pitch + 0.95 * pitch, y + 0.55 * pitch)
-                box = (box[0], box[1], box[2], box[1] + (box[2] - box[0]) * CROP_H / CROP_W)
-                img.crop(tuple(int(round(v)) for v in box)).resize((CROP_W, CROP_H), Image.LANCZOS).save(CROPS / f"crop_{t}_{name}.jpg", quality=92)
+            for name, (x0, pitch, y, angle) in zip("EP", tube_rows(img)):
+                cx = x0 + 3.5 * pitch                                              # centre of the tube row
+                level = img.rotate(angle, center=(cx, y), resample=Image.BICUBIC)      # level a tilted row (counter-clockwise for a row sloping down to the right)
+                w = 8.9 * pitch; h = w * CROP_H / CROP_W
+                box = (cx - w / 2, y - 0.78 * h, cx + w / 2, y + 0.22 * h)          # liquid at 78 % of the height: room for the caps above
+                level.crop(tuple(int(round(v)) for v in box)).resize((CROP_W, CROP_H), Image.LANCZOS).save(CROPS / f"crop_{t}_{name}.jpg", quality=92)
             print("cropped", t)
 
 
@@ -83,7 +92,8 @@ def main():
     mm = 1 / 25.4
     W, left, col_w, gap = 192.0, 22.0, 78.0, 10.0
     row_h = col_w * CROP_H / CROP_W
-    top, head, leg = 10.0, 12.0, 34.0
+    top, head, leg = 10.0, 12.0, 74.0
+    exp_h = 19.0
     H = top + head + len(TIMES) * (row_h + 2.0) + leg
     fig = plt.figure(figsize=(W * mm, H * mm))
     for c, (name, gene, letter) in enumerate((("E", "$\\it{uidA}$ ($\\it{E. coli}$)", "(A)"), ("P", "$\\it{papGII}$", "(B)"))):
@@ -100,8 +110,24 @@ def main():
         for k in range(8):
             xx = x0 + col_w * (0.95 + k) / (7 + 1.9)
             fig.text(xx / W, 1 - (top + head - 1.5) / H, str(k + 1), ha="center", va="bottom", fontsize=9)
+    # expected result: tubes 1-6 (E. coli) positive for uidA, tubes 1-3 (papGII) positive for papGII; all others negative (icons: yellow = amplification, pink = none)
+    pos, neg = Image.open(CROPS / "icon_positive_yellow.png"), Image.open(CROPS / "icon_negative_pink.png")
+    ey = top + head + len(TIMES) * (row_h + 2.0) + 3
+    fig.text((left - 2) / W, 1 - (ey + exp_h / 2) / H, "Expected", ha="right", va="center", fontsize=10, fontweight="bold")
+    iw = exp_h * pos.width / pos.height
+    for c, n_pos in enumerate((6, 3)):
+        x0 = left + c * (col_w + gap)
+        for k in range(8):
+            xx = x0 + col_w * (0.95 + k) / (7 + 1.9)
+            ax = fig.add_axes([(xx - iw / 2) / W, 1 - (ey + exp_h) / H, iw / W, exp_h / H])
+            ax.imshow(pos if k < n_pos else neg); ax.axis("off")
+    ky = ey + exp_h + 3
+    kx = left + 2
+    for img_, lab, dx in ((pos, "Positive: amplification (yellow)", 0), (neg, "Negative: no amplification (pink)", 78)):
+        ax = fig.add_axes([(kx + dx) / W, 1 - (ky + 9) / H, 9 * pos.width / pos.height / W, 9 / H]); ax.imshow(img_); ax.axis("off")
+        fig.text((kx + dx + 5) / W, 1 - (ky + 4.5) / H, lab, ha="left", va="center", fontsize=9.5)
     # strain legend
-    ly = top + head + len(TIMES) * (row_h + 2.0) + 4
+    ly = ky + 14
     for k, s in enumerate(STRAINS):
         col, row = divmod(k, 4)
         fig.text((left + col * 80) / W, 1 - (ly + row * 6.0) / H, f"{k + 1}.  {s}", ha="left", va="top", fontsize=9.5)
