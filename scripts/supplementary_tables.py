@@ -47,6 +47,42 @@ def italicise(path):
                     if pos < len(c.value): parts.append(TextBlock(mk(False), c.value[pos:]))
                     c.value = CellRichText(*parts)
     wb.save(path)
+    fix_rpr_order(path)
+
+
+def fix_rpr_order(path):
+    """Excel is strict about the order of the elements of a run property (rPr) in rich text: b, i, ..., sz, color, rFont, family. openpyxl writes rFont first,
+    which makes Excel report a corrupted workbook; reorder the elements in all sheets."""
+    import shutil, zipfile
+    order = ["b", "i", "strike", "condense", "extend", "outline", "shadow", "u", "vertAlign", "sz", "color", "rFont", "family", "charset", "scheme"]
+
+    def reorder(m):
+        items = re.findall(r"<(\w+)\b[^>]*/>", m.group(1))
+        parts = {name: re.search(r"<" + name + r"\b[^>]*/>", m.group(1)).group(0) for name in set(items)}
+        return "<rPr>" + "".join(parts[n] for n in order if n in parts) + "</rPr>"
+    tmp = str(path) + ".tmp"
+    with zipfile.ZipFile(path) as zin, zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as zout:
+        for item in zin.infolist():
+            data = zin.read(item.filename)
+            if item.filename.startswith("xl/worksheets/sheet"):
+                data = re.sub(r"<rPr>(.*?)</rPr>", reorder, data.decode("utf8")).encode("utf8")
+            zout.writestr(item, data)
+    shutil.move(tmp, path)
+    excel_safe(path)
+
+
+def excel_safe(path):
+    """Round trip through LibreOffice (if installed): rewrites the workbook in the conventional form (shared strings), which Excel opens without repair prompts."""
+    import shutil, subprocess, tempfile
+    from pathlib import Path
+    soffice = shutil.which("soffice")
+    if not soffice:
+        return
+    with tempfile.TemporaryDirectory() as d:
+        subprocess.run([soffice, "--headless", "--convert-to", "xlsx:Calc MS Excel 2007 XML", "--outdir", d, str(path)], capture_output=True, check=False)
+        out = Path(d) / Path(path).name
+        if out.exists():
+            shutil.copy(out, path)
 REF = {"uidA": "ecoli", "papGII": "wgs_papGII"}
 
 
@@ -160,6 +196,11 @@ def main():
                          "Youden's index out-of-bag": round(d.J_out_of_bag.mean(), 3)} for t, d in bs.items()])
     # Table 8
     iso = pd.read_csv(RESULTS / "clinical_phylogroups" / "isolates.tsv", sep="\t")
+    dens = load_samples().set_index("sample_id").cfu_category
+    iso = pd.DataFrame({"Sample ID": iso.sample_id, "E. coli phylogroup": iso.phylogroup, "Bacterial density (CFU/ml)": iso.sample_id.map(dens),
+                        "Culture (MALDI-TOF)": iso.culture_maldi, "Mixed culture (1 = yes)": iso.mixed_culture, "Mismatches at the LF binding site": iso.LF_mismatches,
+                        "Mismatches at the 3' end of the LF binding site": iso.LF_mismatches_3prime, "uidA time to threshold (min)": iso.ttt_uidA,
+                        "Detected by the uidA LAMP": iso.detected.map({True: "yes", False: "no"})})
     pres = pd.read_csv(RESULTS / "figures" / "tableS_binding_site_presence.tsv", sep="\t")
     lol, pg, mm = table4()
     t1 = table1()
@@ -201,7 +242,7 @@ def main():
         put(pd.DataFrame({"": ["(b) Both thresholds selected simultaneously from the full grid (ties: higher PPV, then shorter time): the Youden's index is similar over a wide range of combinations, so that this selection is not stable."]}), "Supp Table 7", "", first=False, startrow=len(t7) + 6)
         put(t7b, "Supp Table 7", "", first=False, startrow=len(t7) + 9)
         put(iso, "Supp Table 8", "Supplementary Table 8. E. coli isolates of the clinical urine samples: phylogroup, mismatches at the LF binding site and uidA time to threshold.",
-            ["LF_mismatches_3prime: mismatches in the 3'-terminal part of the LF primer binding site."])
+            ["Isolates of the E. coli-positive urine samples (one per sample)."])
     italicise(path)
     print("saved", path)
 
