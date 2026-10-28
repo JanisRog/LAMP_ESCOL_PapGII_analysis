@@ -16,7 +16,7 @@ OUT = RESULTS / "figures"
 mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
                      "mathtext.fontset": "custom", "mathtext.rm": "Arial", "mathtext.it": "Arial:italic", "mathtext.bf": "Arial:bold",
                      "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig3"})
-TITLE, LABEL, TICK, LEGEND = 9.8, 8.8, 7.9, 8.8
+TITLE, LABEL, TICK, LEGEND = 9.8, 8.8, 7.9, 9.8
 LETTER = {"fontsize": 16, "fontweight": "bold", "family": "DejaVu Sans"}
 PANELS = [("uidA", "culture_results.csv", "$\\it{E. coli}$ Culture", "(A)"), ("papGII", "papg_results.csv", "$\\it{papGII}$ WGS", "(B)")]
 
@@ -37,7 +37,7 @@ def curves(target, ref_file):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    left, box_w, gap, right, bottom, box_h, top = 17.0, 105.0, 30.0, 8.0, 15.0, 63.0, 13.0   # mm
+    left, box_w, gap, right, bottom, box_h, top = 17.0, 105.0, 30.0, 14.0, 26.0, 63.0, 13.0   # mm (bottom: room for the legends)
     W, H = left + 2 * box_w + gap + right, bottom + box_h + top
     fig = plt.figure(figsize=(W / 25.4, H / 25.4))
     for i, (target, ref_file, name, letter) in enumerate(PANELS):
@@ -52,7 +52,8 @@ def main():
         ax.set_xlabel("Time [min]", fontsize=LABEL); ax.set_ylabel("Relative Fluorescence (fold-change)", fontsize=LABEL)
         ax.tick_params(labelsize=TICK)
         ax.set_title(f"Fluorescence change over time $\\it{{{target}}}$ (Median ± IQR)", fontsize=TITLE, pad=7)
-        ax.legend(loc="upper left", fontsize=LEGEND)
+        ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.23), ncol=2, frameon=False, fontsize=LEGEND,
+                  handlelength=1.8, columnspacing=1.6, borderaxespad=0)      # legend below the plot, as in Figure 2
         fig.text((x0 - 14) / W, (H - 1.5) / H, letter, va="top", **LETTER)
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "fig3_curves.py"}, "svg": {"Date": None}}.get(ext)
