@@ -14641,7 +14641,7 @@ L 375.246297 70.347388
     <text style="fill: #0b0b0b; font: 700 16px 'DejaVu Sans'; text-anchor: start" x="7.2" y="19.3575" transform="rotate(-0 7.2 19.3575)">(A)</text>
    </g>
    <g id="text_10">
-    <text style="fill: #0b0b0b; font: italic 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="7.2" y="56.427294" transform="rotate(-0 7.2 56.427294)">uidA</text>
+    <text style="fill: #0b0b0b; font: italic 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="25.216252" y="56.427294" transform="rotate(-0 25.216252 56.427294)">uidA</text>
    </g>
   </g>
   <g id="axes_2">
@@ -23791,7 +23791,7 @@ L 375.246297 332.20682
 " style="fill: none; stroke: #c3c2b7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_107">
-    <text style="fill: #0b0b0b; font: italic 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="7.2" y="318.359851" transform="rotate(-0 7.2 318.359851)">papGII</text>
+    <text style="fill: #0b0b0b; font: italic 12px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="25.216252" y="318.359851" transform="rotate(-0 25.216252 318.359851)">papGII</text>
    </g>
   </g>
   <g id="axes_5">
