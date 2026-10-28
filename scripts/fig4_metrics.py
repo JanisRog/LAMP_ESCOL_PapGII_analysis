@@ -29,7 +29,7 @@ mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "
 # colour-blind-safe palette (Okabe-Ito; the four metric colours pass the CVD check of the dataviz validator, the old blue/orange/green/red did not:
 # orange and green were indistinguishable for protan viewers). Line styles (solid / dotted / dash-dot) add a second cue.
 BLUE, ORANGE, GREEN, VERM = "#0072B2", "#E69F00", "#009E73", "#D55E00"
-SEL, UIDA = "black", "#CC79A7"          # selected threshold / uidA time threshold (reference marks): black and reddish purple
+SEL, UIDA = "black", "#882255"          # selected threshold / uidA time threshold (reference marks): black and wine red (passes the CVD check; coral clashed with the orange PPV line)
 LETTER = {"fontsize": 16, "fontweight": "bold", "family": "DejaVu Sans"}
 FIXED_F = 3.0
 TARGETS = [("uidA", "culture_results.csv", 30), ("papGII", "papg_results.csv", 23)]

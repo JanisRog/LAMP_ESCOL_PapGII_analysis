@@ -1704,7 +1704,7 @@ L 600.841348 34.004373
    <g id="line2d_126">
     <path d="M 650.439101 212.527331 
 L 650.439101 34.004373 
-" clip-path="url(#pe77610500c)" style="fill: none; stroke-dasharray: 4.4733,1.9344; stroke-dashoffset: 0; stroke: #cc79a7; stroke-width: 1.209"/>
+" clip-path="url(#pe77610500c)" style="fill: none; stroke-dasharray: 4.4733,1.9344; stroke-dashoffset: 0; stroke: #882255; stroke-width: 1.209"/>
    </g>
    <g id="patch_18">
     <path d="M 430.79191 212.527331 
@@ -2293,7 +2293,7 @@ C 476.300521 556.333174 476.771734 557.470782 477.610379 558.309428
 C 478.449025 559.148073 479.586633 559.619286 480.772657 559.619286 
 L 480.772657 559.619286 
 z
-" clip-path="url(#p1d014d4a36)" style="fill: none; stroke: #cc79a7; stroke-width: 1.209"/>
+" clip-path="url(#p1d014d4a36)" style="fill: none; stroke: #882255; stroke-width: 1.209"/>
    </g>
    <g id="text_97">
     <text style="font: 8.835px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end" x="694.141807" y="771.390138" transform="rotate(-0 694.141807 771.390138)">AUC = 1.000</text>
@@ -2393,7 +2393,7 @@ L 399.736195 855.895577
     <path d="M 376.300195 869.94192 
 L 388.018195 869.94192 
 L 399.736195 869.94192 
-" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #cc79a7; stroke-width: 2.4"/>
+" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #882255; stroke-width: 2.4"/>
    </g>
    <g id="text_110">
     <text style="font: 9.765px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="407.548195" y="873.35967" transform="rotate(-0 407.548195 873.35967)">uidA time threshold (30 min)</text>
@@ -2409,7 +2409,7 @@ L 570.130868 855.895577
    </g>
    <g id="line2d_190">
     <defs>
-     <path id="m0c7fcd5eba" d="M 0 4 
+     <path id="m0296c38bcc" d="M 0 4 
 C 1.060812 4 2.078319 3.578535 2.828427 2.828427 
 C 3.578535 2.078319 4 1.060812 4 0 
 C 4 -1.060812 3.578535 -2.078319 2.828427 -2.828427 
@@ -2419,10 +2419,10 @@ C -3.578535 -2.078319 -4 -1.060812 -4 0
 C -4 1.060812 -3.578535 2.078319 -2.828427 2.828427 
 C -2.078319 3.578535 -1.060812 4 0 4 
 z
-" style="stroke: #cc79a7; stroke-width: 1.5"/>
+" style="stroke: #882255; stroke-width: 1.5"/>
     </defs>
     <g>
-     <use xlink:href="#m0c7fcd5eba" x="558.412868" y="869.833589" style="fill-opacity: 0; stroke: #cc79a7; stroke-width: 1.5"/>
+     <use xlink:href="#m0296c38bcc" x="558.412868" y="869.833589" style="fill-opacity: 0; stroke: #882255; stroke-width: 1.5"/>
     </g>
    </g>
    <g id="text_112">
