@@ -9,6 +9,7 @@ Output: results/figures/fig3.{pdf,png,svg}
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib.lines import Line2D
 
 from lamp_common import DATA, MEASUREMENTS, RESULTS
 
@@ -17,6 +18,10 @@ mpl.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "
                      "mathtext.fontset": "custom", "mathtext.rm": "Arial", "mathtext.it": "Arial:italic", "mathtext.bf": "Arial:bold",
                      "pdf.fonttype": 42, "svg.fonttype": "none", "svg.hashsalt": "lamp-fig3"})
 TITLE, LABEL, TICK, LEGEND = 9.8, 8.8, 7.9, 9.8
+SC = 0.465   # Figure 2 B/C are the 10 x 6 in notebook plots scaled to this factor; line weights are scaled the same way
+mpl.rcParams.update({"lines.linewidth": 1.5 * SC, "axes.linewidth": 0.8 * SC, "grid.linewidth": 0.8 * SC,
+                     "xtick.major.size": 3.5 * SC, "ytick.major.size": 3.5 * SC,
+                     "xtick.major.width": 0.8 * SC, "ytick.major.width": 0.8 * SC})
 LETTER_SHIFT_B = 4.0   # mm: panel letter (B) moved further left
 LETTER = {"fontsize": 16, "fontweight": "bold", "family": "DejaVu Sans"}
 PANELS = [("uidA", "culture_results.csv", "$\\it{E. coli}$ Culture", "(A)"), ("papGII", "papg_results.csv", "$\\it{papGII}$ WGS", "(B)")]
@@ -47,13 +52,15 @@ def main():
         cv = curves(target, ref_file)
         for label, color, word in ((1, "red", "Positive"), (0, "blue", "Negative")):
             med, q1, q3, n = cv[label]
-            ax.plot(med.index, med.values, color=color, lw=1.4, label=f"{name} {word} (n = {n})")
+            ax.plot(med.index, med.values, color=color, label=f"{name} {word} (n = {n})")
             ax.fill_between(med.index, q1.values, q3.values, color=color, alpha=0.2, lw=0)
         ax.set_xlim(0, 40); ax.set_ylim(bottom=0); ax.grid(True)
         ax.set_xlabel("Time [min]", fontsize=LABEL); ax.set_ylabel("Relative Fluorescence (fold-change)", fontsize=LABEL)
         ax.tick_params(labelsize=TICK)
         ax.set_title(f"Fluorescence change over time $\\it{{{target}}}$ (Median ± IQR)", fontsize=TITLE, pad=7)
-        ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.23), ncol=2, frameon=False, fontsize=LEGEND,
+        handles = [Line2D([], [], color=c, lw=3) for c in ("red", "blue")]       # thick legend lines, as in Figure 2
+        labels = [f"{name} {w} (n = {cv[k][3]})" for k, w in ((1, "Positive"), (0, "Negative"))]
+        ax.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, -0.23), ncol=2, frameon=False, fontsize=LEGEND,
                   handlelength=1.8, columnspacing=1.6, borderaxespad=0)      # legend below the plot, as in Figure 2
         fig.text((x0 - 14 - (LETTER_SHIFT_B if i == 1 else 0)) / W, (H - 1.5) / H, letter, va="top", **LETTER)
     for ext in ("pdf", "png", "svg"):
