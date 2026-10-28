@@ -18,6 +18,7 @@ from lamp_common import DATA, RESULTS
 
 OUT = RESULTS / "figures"
 HSPACE_BC = 0.12   # vertical gap between B and C
+C_LIFT = 0.022       # figure fraction by which panel C is raised (more room above the legend)
 LEG_ROW = 0.001     # relative height of the empty row kept free below C for the shared legend
 CONDS = ["10^6", "10^5", "10^4", "10^3", "10^2", "NTC"]   # default colour cycle, as in the notebook
 
@@ -62,7 +63,9 @@ def original_lod_plot(target):
 
 
 def lod_panel(ax, target, letter):
-    ax.imshow(original_lod_plot(target), interpolation="lanczos")
+    img = original_lod_plot(target)
+    ax.imshow(img, interpolation="lanczos")
+    ax.left_frac = float((img[..., :3] < 0.98).any(axis=2).any(axis=0).argmax()) / img.shape[1]   # blank margin left of the plot
     ax.set_anchor("NW"); ax.axis("off")
     if letter != "(B)":   # (B) is placed at the height of (A) in main()
         ax.text(-0.03, 1.02, letter, transform=ax.transAxes, va="bottom", **H.LETTER_KW)
@@ -83,12 +86,14 @@ def main():
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")
     axc = lod_panel(fig.add_subplot(right[1]), "papGII", "(C)")
     draw_zoom_lines(fig)
+    fig.canvas.draw()
     pc = axc.get_position()                                 # centre the legend under the (aspect-fitted) image of C
+    leg_y = pc.y0 + 0.004                                   # legend stays where it was; C moves up away from it
     cyc = mpl.rcParamsDefault["axes.prop_cycle"].by_key()["color"]
     handles = [Line2D([], [], color=cyc[i], lw=3) for i in range(len(CONDS))]
     labels = [c.replace("10^", "10$^{") + "}$" if c.startswith("10^") else c for c in CONDS]
     fig.legend(handles, labels, title="CFU/ml", ncol=len(CONDS), loc="upper center", frameon=False,
-               bbox_to_anchor=((pc.x0 + pc.x1) / 2, pc.y0 + 0.004), bbox_transform=fig.transFigure,
+               bbox_to_anchor=((pc.x0 + pc.x1) / 2, leg_y), bbox_transform=fig.transFigure,
                prop={"family": "DejaVu Sans", "size": 11}, title_fontproperties={"family": "DejaVu Sans", "size": 12},
                handlelength=1.6, handletextpad=0.4, columnspacing=1.3, borderaxespad=0)
     # vertical colour bar right of panel A, centred between the uidA and papGII heatmaps
@@ -102,8 +107,17 @@ def main():
     a = H.LETTER_ARTIST                                     # (B) at the same height as (A)
     ya = fig.transFigure.inverted().transform(a.get_transform().transform(a.get_position()))[1]
     pb = axb.get_position()
+    # B up so that its gap to (B) equals C's gap to (C) (letter bottom = axes top + 2 % of the axes height); C up a bit
+    axb.set_position([pb.x0, ya - 0.02 * pb.height - pb.height, pb.width, pb.height])
+    pc = axc.get_position()
+    axc.set_position([pc.x0, pc.y0 + C_LIFT, pc.width, pc.height])
+    pb = axb.get_position()
     fig.text(pb.x0 - 0.03 * pb.width, ya, "(B)", va="bottom", **H.LETTER_KW)
-    x = axb.get_position().x0 - 8 / W                      # divider between A and B/C
+    fig.canvas.draw()                                                             # lay out the colour-bar label before measuring it
+    inv = fig.transFigure.inverted()
+    a_right = inv.transform((cb.ax.yaxis.label.get_window_extent().x1, 0))[0]     # right edge of panel A (colour-bar label)
+    bc_left = pb.x0 + axb.left_frac * pb.width                                    # left edge of the B/C plots (axis label)
+    x = (a_right + bc_left) / 2                                                   # divider midway between A and B/C
     fig.add_artist(Line2D([x, x], [0.0, 1.0], transform=fig.transFigure, color="black", lw=1.0))
     for ext in ("pdf", "png", "svg"):
         meta = {"pdf": {"CreationDate": None, "Creator": "fig2_composite.py"}, "svg": {"Date": None}}.get(ext)
