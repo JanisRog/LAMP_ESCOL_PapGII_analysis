@@ -17,6 +17,8 @@ from fig_primer_lollipop import draw_zoom_lines
 from lamp_common import DATA, RESULTS
 
 OUT = RESULTS / "figures"
+HSPACE_BC = 0.12   # vertical gap between B and C
+LEG_ROW = 0.001     # relative height of the empty row kept free below C for the shared legend
 CONDS = ["10^6", "10^5", "10^4", "10^3", "10^2", "NTC"]   # default colour cycle, as in the notebook
 
 
@@ -77,18 +79,18 @@ def main():
     H.SUB_SEP, H.LETTER = None, "(A)"
     FM.LABEL_INSIDE, FM.PRIMER_FS = True, 7.5
     H.draw_panel(fig, top[0], dims, title_x=-0.3)
-    right = top[1].subgridspec(3, 1, height_ratios=[1, 1, 0.1], hspace=0.11)
+    right = top[1].subgridspec(3, 1, height_ratios=[1, 1, LEG_ROW], hspace=HSPACE_BC)
     axb = lod_panel(fig.add_subplot(right[0]), "uidA", "(B)")
     axc = lod_panel(fig.add_subplot(right[1]), "papGII", "(C)")
-    leg_ax = fig.add_subplot(right[2]); leg_ax.axis("off")
-    cyc = mpl.rcParamsDefault["axes.prop_cycle"].by_key()["color"]
-    handles = [Line2D([], [], color=cyc[i], lw=2) for i in range(len(CONDS))]
-    LEG = leg_ax.legend(handles, CONDS, title="CFU/ml", ncol=len(CONDS), loc="upper center", frameon=False,
-                  prop={"family": "DejaVu Sans", "size": 8}, title_fontproperties={"family": "DejaVu Sans", "size": 8},
-                  handlelength=2.0, columnspacing=1.4)
     draw_zoom_lines(fig)
     pc = axc.get_position()                                 # centre the legend under the (aspect-fitted) image of C
-    LEG.set_bbox_to_anchor(((pc.x0 + pc.x1) / 2, pc.y0 - 0.005), transform=fig.transFigure)
+    cyc = mpl.rcParamsDefault["axes.prop_cycle"].by_key()["color"]
+    handles = [Line2D([], [], color=cyc[i], lw=3) for i in range(len(CONDS))]
+    labels = [c.replace("10^", "10$^{") + "}$" if c.startswith("10^") else c for c in CONDS]
+    fig.legend(handles, labels, title="CFU/ml", ncol=len(CONDS), loc="upper center", frameon=False,
+               bbox_to_anchor=((pc.x0 + pc.x1) / 2, pc.y0 + 0.004), bbox_transform=fig.transFigure,
+               prop={"family": "DejaVu Sans", "size": 11}, title_fontproperties={"family": "DejaVu Sans", "size": 12},
+               handlelength=1.6, handletextpad=0.4, columnspacing=1.3, borderaxespad=0)
     # vertical colour bar right of panel A, centred between the uidA and papGII heatmaps
     norm, vmax = H.SCALE
     pa = top[0].get_position(fig)
