@@ -17,7 +17,8 @@ cluster-side steps (genome analyses) are listed below under "Genome analyses" an
 
 | Manuscript item | Code | Output |
 |---|---|---|
-| Fig. 2B/C, 3–6; threshold selection (Youden's index); confusion matrices | `notebooks/LAMP_analysis.ipynb` (runs top to bottom, figures displayed inline) | `notebooks/` holds the stored exports: confusion matrices (`confusion_matrix_*`) and lists of false-positive/false-negative samples (`FP_*`, `FN_*`) |
+| Fig. 3 (fluorescence kinetics, clinical samples) | `scripts/fig3_curves.py` | `results/figures/fig3.*` |
+| Fig. 2B/C, 4–6; threshold selection (Youden's index); confusion matrices | `notebooks/LAMP_analysis.ipynb` (runs top to bottom, figures displayed inline) | `notebooks/` holds the stored exports: confusion matrices (`confusion_matrix_*`) and lists of false-positive/false-negative samples (`FP_*`, `FN_*`) |
 | Sensitivity, specificity, PPV, NPV with exact 95% CI | `scripts/diagnostic_metrics_ci.py` | `results/diagnostic_metrics/` |
 | Classification of a new LAMP run with the study thresholds (TTT, positive/negative, NTC validity check) | `scripts/classify_lamp_run.py` (e.g. `python scripts/classify_lamp_run.py --target papGII --input data/all_measurements_papg.csv`) | table of calls on screen or `--output calls.tsv` |
 | Time to threshold vs bacterial density, papGII status, primer set (Supp. table) | `scripts/cfu_time_to_threshold.py` | `results/cfu_ttt/` |
