@@ -28,6 +28,9 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     lo, hi, strand = gene_strip(axg, target, st)
     axg.tick_params(axis="both", labelsize=7.5); axg.set_ylabel("Variant (%)", fontsize=8, color=INK2)
     axg.text(TITLE_X, 1.4, title, transform=axg.transAxes, ha="left", va="bottom", fontsize=12, fontstyle="italic", color=INK)
+    sub = sub.replace(" · ", SUB_SEP)
+    if LETTER and target == "uidA":
+        axg.text(TITLE_X - 0.13, 1.4, LETTER, transform=axg.transAxes, ha="left", va="bottom", fontsize=14, fontweight="bold", color=INK)
     axg.text(1.0, 1.4, sub, transform=axg.transAxes, ha="right", va="bottom", fontsize=7.2, color=INK2)
     axt = fig.add_subplot(gs[2]); draw_map(axt, st, xmax)
     amp_len = st.end.max()
@@ -50,6 +53,8 @@ def block(fig, gs, st, xmax, groups, values, norm, title, sub, target):
     return axt, ax
 
 
+SUB_SEP = " · "   # separator in the amplicon subtitle (the composite figure uses a line break)
+LETTER = None      # panel letter drawn left of the first target title (composite figure)
 TITLE_X = -0.215   # x of the target titles (axes fraction of the gene strip)
 
 
