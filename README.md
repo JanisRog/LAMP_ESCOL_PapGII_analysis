@@ -76,3 +76,7 @@ isolates (ENA PRJEB106156) and all 5,493 NCBI RefSeq complete *E. coli* assembli
 ## License
 
 Code (`scripts/`, `notebooks/`): MIT License (`LICENSE`). Data and results (`data/`, `results/`): CC BY 4.0 (`LICENSE-DATA.md`). How to cite: `CITATION.cff`.
+
+## Use of AI tools
+
+Parts of the code were developed with the assistance of an AI tool (Claude, Anthropic). All code was reviewed and verified by the authors; the scripts reproduce the numbers reported in the manuscript.
